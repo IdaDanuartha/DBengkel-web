@@ -60,20 +60,19 @@
     {{-- End sort by --}}
 
     @if(request('search'))
-      <p class="text-gray-400 text-2xl my-3.5"><i class="bi bi-lightbulb mr-1"></i>Search result for <span class="text-red-400">'{{ request('search') }}'</span></p>
+      <p class="text-gray-400 text-2xl mt-3.5 mb-10"><i class="bi bi-lightbulb mr-1"></i>Search result for <span class="text-red-400">'{{ request('search') }}'</span></p>
     @endif
+    {{ $products->links() }}
     @if($products->count() > 0)
-        <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+        <div class="mb-10 mt-10 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
           @foreach ($products as $product)
           @if($product->status == 1)
           <div class="flex justify-center">
             <div class="rounded-lg shadow-md my-light-dark-card max-w-sm">
               <a href="/category/{{ $product->category->slug }}/{{ $product->slug }}">
-                @if($product->main_image)
-                <img class="rounded-t-lg w-full h-60" src="/assets/uploads/products/{{ $product->main_image }}" alt=""/>
-                @else
-                <img class="rounded-t-lg w-full h-60" src="https://picsum.photos/200" alt=""/>
-                @endif
+                {{-- <img class="rounded-t-lg w-full h-60" src="/assets/uploads/products/{{ $product->main_image }}" alt=""/> --}}
+                <img class="rounded-t-lg w-full h-60" src="{{ $product->main_image }}" alt=""/>
+      
               <div class="p-6">
                 <h5 class="my-light-dark-text text-xl font-medium mb-2">{{ $product->name }}</h5>
 
@@ -117,12 +116,11 @@
           @endforeach
       </div>
 
-      <div>
-        {{ $products->links() }}
-      </div>
-
       @else
         <h1 class="text-center text-3xl text-gray-300 my-20 sm:text-4xl md:text-4xl">No results found, try searching again</h1>
       @endif
+
+        {{ $products->links() }}
+
       </div>
 @endsection

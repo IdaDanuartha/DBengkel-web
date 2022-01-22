@@ -30,8 +30,8 @@ class DatabaseSeeder extends Seeder
             'slug' => 'palu',
             'description' => 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat architecto aliquid blanditiis.',
             'status' => '1',
-            'popular' => '0',
-            'main_image' => 'https://picsum.photos/100'
+            'popular' => '1',
+            'main_image' => 'https://picsum.photos/250'
         ]);
 
         Category::create([
@@ -40,7 +40,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat architecto aliquid blanditiis.',
             'status' => '1',
             'popular' => '0',
-            'main_image' => 'https://picsum.photos/100'
+            'main_image' => 'https://picsum.photos/240'
         ]);
 
         Category::create([
@@ -48,8 +48,8 @@ class DatabaseSeeder extends Seeder
             'slug' => 'kunci',
             'description' => 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat architecto aliquid blanditiis.',
             'status' => '1',
-            'popular' => '0',
-            'main_image' => 'https://picsum.photos/100'
+            'popular' => '1',
+            'main_image' => 'https://picsum.photos/235'
         ]);
 
         Category::create([
@@ -58,7 +58,16 @@ class DatabaseSeeder extends Seeder
             'description' => 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat architecto aliquid blanditiis.',
             'status' => '1',
             'popular' => '0',
-            'main_image' => 'https://picsum.photos/100'
+            'main_image' => 'https://picsum.photos/251'
+        ]);
+
+        Category::create([
+            'name' => 'Tang',
+            'slug' => 'tang',
+            'description' => 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat architecto aliquid blanditiis.',
+            'status' => '1',
+            'popular' => '1',
+            'main_image' => 'https://picsum.photos/248'
         ]);
 
         Category::create([
@@ -67,17 +76,17 @@ class DatabaseSeeder extends Seeder
             'description' => 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat architecto aliquid blanditiis.',
             'status' => '1',
             'popular' => '0',
-            'main_image' => 'https://picsum.photos/100'
+            'main_image' => 'https://picsum.photos/241'
         ]);
 
         Product::create([
             'name' => 'Product Sample',
-            'slug' => 'product-sample-' . mt_rand(1111111, 9999999),
+            'slug' => 'product-sample-' . mt_rand(111111, 999999),
             'category_id' => mt_rand(1, 6),
             'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde libero fugit praesentium quae corporis numquam? Ex labore adipisci magni aliquid sapiente quaerat eos expedita quia quos, sequi amet! Doloremque, odit!',
             'ori_price' => mt_rand(100000, 500000),
             'disc_price' => mt_rand(10000, 100000),
-            'main_image' => 'https://picsum.photos/200',
+            'main_image' => 'https://picsum.photos/' . mt_rand(250, 350),
             'quantity' => mt_rand(15, 100),
             'status' => 1,
             'trending' => 0
@@ -85,12 +94,12 @@ class DatabaseSeeder extends Seeder
 
         Product::create([
             'name' => 'Product Sample',
-            'slug' => 'product-sample-' . mt_rand(1111111, 9999999),
+            'slug' => 'product-sample-' . mt_rand(111111, 999999),
             'category_id' => mt_rand(1, 6),
             'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde libero fugit praesentium quae corporis numquam? Ex labore adipisci magni aliquid sapiente quaerat eos expedita quia quos, sequi amet! Doloremque, odit!',
             'ori_price' => mt_rand(100000, 500000),
             'disc_price' => mt_rand(10000, 100000),
-            'main_image' => 'https://picsum.photos/200',
+            'main_image' => 'https://picsum.photos/' . mt_rand(250, 350),
             'quantity' => mt_rand(15, 100),
             'status' => 1,
             'trending' => 0
@@ -98,12 +107,12 @@ class DatabaseSeeder extends Seeder
 
         Product::create([
             'name' => 'Product Sample',
-            'slug' => 'product-sample-' . mt_rand(1111111, 9999999),
+            'slug' => 'product-sample-' . mt_rand(111111, 999999),
             'category_id' => mt_rand(1, 6),
             'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde libero fugit praesentium quae corporis numquam? Ex labore adipisci magni aliquid sapiente quaerat eos expedita quia quos, sequi amet! Doloremque, odit!',
             'ori_price' => mt_rand(100000, 500000),
             'disc_price' => mt_rand(10000, 100000),
-            'main_image' => 'https://picsum.photos/200',
+            'main_image' => 'https://picsum.photos/' . mt_rand(250, 350),
             'quantity' => mt_rand(15, 100),
             'status' => 1,
             'trending' => 0
@@ -111,12 +120,12 @@ class DatabaseSeeder extends Seeder
 
         Product::create([
             'name' => 'Product Sample',
-            'slug' => 'product-sample-' . mt_rand(1111111, 9999999),
+            'slug' => 'product-sample-' . mt_rand(111111, 999999),
             'category_id' => mt_rand(1, 6),
             'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde libero fugit praesentium quae corporis numquam? Ex labore adipisci magni aliquid sapiente quaerat eos expedita quia quos, sequi amet! Doloremque, odit!',
             'ori_price' => mt_rand(100000, 500000),
             'disc_price' => mt_rand(10000, 100000),
-            'main_image' => 'https://picsum.photos/200',
+            'main_image' => 'https://picsum.photos/' . mt_rand(250, 350),
             'quantity' => mt_rand(15, 100),
             'status' => 1,
             'trending' => 0
@@ -124,12 +133,12 @@ class DatabaseSeeder extends Seeder
 
         Product::create([
             'name' => 'Product Sample',
-            'slug' => 'product-sample-' . mt_rand(1111111, 9999999),
+            'slug' => 'product-sample-' . mt_rand(111111, 999999),
             'category_id' => mt_rand(1, 6),
             'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde libero fugit praesentium quae corporis numquam? Ex labore adipisci magni aliquid sapiente quaerat eos expedita quia quos, sequi amet! Doloremque, odit!',
             'ori_price' => mt_rand(100000, 500000),
             'disc_price' => mt_rand(10000, 100000),
-            'main_image' => 'https://picsum.photos/200',
+            'main_image' => 'https://picsum.photos/' . mt_rand(250, 350),
             'quantity' => mt_rand(15, 100),
             'status' => 1,
             'trending' => 0
@@ -137,12 +146,12 @@ class DatabaseSeeder extends Seeder
 
         Product::create([
             'name' => 'Product Sample',
-            'slug' => 'product-sample-' . mt_rand(1111111, 9999999),
+            'slug' => 'product-sample-' . mt_rand(111111, 999999),
             'category_id' => mt_rand(1, 6),
             'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde libero fugit praesentium quae corporis numquam? Ex labore adipisci magni aliquid sapiente quaerat eos expedita quia quos, sequi amet! Doloremque, odit!',
             'ori_price' => mt_rand(100000, 500000),
             'disc_price' => mt_rand(10000, 100000),
-            'main_image' => 'https://picsum.photos/200',
+            'main_image' => 'https://picsum.photos/' . mt_rand(250, 350),
             'quantity' => mt_rand(15, 100),
             'status' => 1,
             'trending' => 0
@@ -150,12 +159,12 @@ class DatabaseSeeder extends Seeder
 
         Product::create([
             'name' => 'Product Sample',
-            'slug' => 'product-sample-' . mt_rand(1111111, 9999999),
+            'slug' => 'product-sample-' . mt_rand(111111, 999999),
             'category_id' => mt_rand(1, 6),
             'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde libero fugit praesentium quae corporis numquam? Ex labore adipisci magni aliquid sapiente quaerat eos expedita quia quos, sequi amet! Doloremque, odit!',
             'ori_price' => mt_rand(100000, 500000),
             'disc_price' => mt_rand(10000, 100000),
-            'main_image' => 'https://picsum.photos/200',
+            'main_image' => 'https://picsum.photos/' . mt_rand(250, 350),
             'quantity' => mt_rand(15, 100),
             'status' => 1,
             'trending' => 0
@@ -163,12 +172,12 @@ class DatabaseSeeder extends Seeder
 
         Product::create([
             'name' => 'Product Sample',
-            'slug' => 'product-sample-' . mt_rand(1111111, 9999999),
+            'slug' => 'product-sample-' . mt_rand(111111, 999999),
             'category_id' => mt_rand(1, 6),
             'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde libero fugit praesentium quae corporis numquam? Ex labore adipisci magni aliquid sapiente quaerat eos expedita quia quos, sequi amet! Doloremque, odit!',
             'ori_price' => mt_rand(100000, 500000),
             'disc_price' => mt_rand(10000, 100000),
-            'main_image' => 'https://picsum.photos/200',
+            'main_image' => 'https://picsum.photos/' . mt_rand(250, 350),
             'quantity' => mt_rand(15, 100),
             'status' => 1,
             'trending' => 0
@@ -176,12 +185,12 @@ class DatabaseSeeder extends Seeder
 
         Product::create([
             'name' => 'Product Sample',
-            'slug' => 'product-sample-' . mt_rand(1111111, 9999999),
+            'slug' => 'product-sample-' . mt_rand(111111, 999999),
             'category_id' => mt_rand(1, 6),
             'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde libero fugit praesentium quae corporis numquam? Ex labore adipisci magni aliquid sapiente quaerat eos expedita quia quos, sequi amet! Doloremque, odit!',
             'ori_price' => mt_rand(100000, 500000),
             'disc_price' => mt_rand(10000, 100000),
-            'main_image' => 'https://picsum.photos/200',
+            'main_image' => 'https://picsum.photos/' . mt_rand(250, 350),
             'quantity' => mt_rand(15, 100),
             'status' => 1,
             'trending' => 0
@@ -189,12 +198,12 @@ class DatabaseSeeder extends Seeder
 
         Product::create([
             'name' => 'Product Sample',
-            'slug' => 'product-sample-' . mt_rand(1111111, 9999999),
+            'slug' => 'product-sample-' . mt_rand(111111, 999999),
             'category_id' => mt_rand(1, 6),
             'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde libero fugit praesentium quae corporis numquam? Ex labore adipisci magni aliquid sapiente quaerat eos expedita quia quos, sequi amet! Doloremque, odit!',
             'ori_price' => mt_rand(100000, 500000),
             'disc_price' => mt_rand(10000, 100000),
-            'main_image' => 'https://picsum.photos/200',
+            'main_image' => 'https://picsum.photos/' . mt_rand(250, 350),
             'quantity' => mt_rand(15, 100),
             'status' => 1,
             'trending' => 0
@@ -202,12 +211,12 @@ class DatabaseSeeder extends Seeder
 
         Product::create([
             'name' => 'Product Sample',
-            'slug' => 'product-sample-' . mt_rand(1111111, 9999999),
+            'slug' => 'product-sample-' . mt_rand(111111, 999999),
             'category_id' => mt_rand(1, 6),
             'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde libero fugit praesentium quae corporis numquam? Ex labore adipisci magni aliquid sapiente quaerat eos expedita quia quos, sequi amet! Doloremque, odit!',
             'ori_price' => mt_rand(100000, 500000),
             'disc_price' => mt_rand(10000, 100000),
-            'main_image' => 'https://picsum.photos/200',
+            'main_image' => 'https://picsum.photos/' . mt_rand(250, 350),
             'quantity' => mt_rand(15, 100),
             'status' => 1,
             'trending' => 0
@@ -215,12 +224,12 @@ class DatabaseSeeder extends Seeder
 
         Product::create([
             'name' => 'Product Sample',
-            'slug' => 'product-sample-' . mt_rand(1111111, 9999999),
+            'slug' => 'product-sample-' . mt_rand(111111, 999999),
             'category_id' => mt_rand(1, 6),
             'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde libero fugit praesentium quae corporis numquam? Ex labore adipisci magni aliquid sapiente quaerat eos expedita quia quos, sequi amet! Doloremque, odit!',
             'ori_price' => mt_rand(100000, 500000),
             'disc_price' => mt_rand(10000, 100000),
-            'main_image' => 'https://picsum.photos/200',
+            'main_image' => 'https://picsum.photos/' . mt_rand(250, 350),
             'quantity' => mt_rand(15, 100),
             'status' => 1,
             'trending' => 0
@@ -228,12 +237,12 @@ class DatabaseSeeder extends Seeder
 
         Product::create([
             'name' => 'Product Sample',
-            'slug' => 'product-sample-' . mt_rand(1111111, 9999999),
+            'slug' => 'product-sample-' . mt_rand(111111, 999999),
             'category_id' => mt_rand(1, 6),
             'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde libero fugit praesentium quae corporis numquam? Ex labore adipisci magni aliquid sapiente quaerat eos expedita quia quos, sequi amet! Doloremque, odit!',
             'ori_price' => mt_rand(100000, 500000),
             'disc_price' => mt_rand(10000, 100000),
-            'main_image' => 'https://picsum.photos/200',
+            'main_image' => 'https://picsum.photos/' . mt_rand(250, 350),
             'quantity' => mt_rand(15, 100),
             'status' => 1,
             'trending' => 0
@@ -241,12 +250,12 @@ class DatabaseSeeder extends Seeder
 
         Product::create([
             'name' => 'Product Sample',
-            'slug' => 'product-sample-' . mt_rand(1111111, 9999999),
+            'slug' => 'product-sample-' . mt_rand(111111, 999999),
             'category_id' => mt_rand(1, 6),
             'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde libero fugit praesentium quae corporis numquam? Ex labore adipisci magni aliquid sapiente quaerat eos expedita quia quos, sequi amet! Doloremque, odit!',
             'ori_price' => mt_rand(100000, 500000),
             'disc_price' => mt_rand(10000, 100000),
-            'main_image' => 'https://picsum.photos/200',
+            'main_image' => 'https://picsum.photos/' . mt_rand(250, 350),
             'quantity' => mt_rand(15, 100),
             'status' => 1,
             'trending' => 0
@@ -254,12 +263,12 @@ class DatabaseSeeder extends Seeder
 
         Product::create([
             'name' => 'Product Sample',
-            'slug' => 'product-sample-' . mt_rand(1111111, 9999999),
+            'slug' => 'product-sample-' . mt_rand(111111, 999999),
             'category_id' => mt_rand(1, 6),
             'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde libero fugit praesentium quae corporis numquam? Ex labore adipisci magni aliquid sapiente quaerat eos expedita quia quos, sequi amet! Doloremque, odit!',
             'ori_price' => mt_rand(100000, 500000),
             'disc_price' => mt_rand(10000, 100000),
-            'main_image' => 'https://picsum.photos/200',
+            'main_image' => 'https://picsum.photos/' . mt_rand(250, 350),
             'quantity' => mt_rand(15, 100),
             'status' => 1,
             'trending' => 0
@@ -267,12 +276,12 @@ class DatabaseSeeder extends Seeder
 
         Product::create([
             'name' => 'Product Sample',
-            'slug' => 'product-sample-' . mt_rand(1111111, 9999999),
+            'slug' => 'product-sample-' . mt_rand(111111, 999999),
             'category_id' => mt_rand(1, 6),
             'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde libero fugit praesentium quae corporis numquam? Ex labore adipisci magni aliquid sapiente quaerat eos expedita quia quos, sequi amet! Doloremque, odit!',
             'ori_price' => mt_rand(100000, 500000),
             'disc_price' => mt_rand(10000, 100000),
-            'main_image' => 'https://picsum.photos/200',
+            'main_image' => 'https://picsum.photos/' . mt_rand(250, 350),
             'quantity' => mt_rand(15, 100),
             'status' => 1,
             'trending' => 0
@@ -280,12 +289,12 @@ class DatabaseSeeder extends Seeder
 
         Product::create([
             'name' => 'Product Sample',
-            'slug' => 'product-sample-' . mt_rand(1111111, 9999999),
+            'slug' => 'product-sample-' . mt_rand(111111, 999999),
             'category_id' => mt_rand(1, 6),
             'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde libero fugit praesentium quae corporis numquam? Ex labore adipisci magni aliquid sapiente quaerat eos expedita quia quos, sequi amet! Doloremque, odit!',
             'ori_price' => mt_rand(100000, 500000),
             'disc_price' => mt_rand(10000, 100000),
-            'main_image' => 'https://picsum.photos/200',
+            'main_image' => 'https://picsum.photos/' . mt_rand(250, 350),
             'quantity' => mt_rand(15, 100),
             'status' => 1,
             'trending' => 0
@@ -293,12 +302,12 @@ class DatabaseSeeder extends Seeder
 
         Product::create([
             'name' => 'Product Sample',
-            'slug' => 'product-sample-' . mt_rand(1111111, 9999999),
+            'slug' => 'product-sample-' . mt_rand(111111, 999999),
             'category_id' => mt_rand(1, 6),
             'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde libero fugit praesentium quae corporis numquam? Ex labore adipisci magni aliquid sapiente quaerat eos expedita quia quos, sequi amet! Doloremque, odit!',
             'ori_price' => mt_rand(100000, 500000),
             'disc_price' => mt_rand(10000, 100000),
-            'main_image' => 'https://picsum.photos/200',
+            'main_image' => 'https://picsum.photos/' . mt_rand(250, 350),
             'quantity' => mt_rand(15, 100),
             'status' => 1,
             'trending' => 0
@@ -306,12 +315,12 @@ class DatabaseSeeder extends Seeder
 
         Product::create([
             'name' => 'Product Sample',
-            'slug' => 'product-sample-' . mt_rand(1111111, 9999999),
+            'slug' => 'product-sample-' . mt_rand(111111, 999999),
             'category_id' => mt_rand(1, 6),
             'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde libero fugit praesentium quae corporis numquam? Ex labore adipisci magni aliquid sapiente quaerat eos expedita quia quos, sequi amet! Doloremque, odit!',
             'ori_price' => mt_rand(100000, 500000),
             'disc_price' => mt_rand(10000, 100000),
-            'main_image' => 'https://picsum.photos/200',
+            'main_image' => 'https://picsum.photos/' . mt_rand(250, 350),
             'quantity' => mt_rand(15, 100),
             'status' => 1,
             'trending' => 0
@@ -319,12 +328,12 @@ class DatabaseSeeder extends Seeder
 
         Product::create([
             'name' => 'Product Sample',
-            'slug' => 'product-sample-' . mt_rand(1111111, 9999999),
+            'slug' => 'product-sample-' . mt_rand(111111, 999999),
             'category_id' => mt_rand(1, 6),
             'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde libero fugit praesentium quae corporis numquam? Ex labore adipisci magni aliquid sapiente quaerat eos expedita quia quos, sequi amet! Doloremque, odit!',
             'ori_price' => mt_rand(100000, 500000),
             'disc_price' => mt_rand(10000, 100000),
-            'main_image' => 'https://picsum.photos/200',
+            'main_image' => 'https://picsum.photos/' . mt_rand(250, 350),
             'quantity' => mt_rand(15, 100),
             'status' => 1,
             'trending' => 0
@@ -332,12 +341,12 @@ class DatabaseSeeder extends Seeder
 
         Product::create([
             'name' => 'Product Sample',
-            'slug' => 'product-sample-' . mt_rand(1111111, 9999999),
+            'slug' => 'product-sample-' . mt_rand(111111, 999999),
             'category_id' => mt_rand(1, 6),
             'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde libero fugit praesentium quae corporis numquam? Ex labore adipisci magni aliquid sapiente quaerat eos expedita quia quos, sequi amet! Doloremque, odit!',
             'ori_price' => mt_rand(100000, 500000),
             'disc_price' => mt_rand(10000, 100000),
-            'main_image' => 'https://picsum.photos/200',
+            'main_image' => 'https://picsum.photos/' . mt_rand(250, 350),
             'quantity' => mt_rand(15, 100),
             'status' => 1,
             'trending' => 0
@@ -345,12 +354,12 @@ class DatabaseSeeder extends Seeder
 
         Product::create([
             'name' => 'Product Sample',
-            'slug' => 'product-sample-' . mt_rand(1111111, 9999999),
+            'slug' => 'product-sample-' . mt_rand(111111, 999999),
             'category_id' => mt_rand(1, 6),
             'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde libero fugit praesentium quae corporis numquam? Ex labore adipisci magni aliquid sapiente quaerat eos expedita quia quos, sequi amet! Doloremque, odit!',
             'ori_price' => mt_rand(100000, 500000),
             'disc_price' => mt_rand(10000, 100000),
-            'main_image' => 'https://picsum.photos/200',
+            'main_image' => 'https://picsum.photos/' . mt_rand(250, 350),
             'quantity' => mt_rand(15, 100),
             'status' => 1,
             'trending' => 0
@@ -358,12 +367,12 @@ class DatabaseSeeder extends Seeder
 
         Product::create([
             'name' => 'Product Sample',
-            'slug' => 'product-sample-' . mt_rand(1111111, 9999999),
+            'slug' => 'product-sample-' . mt_rand(111111, 999999),
             'category_id' => mt_rand(1, 6),
             'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde libero fugit praesentium quae corporis numquam? Ex labore adipisci magni aliquid sapiente quaerat eos expedita quia quos, sequi amet! Doloremque, odit!',
             'ori_price' => mt_rand(100000, 500000),
             'disc_price' => mt_rand(10000, 100000),
-            'main_image' => 'https://picsum.photos/200',
+            'main_image' => 'https://picsum.photos/' . mt_rand(250, 350),
             'quantity' => mt_rand(15, 100),
             'status' => 1,
             'trending' => 0
@@ -371,12 +380,12 @@ class DatabaseSeeder extends Seeder
 
         Product::create([
             'name' => 'Product Sample',
-            'slug' => 'product-sample-' . mt_rand(1111111, 9999999),
+            'slug' => 'product-sample-' . mt_rand(111111, 999999),
             'category_id' => mt_rand(1, 6),
             'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde libero fugit praesentium quae corporis numquam? Ex labore adipisci magni aliquid sapiente quaerat eos expedita quia quos, sequi amet! Doloremque, odit!',
             'ori_price' => mt_rand(100000, 500000),
             'disc_price' => mt_rand(10000, 100000),
-            'main_image' => 'https://picsum.photos/200',
+            'main_image' => 'https://picsum.photos/' . mt_rand(250, 350),
             'quantity' => mt_rand(15, 100),
             'status' => 1,
             'trending' => 0
@@ -384,12 +393,12 @@ class DatabaseSeeder extends Seeder
 
         Product::create([
             'name' => 'Product Sample',
-            'slug' => 'product-sample-' . mt_rand(1111111, 9999999),
+            'slug' => 'product-sample-' . mt_rand(111111, 999999),
             'category_id' => mt_rand(1, 6),
             'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde libero fugit praesentium quae corporis numquam? Ex labore adipisci magni aliquid sapiente quaerat eos expedita quia quos, sequi amet! Doloremque, odit!',
             'ori_price' => mt_rand(100000, 500000),
             'disc_price' => mt_rand(10000, 100000),
-            'main_image' => 'https://picsum.photos/200',
+            'main_image' => 'https://picsum.photos/' . mt_rand(250, 350),
             'quantity' => mt_rand(15, 100),
             'status' => 1,
             'trending' => 0
@@ -397,12 +406,12 @@ class DatabaseSeeder extends Seeder
 
         Product::create([
             'name' => 'Product Sample',
-            'slug' => 'product-sample-' . mt_rand(1111111, 9999999),
+            'slug' => 'product-sample-' . mt_rand(111111, 999999),
             'category_id' => mt_rand(1, 6),
             'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde libero fugit praesentium quae corporis numquam? Ex labore adipisci magni aliquid sapiente quaerat eos expedita quia quos, sequi amet! Doloremque, odit!',
             'ori_price' => mt_rand(100000, 500000),
             'disc_price' => mt_rand(10000, 100000),
-            'main_image' => 'https://picsum.photos/200',
+            'main_image' => 'https://picsum.photos/' . mt_rand(250, 350),
             'quantity' => mt_rand(15, 100),
             'status' => 1,
             'trending' => 0
@@ -410,12 +419,12 @@ class DatabaseSeeder extends Seeder
 
         Product::create([
             'name' => 'Product Sample',
-            'slug' => 'product-sample-' . mt_rand(1111111, 9999999),
+            'slug' => 'product-sample-' . mt_rand(111111, 999999),
             'category_id' => mt_rand(1, 6),
             'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde libero fugit praesentium quae corporis numquam? Ex labore adipisci magni aliquid sapiente quaerat eos expedita quia quos, sequi amet! Doloremque, odit!',
             'ori_price' => mt_rand(100000, 500000),
             'disc_price' => mt_rand(10000, 100000),
-            'main_image' => 'https://picsum.photos/200',
+            'main_image' => 'https://picsum.photos/' . mt_rand(250, 350),
             'quantity' => mt_rand(15, 100),
             'status' => 1,
             'trending' => 0
@@ -423,12 +432,12 @@ class DatabaseSeeder extends Seeder
 
         Product::create([
             'name' => 'Product Sample',
-            'slug' => 'product-sample-' . mt_rand(1111111, 9999999),
+            'slug' => 'product-sample-' . mt_rand(111111, 999999),
             'category_id' => mt_rand(1, 6),
             'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde libero fugit praesentium quae corporis numquam? Ex labore adipisci magni aliquid sapiente quaerat eos expedita quia quos, sequi amet! Doloremque, odit!',
             'ori_price' => mt_rand(100000, 500000),
             'disc_price' => mt_rand(10000, 100000),
-            'main_image' => 'https://picsum.photos/200',
+            'main_image' => 'https://picsum.photos/' . mt_rand(250, 350),
             'quantity' => mt_rand(15, 100),
             'status' => 1,
             'trending' => 0
@@ -436,12 +445,12 @@ class DatabaseSeeder extends Seeder
 
         Product::create([
             'name' => 'Product Sample',
-            'slug' => 'product-sample-' . mt_rand(1111111, 9999999),
+            'slug' => 'product-sample-' . mt_rand(111111, 999999),
             'category_id' => mt_rand(1, 6),
             'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde libero fugit praesentium quae corporis numquam? Ex labore adipisci magni aliquid sapiente quaerat eos expedita quia quos, sequi amet! Doloremque, odit!',
             'ori_price' => mt_rand(100000, 500000),
             'disc_price' => mt_rand(10000, 100000),
-            'main_image' => 'https://picsum.photos/200',
+            'main_image' => 'https://picsum.photos/' . mt_rand(250, 350),
             'quantity' => mt_rand(15, 100),
             'status' => 1,
             'trending' => 0
@@ -449,12 +458,12 @@ class DatabaseSeeder extends Seeder
 
         Product::create([
             'name' => 'Product Sample',
-            'slug' => 'product-sample-' . mt_rand(1111111, 9999999),
+            'slug' => 'product-sample-' . mt_rand(111111, 999999),
             'category_id' => mt_rand(1, 6),
             'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde libero fugit praesentium quae corporis numquam? Ex labore adipisci magni aliquid sapiente quaerat eos expedita quia quos, sequi amet! Doloremque, odit!',
             'ori_price' => mt_rand(100000, 500000),
             'disc_price' => mt_rand(10000, 100000),
-            'main_image' => 'https://picsum.photos/200',
+            'main_image' => 'https://picsum.photos/' . mt_rand(250, 350),
             'quantity' => mt_rand(15, 100),
             'status' => 1,
             'trending' => 0
@@ -462,12 +471,12 @@ class DatabaseSeeder extends Seeder
 
         Product::create([
             'name' => 'Product Sample',
-            'slug' => 'product-sample-' . mt_rand(1111111, 9999999),
+            'slug' => 'product-sample-' . mt_rand(111111, 999999),
             'category_id' => mt_rand(1, 6),
             'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde libero fugit praesentium quae corporis numquam? Ex labore adipisci magni aliquid sapiente quaerat eos expedita quia quos, sequi amet! Doloremque, odit!',
             'ori_price' => mt_rand(100000, 500000),
             'disc_price' => mt_rand(10000, 100000),
-            'main_image' => 'https://picsum.photos/200',
+            'main_image' => 'https://picsum.photos/' . mt_rand(250, 350),
             'quantity' => mt_rand(15, 100),
             'status' => 1,
             'trending' => 0
@@ -475,12 +484,12 @@ class DatabaseSeeder extends Seeder
 
         Product::create([
             'name' => 'Product Sample',
-            'slug' => 'product-sample-' . mt_rand(1111111, 9999999),
+            'slug' => 'product-sample-' . mt_rand(111111, 999999),
             'category_id' => mt_rand(1, 6),
             'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde libero fugit praesentium quae corporis numquam? Ex labore adipisci magni aliquid sapiente quaerat eos expedita quia quos, sequi amet! Doloremque, odit!',
             'ori_price' => mt_rand(100000, 500000),
             'disc_price' => mt_rand(10000, 100000),
-            'main_image' => 'https://picsum.photos/200',
+            'main_image' => 'https://picsum.photos/' . mt_rand(250, 350),
             'quantity' => mt_rand(15, 100),
             'status' => 1,
             'trending' => 0
@@ -488,12 +497,12 @@ class DatabaseSeeder extends Seeder
 
         Product::create([
             'name' => 'Product Sample',
-            'slug' => 'product-sample-' . mt_rand(1111111, 9999999),
+            'slug' => 'product-sample-' . mt_rand(111111, 999999),
             'category_id' => mt_rand(1, 6),
             'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde libero fugit praesentium quae corporis numquam? Ex labore adipisci magni aliquid sapiente quaerat eos expedita quia quos, sequi amet! Doloremque, odit!',
             'ori_price' => mt_rand(100000, 500000),
             'disc_price' => mt_rand(10000, 100000),
-            'main_image' => 'https://picsum.photos/200',
+            'main_image' => 'https://picsum.photos/' . mt_rand(250, 350),
             'quantity' => mt_rand(15, 100),
             'status' => 1,
             'trending' => 0
@@ -501,12 +510,12 @@ class DatabaseSeeder extends Seeder
 
         Product::create([
             'name' => 'Product Sample',
-            'slug' => 'product-sample-' . mt_rand(1111111, 9999999),
+            'slug' => 'product-sample-' . mt_rand(111111, 999999),
             'category_id' => mt_rand(1, 6),
             'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde libero fugit praesentium quae corporis numquam? Ex labore adipisci magni aliquid sapiente quaerat eos expedita quia quos, sequi amet! Doloremque, odit!',
             'ori_price' => mt_rand(100000, 500000),
             'disc_price' => mt_rand(10000, 100000),
-            'main_image' => 'https://picsum.photos/200',
+            'main_image' => 'https://picsum.photos/' . mt_rand(250, 350),
             'quantity' => mt_rand(15, 100),
             'status' => 1,
             'trending' => 0
@@ -514,12 +523,12 @@ class DatabaseSeeder extends Seeder
 
         Product::create([
             'name' => 'Product Sample',
-            'slug' => 'product-sample-' . mt_rand(1111111, 9999999),
+            'slug' => 'product-sample-' . mt_rand(111111, 999999),
             'category_id' => mt_rand(1, 6),
             'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde libero fugit praesentium quae corporis numquam? Ex labore adipisci magni aliquid sapiente quaerat eos expedita quia quos, sequi amet! Doloremque, odit!',
             'ori_price' => mt_rand(100000, 500000),
             'disc_price' => mt_rand(10000, 100000),
-            'main_image' => 'https://picsum.photos/200',
+            'main_image' => 'https://picsum.photos/' . mt_rand(250, 350),
             'quantity' => mt_rand(15, 100),
             'status' => 1,
             'trending' => 0
@@ -527,12 +536,12 @@ class DatabaseSeeder extends Seeder
 
         Product::create([
             'name' => 'Product Sample',
-            'slug' => 'product-sample-' . mt_rand(1111111, 9999999),
+            'slug' => 'product-sample-' . mt_rand(111111, 999999),
             'category_id' => mt_rand(1, 6),
             'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde libero fugit praesentium quae corporis numquam? Ex labore adipisci magni aliquid sapiente quaerat eos expedita quia quos, sequi amet! Doloremque, odit!',
             'ori_price' => mt_rand(100000, 500000),
             'disc_price' => mt_rand(10000, 100000),
-            'main_image' => 'https://picsum.photos/200',
+            'main_image' => 'https://picsum.photos/' . mt_rand(250, 350),
             'quantity' => mt_rand(15, 100),
             'status' => 1,
             'trending' => 0
@@ -540,12 +549,12 @@ class DatabaseSeeder extends Seeder
 
         Product::create([
             'name' => 'Product Sample',
-            'slug' => 'product-sample-' . mt_rand(1111111, 9999999),
+            'slug' => 'product-sample-' . mt_rand(111111, 999999),
             'category_id' => mt_rand(1, 6),
             'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde libero fugit praesentium quae corporis numquam? Ex labore adipisci magni aliquid sapiente quaerat eos expedita quia quos, sequi amet! Doloremque, odit!',
             'ori_price' => mt_rand(100000, 500000),
             'disc_price' => mt_rand(10000, 100000),
-            'main_image' => 'https://picsum.photos/200',
+            'main_image' => 'https://picsum.photos/' . mt_rand(250, 350),
             'quantity' => mt_rand(15, 100),
             'status' => 1,
             'trending' => 0
@@ -553,12 +562,12 @@ class DatabaseSeeder extends Seeder
 
         Product::create([
             'name' => 'Product Sample',
-            'slug' => 'product-sample-' . mt_rand(1111111, 9999999),
+            'slug' => 'product-sample-' . mt_rand(111111, 999999),
             'category_id' => mt_rand(1, 6),
             'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde libero fugit praesentium quae corporis numquam? Ex labore adipisci magni aliquid sapiente quaerat eos expedita quia quos, sequi amet! Doloremque, odit!',
             'ori_price' => mt_rand(100000, 500000),
             'disc_price' => mt_rand(10000, 100000),
-            'main_image' => 'https://picsum.photos/200',
+            'main_image' => 'https://picsum.photos/' . mt_rand(250, 350),
             'quantity' => mt_rand(15, 100),
             'status' => 1,
             'trending' => 0
@@ -566,12 +575,12 @@ class DatabaseSeeder extends Seeder
 
         Product::create([
             'name' => 'Product Sample',
-            'slug' => 'product-sample-' . mt_rand(1111111, 9999999),
+            'slug' => 'product-sample-' . mt_rand(111111, 999999),
             'category_id' => mt_rand(1, 6),
             'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde libero fugit praesentium quae corporis numquam? Ex labore adipisci magni aliquid sapiente quaerat eos expedita quia quos, sequi amet! Doloremque, odit!',
             'ori_price' => mt_rand(100000, 500000),
             'disc_price' => mt_rand(10000, 100000),
-            'main_image' => 'https://picsum.photos/200',
+            'main_image' => 'https://picsum.photos/' . mt_rand(250, 350),
             'quantity' => mt_rand(15, 100),
             'status' => 1,
             'trending' => 0
@@ -579,12 +588,12 @@ class DatabaseSeeder extends Seeder
 
         Product::create([
             'name' => 'Product Sample',
-            'slug' => 'product-sample-' . mt_rand(1111111, 9999999),
+            'slug' => 'product-sample-' . mt_rand(111111, 999999),
             'category_id' => mt_rand(1, 6),
             'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde libero fugit praesentium quae corporis numquam? Ex labore adipisci magni aliquid sapiente quaerat eos expedita quia quos, sequi amet! Doloremque, odit!',
             'ori_price' => mt_rand(100000, 500000),
             'disc_price' => mt_rand(10000, 100000),
-            'main_image' => 'https://picsum.photos/200',
+            'main_image' => 'https://picsum.photos/' . mt_rand(250, 350),
             'quantity' => mt_rand(15, 100),
             'status' => 1,
             'trending' => 0
@@ -592,12 +601,12 @@ class DatabaseSeeder extends Seeder
 
         Product::create([
             'name' => 'Product Sample',
-            'slug' => 'product-sample-' . mt_rand(1111111, 9999999),
+            'slug' => 'product-sample-' . mt_rand(111111, 999999),
             'category_id' => mt_rand(1, 6),
             'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde libero fugit praesentium quae corporis numquam? Ex labore adipisci magni aliquid sapiente quaerat eos expedita quia quos, sequi amet! Doloremque, odit!',
             'ori_price' => mt_rand(100000, 500000),
             'disc_price' => mt_rand(10000, 100000),
-            'main_image' => 'https://picsum.photos/200',
+            'main_image' => 'https://picsum.photos/' . mt_rand(250, 350),
             'quantity' => mt_rand(15, 100),
             'status' => 1,
             'trending' => 0
@@ -605,12 +614,12 @@ class DatabaseSeeder extends Seeder
 
         Product::create([
             'name' => 'Product Sample',
-            'slug' => 'product-sample-' . mt_rand(1111111, 9999999),
+            'slug' => 'product-sample-' . mt_rand(111111, 999999),
             'category_id' => mt_rand(1, 6),
             'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde libero fugit praesentium quae corporis numquam? Ex labore adipisci magni aliquid sapiente quaerat eos expedita quia quos, sequi amet! Doloremque, odit!',
             'ori_price' => mt_rand(100000, 500000),
             'disc_price' => mt_rand(10000, 100000),
-            'main_image' => 'https://picsum.photos/200',
+            'main_image' => 'https://picsum.photos/' . mt_rand(250, 350),
             'quantity' => mt_rand(15, 100),
             'status' => 1,
             'trending' => 0
@@ -618,12 +627,12 @@ class DatabaseSeeder extends Seeder
 
         Product::create([
             'name' => 'Product Sample',
-            'slug' => 'product-sample-' . mt_rand(1111111, 9999999),
+            'slug' => 'product-sample-' . mt_rand(111111, 999999),
             'category_id' => mt_rand(1, 6),
             'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde libero fugit praesentium quae corporis numquam? Ex labore adipisci magni aliquid sapiente quaerat eos expedita quia quos, sequi amet! Doloremque, odit!',
             'ori_price' => mt_rand(100000, 500000),
             'disc_price' => mt_rand(10000, 100000),
-            'main_image' => 'https://picsum.photos/200',
+            'main_image' => 'https://picsum.photos/' . mt_rand(250, 350),
             'quantity' => mt_rand(15, 100),
             'status' => 1,
             'trending' => 0
@@ -631,12 +640,12 @@ class DatabaseSeeder extends Seeder
 
         Product::create([
             'name' => 'Product Sample',
-            'slug' => 'product-sample-' . mt_rand(1111111, 9999999),
+            'slug' => 'product-sample-' . mt_rand(111111, 999999),
             'category_id' => mt_rand(1, 6),
             'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde libero fugit praesentium quae corporis numquam? Ex labore adipisci magni aliquid sapiente quaerat eos expedita quia quos, sequi amet! Doloremque, odit!',
             'ori_price' => mt_rand(100000, 500000),
             'disc_price' => mt_rand(10000, 100000),
-            'main_image' => 'https://picsum.photos/200',
+            'main_image' => 'https://picsum.photos/' . mt_rand(250, 350),
             'quantity' => mt_rand(15, 100),
             'status' => 1,
             'trending' => 0
@@ -644,12 +653,12 @@ class DatabaseSeeder extends Seeder
 
         Product::create([
             'name' => 'Product Sample',
-            'slug' => 'product-sample-' . mt_rand(1111111, 9999999),
+            'slug' => 'product-sample-' . mt_rand(111111, 999999),
             'category_id' => mt_rand(1, 6),
             'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde libero fugit praesentium quae corporis numquam? Ex labore adipisci magni aliquid sapiente quaerat eos expedita quia quos, sequi amet! Doloremque, odit!',
             'ori_price' => mt_rand(100000, 500000),
             'disc_price' => mt_rand(10000, 100000),
-            'main_image' => 'https://picsum.photos/200',
+            'main_image' => 'https://picsum.photos/' . mt_rand(250, 350),
             'quantity' => mt_rand(15, 100),
             'status' => 1,
             'trending' => 0
@@ -657,12 +666,12 @@ class DatabaseSeeder extends Seeder
 
         Product::create([
             'name' => 'Product Sample',
-            'slug' => 'product-sample-' . mt_rand(1111111, 9999999),
+            'slug' => 'product-sample-' . mt_rand(111111, 999999),
             'category_id' => mt_rand(1, 6),
             'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde libero fugit praesentium quae corporis numquam? Ex labore adipisci magni aliquid sapiente quaerat eos expedita quia quos, sequi amet! Doloremque, odit!',
             'ori_price' => mt_rand(100000, 500000),
             'disc_price' => mt_rand(10000, 100000),
-            'main_image' => 'https://picsum.photos/200',
+            'main_image' => 'https://picsum.photos/' . mt_rand(250, 350),
             'quantity' => mt_rand(15, 100),
             'status' => 1,
             'trending' => 0
@@ -670,12 +679,12 @@ class DatabaseSeeder extends Seeder
 
         Product::create([
             'name' => 'Product Sample',
-            'slug' => 'product-sample-' . mt_rand(1111111, 9999999),
+            'slug' => 'product-sample-' . mt_rand(111111, 999999),
             'category_id' => mt_rand(1, 6),
             'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde libero fugit praesentium quae corporis numquam? Ex labore adipisci magni aliquid sapiente quaerat eos expedita quia quos, sequi amet! Doloremque, odit!',
             'ori_price' => mt_rand(100000, 500000),
             'disc_price' => mt_rand(10000, 100000),
-            'main_image' => 'https://picsum.photos/200',
+            'main_image' => 'https://picsum.photos/' . mt_rand(250, 350),
             'quantity' => mt_rand(15, 100),
             'status' => 1,
             'trending' => 0
@@ -683,12 +692,12 @@ class DatabaseSeeder extends Seeder
 
         Product::create([
             'name' => 'Product Sample',
-            'slug' => 'product-sample-' . mt_rand(1111111, 9999999),
+            'slug' => 'product-sample-' . mt_rand(111111, 999999),
             'category_id' => mt_rand(1, 6),
             'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde libero fugit praesentium quae corporis numquam? Ex labore adipisci magni aliquid sapiente quaerat eos expedita quia quos, sequi amet! Doloremque, odit!',
             'ori_price' => mt_rand(100000, 500000),
             'disc_price' => mt_rand(10000, 100000),
-            'main_image' => 'https://picsum.photos/200',
+            'main_image' => 'https://picsum.photos/' . mt_rand(250, 350),
             'quantity' => mt_rand(15, 100),
             'status' => 1,
             'trending' => 0
@@ -696,12 +705,12 @@ class DatabaseSeeder extends Seeder
 
         Product::create([
             'name' => 'Product Sample',
-            'slug' => 'product-sample-' . mt_rand(1111111, 9999999),
+            'slug' => 'product-sample-' . mt_rand(111111, 999999),
             'category_id' => mt_rand(1, 6),
             'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde libero fugit praesentium quae corporis numquam? Ex labore adipisci magni aliquid sapiente quaerat eos expedita quia quos, sequi amet! Doloremque, odit!',
             'ori_price' => mt_rand(100000, 500000),
             'disc_price' => mt_rand(10000, 100000),
-            'main_image' => 'https://picsum.photos/200',
+            'main_image' => 'https://picsum.photos/' . mt_rand(250, 350),
             'quantity' => mt_rand(15, 100),
             'status' => 1,
             'trending' => 0
@@ -709,77 +718,12 @@ class DatabaseSeeder extends Seeder
 
         Product::create([
             'name' => 'Product Sample',
-            'slug' => 'product-sample-' . mt_rand(1111111, 9999999),
+            'slug' => 'product-sample-' . mt_rand(111111, 999999),
             'category_id' => mt_rand(1, 6),
             'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde libero fugit praesentium quae corporis numquam? Ex labore adipisci magni aliquid sapiente quaerat eos expedita quia quos, sequi amet! Doloremque, odit!',
             'ori_price' => mt_rand(100000, 500000),
             'disc_price' => mt_rand(10000, 100000),
-            'main_image' => 'https://picsum.photos/200',
-            'quantity' => mt_rand(15, 100),
-            'status' => 1,
-            'trending' => 0
-        ]);
-
-        Product::create([
-            'name' => 'Product Sample',
-            'slug' => 'product-sample-' . mt_rand(1111111, 9999999),
-            'category_id' => mt_rand(1, 6),
-            'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde libero fugit praesentium quae corporis numquam? Ex labore adipisci magni aliquid sapiente quaerat eos expedita quia quos, sequi amet! Doloremque, odit!',
-            'ori_price' => mt_rand(100000, 500000),
-            'disc_price' => mt_rand(10000, 100000),
-            'main_image' => 'https://picsum.photos/200',
-            'quantity' => mt_rand(15, 100),
-            'status' => 1,
-            'trending' => 0
-        ]);
-
-        Product::create([
-            'name' => 'Product Sample',
-            'slug' => 'product-sample-' . mt_rand(1111111, 9999999),
-            'category_id' => mt_rand(1, 6),
-            'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde libero fugit praesentium quae corporis numquam? Ex labore adipisci magni aliquid sapiente quaerat eos expedita quia quos, sequi amet! Doloremque, odit!',
-            'ori_price' => mt_rand(100000, 500000),
-            'disc_price' => mt_rand(10000, 100000),
-            'main_image' => 'https://picsum.photos/200',
-            'quantity' => mt_rand(15, 100),
-            'status' => 1,
-            'trending' => 0
-        ]);
-
-        Product::create([
-            'name' => 'Product Sample',
-            'slug' => 'product-sample-' . mt_rand(1111111, 9999999),
-            'category_id' => mt_rand(1, 6),
-            'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde libero fugit praesentium quae corporis numquam? Ex labore adipisci magni aliquid sapiente quaerat eos expedita quia quos, sequi amet! Doloremque, odit!',
-            'ori_price' => mt_rand(100000, 500000),
-            'disc_price' => mt_rand(10000, 100000),
-            'main_image' => 'https://picsum.photos/200',
-            'quantity' => mt_rand(15, 100),
-            'status' => 1,
-            'trending' => 0
-        ]);
-
-        Product::create([
-            'name' => 'Product Sample',
-            'slug' => 'product-sample-' . mt_rand(1111111, 9999999),
-            'category_id' => mt_rand(1, 6),
-            'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde libero fugit praesentium quae corporis numquam? Ex labore adipisci magni aliquid sapiente quaerat eos expedita quia quos, sequi amet! Doloremque, odit!',
-            'ori_price' => mt_rand(100000, 500000),
-            'disc_price' => mt_rand(10000, 100000),
-            'main_image' => 'https://picsum.photos/200',
-            'quantity' => mt_rand(15, 100),
-            'status' => 1,
-            'trending' => 0
-        ]);
-
-        Product::create([
-            'name' => 'Product Sample',
-            'slug' => 'product-sample-' . mt_rand(1111111, 9999999),
-            'category_id' => mt_rand(1, 6),
-            'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde libero fugit praesentium quae corporis numquam? Ex labore adipisci magni aliquid sapiente quaerat eos expedita quia quos, sequi amet! Doloremque, odit!',
-            'ori_price' => mt_rand(100000, 500000),
-            'disc_price' => mt_rand(10000, 100000),
-            'main_image' => 'https://picsum.photos/200',
+            'main_image' => 'https://picsum.photos/' . mt_rand(250, 350),
             'quantity' => mt_rand(15, 100),
             'status' => 1,
             'trending' => 0

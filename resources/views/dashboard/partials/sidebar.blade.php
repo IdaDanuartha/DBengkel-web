@@ -15,35 +15,35 @@
                     <span class="title">Dashboard</span>
                 </a>
             </li>
-            <li class="{{ Request::is('dashboard/products*') || Request::is('dashboard/product*') ? 'actived' : '' }}">
+            <li class="{{ Request::is('dashboard/products') || Request::is('dashboard/product*') ? 'actived' : '' }}">
                 <a href="/dashboard/products">
                     <span class="icon"><i class="bi bi-clipboard-data relative" style="top: -5px"></i></span>
                     <span class="title">Products</span>
                 </a>
             </li>
-            <li class="{{ Request::is('dashboard/categories*') || Request::is('dashboard/category*') ? 'actived' : '' }}">
+            <li class="{{ Request::is('dashboard/categories') || Request::is('dashboard/category*') ? 'actived' : '' }}">
                 <a href="/dashboard/categories">
                     <span class="icon"><ion-icon name="grid-outline"></ion-icon></span>
                     <span class="title">Categories</span>
                 </a>
             </li>
-            <li>
-                <a href="#">
+            <li class="{{ Request::is('dashboard/customers-order*') ? 'actived' : '' }}">
+                <a href="/dashboard/customers-order">
                     <span class="icon">
                         <ion-icon name="people-outline"></ion-icon>
                     </span>
-                    <span class="title">Customer Orders</span>
+                    <span class="title">Customers Order</span>
                 </a>
             </li>
-            <li>
-                <a href="#">
+            <li class="{{ Request::is('dashboard/users-registered*') ? 'actived' : '' }}">
+                <a href="/dashboard/users-registered">
                     <span class="icon">
                         <ion-icon name="person-outline"></ion-icon>
                     </span>
-                    <span class="title">User Management</span>
+                    <span class="title">Users Registered</span>
                 </a>
             </li>
-            <li>
+            <li class="{{ Request::is('dashboard/contact-message*') ? 'actived' : '' }}">
                 <a href="#">
                     <span class="icon">
                         <ion-icon name="chatbubbles-outline"></ion-icon>

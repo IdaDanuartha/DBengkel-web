@@ -36,7 +36,8 @@
                 <div class="flex justify-center">
                   <a href="/category/{{ $product->category->slug }}/{{ $product->slug }}" class="text-gray-700 duration-500 hover:text-gray-900">
                   <div class="rounded-lg shadow-sm max-w-sm my-light-dark-card-home my-light-dark-text">
-                      <img class="rounded-t-lg w-full h-60" src="/assets/uploads/products/{{ $product->main_image }}" alt=""/>
+                      {{-- <img class="rounded-t-lg w-full h-60" src="/assets/uploads/products/{{ $product->main_image }}{{ $product->main_image }}" alt=""/> --}}
+                      <img class="rounded-t-lg w-full h-60" src="{{ $product->main_image }}" alt=""/>
                     <div class="p-6">
                       <h5 class="text-xl font-medium mb-2">{{ $product->name }}</h5>
       
@@ -96,7 +97,8 @@
                 <div class="flex justify-center">
                   <a href="/category/{{ $product->category->slug }}/{{ $product->slug }}" class="text-gray-700 duration-500 hover:text-gray-900">
                   <div class="rounded-lg shadow-sm max-w-sm my-light-dark-card my-light-dark-text">
-                      <img class="rounded-t-lg w-full h-60" src="/assets/uploads/products/{{ $product->main_image }}" alt=""/>
+                    {{-- <img class="rounded-t-lg w-full h-60" src="/assets/products/products/{{ $product->main_image }}" alt=""/> --}}
+                    <img class="rounded-t-lg w-full h-60" src="{{ $product->main_image }}" alt=""/>
                     <div class="p-6">
                       <h5 class="text-xl font-medium mb-2">{{ $product->name }}</h5>
       

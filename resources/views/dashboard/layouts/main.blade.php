@@ -55,6 +55,14 @@
     @if(session('login-success'))
         Swal.fire('{{ session("login-success") }}')
     @endif
+
+      @if (session('status'))
+      Swal.fire(
+          'Success',
+          '{{ session("status") }}',
+          'success'
+      )
+  @endif
 </script>
 
 

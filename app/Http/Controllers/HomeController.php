@@ -13,8 +13,8 @@ class HomeController extends Controller
     {
         return view('frontend.home', [
             "title" => "Home Page",
-            "featured_prod" => Product::where('trending', '1')->take(15)->get(),
-            "latest_prod" => Product::latest()->take(15)->get()
+            "featured_prod" => Product::where('trending', '1')->take(12)->get(),
+            "latest_prod" => Product::latest()->take(12)->get()
         ]);
     }
 
@@ -22,7 +22,7 @@ class HomeController extends Controller
     {
         return view('frontend.all-products', [
             "title" => "All Products",
-            "products" => Product::latest()->filter(request(['search', 'category']))->paginate(3),
+            "products" => Product::latest()->filter(request(['search', 'category']))->paginate(20),
             "categories" => Category::all()
         ]);
     }

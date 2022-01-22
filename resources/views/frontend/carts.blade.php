@@ -72,7 +72,13 @@
             <img src="/assets/img/empty_cart.svg" width="500px" alt="Empty Cart" class="mx-auto" style="filter: blur(2px);">
             <div class="relative -top-48 left-10 text-center text-white">
                 <h1 class="text-5xl mb-4 font-bold uppercase cart-empty-text ">Your cart is empty</h1>
-                <a class="explore-cart-text text-2xl bg-red-500 font-medium rounded-full py-1 px-3" href="/all-products">Continue Shopping<i class="bi bi-arrow-right ml-1"></i></a>
+                {{-- <a class="explore-cart-text text-2xl bg-red-500 font-medium rounded-full py-1 px-3" href="/all-products">Continue Shopping<i class="bi bi-arrow-right ml-1"></i></a> --}}
+                <a href="/all-products" id="cart-button">
+                    <span class="shadow"></span>
+                    <span class="edge"></span>
+                    <span class="front text"> Continue Shopping <i class="bi bi-arrow-right ml-1"></i>
+                    </span>
+                </a>
             </div>
         </div>
             

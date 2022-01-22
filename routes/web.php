@@ -9,6 +9,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\UserController;
 
 /*
@@ -86,4 +87,14 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('/dashboard/product/edit/{id}', [ProductController::class, 'edit']);
     Route::put('/dashboard/product/update/{id}', [ProductController::class, 'update']);
     Route::get('/dashboard/product/destroy/{id}', [ProductController::class, 'destroy']);
+
+    // Customers Order dashboard
+    Route::get('/dashboard/customers-order', [OrderController::class, 'index']);
+    Route::get('/dashboard/customers-order/order-history', [OrderController::class, 'orderHistory']);
+    Route::get('/dashboard/customers-order/order-details/{id}', [OrderController::class, 'viewDetails']);
+    Route::put('/update-status/{id}', [OrderController::class, 'updateStatus']);
+
+
+    // User Management Dashboard
+    Route::get('/dashboard/users-registered', [DashboardController::class, 'usersView']);
 });

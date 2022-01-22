@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.main')
 
 @section('content') 
-    <a href="/dashboard/product/create" class="py-2 px-3 ml-5 bg-blue-500 text-white relative top-5"><ion-icon name="add-outline" class="relative top-0.5"></ion-icon> Create</a>
+    <a href="/dashboard/product/create" class="py-2 px-3 ml-5 rounded bg-blue-500 text-white relative top-5"><ion-icon name="add-outline" class="relative top-0.5"></ion-icon> Create</a>
 
     <div class="flex flex-col relative top-10">
         <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -91,14 +91,6 @@
 @endsection
 
 @section('script')
-  @if (session('status'))
-      Swal.fire(
-          'Success',
-          '{{ session("status") }}',
-          'success'
-      )
-  @endif
-
   function deleteConfirm(e, productId) {
       e.preventDefault();
 

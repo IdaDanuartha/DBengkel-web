@@ -18,6 +18,7 @@
     --sidebar-only: #ff696e;
     --input-color: #fff;
     --border-color: 1px solid rgba(0, 0, 0, 0.15);
+    --back-btn: rgb(209 213 219);
 }
 
 ::selection {
@@ -33,6 +34,7 @@
     --sidebar-only: #313131;
     --input-color: #313131;
     --border-color: none;
+    --back-btn: #313131;
 }
 
 a {
@@ -50,6 +52,7 @@ body {
 /* dark mode style */
 .body-color {
     background-color: var(--body-color) !important;
+    border: var(--border-color) !important;
 }
 
 .my-light-dark-card {
@@ -338,12 +341,6 @@ body {
     background-color: rgba(0, 0, 0, .2);
     transform: rotate(90deg);
 }
-
-
-/* Categories page style */
-
-
-
 
 
 
