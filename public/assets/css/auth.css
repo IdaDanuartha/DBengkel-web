@@ -45,6 +45,11 @@ body {
     background-color: var(--nav-footer-color) !important;
 }
 
+.bi-moon-fill,
+.bi-sun-fill {
+    cursor: pointer;
+}
+
 .bi-moon-fill {
     transition: .6s;
     color: #333;

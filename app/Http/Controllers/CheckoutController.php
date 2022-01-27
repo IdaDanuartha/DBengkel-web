@@ -14,15 +14,15 @@ class CheckoutController extends Controller
 {
     public function index()
     {
-        $old_product_cart = Cart::where('user_id', Auth::id())->get();
+        // $old_product_cart = Cart::where('user_id', Auth::id())->get();
 
-        foreach ($old_product_cart as $item) {
+        // foreach ($old_product_cart as $item) {
 
-            if (!Product::where('id', $item->product_id)->where('quantity', '>', $item->product_qty)->exists()) {
-                $removeItem = Cart::where('user_id', Auth::id())->where('product_id', $item->product_id)->first();
-                $removeItem->delete();
-            }
-        }
+        //     if (!Product::where('id', $item->product_id)->where('quantity', '>', $item->product_qty)->exists()) {
+        //         $removeItem = Cart::where('user_id', Auth::id())->where('product_id', $item->product_id)->first();
+        //         $removeItem->delete();
+        //     }
+        // }
 
         $title = 'Checkout Page';
         $product_cart = Cart::where('user_id', Auth::id())->get();
@@ -46,23 +46,25 @@ class CheckoutController extends Controller
         $order->city = $request->input('city');
         $order->pos_code = $request->input('pos_code');
         $order->message = $request->input('message');
+        $order->address_type = $request->input('address_type');
         $order->tracking_no = $request->input('first_name') . rand(11111, 99999);
 
         // Calculate total price
-        $totalTax = 0;
+        $product_tax = 0;
         $totalPrice = 0;
         $product_cart_total = Cart::where('user_id', Auth::id())->get();
-        foreach ($product_cart_total as $item) {
 
-            $totalTax += $item->products->tax;
+        foreach ($product_cart_total as $item) {
             if ($item->products->disc_price) {
-                $totalPrice += $item->products->disc_price * $item->product_qty + $item->products->tax;
+                $totalPrice += $item->products->disc_price * $item->product_qty;
             } else {
-                $totalPrice += $item->products->ori_price * $item->product_qty + $item->products->tax;
+                $totalPrice += $item->products->ori_price * $item->product_qty;
             }
         }
 
-        $totalPrice += 20000;
+        $product_tax += $totalPrice * 10 / 100;
+
+        $totalPrice += $product_tax + 20000;
         $order->total_price = $totalPrice;
 
         $order->save();
@@ -103,6 +105,7 @@ class CheckoutController extends Controller
             $user->city = $request->input('city');
             $user->pos_code = $request->input('pos_code');
             $user->message = $request->input('message');
+            $user->address_type = $request->input('address_type');
 
             $user->update();
         }
@@ -110,6 +113,6 @@ class CheckoutController extends Controller
         $product_cart = Cart::where('user_id', Auth::id())->get();
         Cart::destroy($product_cart);
 
-        return redirect('/')->with('status', 'Order placed successfully, check profile for your order status');
+        return redirect('/')->with('status', 'Order proceed successfully, check profile for your order status');
     }
 }

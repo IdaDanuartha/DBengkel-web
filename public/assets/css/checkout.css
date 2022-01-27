@@ -1,0 +1,220 @@
+.field {
+    margin-bottom: 25px;
+}
+
+.field.required label::after {
+    content: "*";
+    font-size: 1.1rem;
+    position: relative;
+    left: 5px;
+    top: -1px;
+    color: red;
+}
+
+.field.full {
+    width: 100%;
+}
+
+.field.half {
+    width: calc(70% - 12px);
+}
+
+.payment-type>h4 {
+    letter-spacing: 1.5px;
+    font-size: 1.5rem;
+}
+
+label {
+    display: block;
+    text-transform: uppercase;
+    font-size: 12px;
+    margin-bottom: 8px;
+}
+
+.input-checkout {
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #dedfe0;
+    display: block;
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.input-checkout::placeholder {
+    color: #dbdddf !important;
+}
+
+.card {
+    padding: 50px;
+    margin: 50px auto;
+    max-width: 850px;
+    background: #ffffff;
+    border-radius: 6px;
+    box-sizing: border-box;
+    box-shadow: 0px 24px 60px -1px rgba(37, 44, 54, 0.14);
+}
+
+.card .container {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.card .card-title {
+    margin-bottom: 50px;
+}
+
+.card .card-title h2 {
+    margin: 0;
+}
+
+.card .card-body .payment-type,
+.card .card-body .payment-info {
+    margin-bottom: 25px;
+}
+
+.payment-type h4 {
+    margin: 0;
+}
+
+.types {
+    margin: 25px 0;
+}
+
+.types .type {
+    width: 30%;
+    position: relative;
+    background: #f2f4f7;
+    border: 2px solid #e8ebed;
+    padding: 25px;
+    box-sizing: border-box;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: center;
+    transition: all .5s ease;
+}
+
+.types .type:hover {
+    border-color: #28333b;
+}
+
+.types .type:hover .logo,
+.types .type:hover p {
+    color: #28333b;
+}
+
+.types .type.selected {
+    border-color: #40b3ff;
+    background: rgba(64, 179, 255, .1);
+}
+
+.types .type.selected .logo {
+    color: #40b3ff;
+}
+
+.types .type.selected p {
+    color: #28333b
+}
+
+.types .type.selected::after {
+    content: '\f00c';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    top: -21px;
+    right: -21px;
+    background: #fff;
+    border: 2px solid #40b3ff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.types .type .logo,
+.types .type p,
+.types .type .logo .logo-img {
+    transition: all .5s ease;
+}
+
+.types .type .logo {
+    font-size: 48px;
+    color: #8a959c;
+}
+
+.types .type .logo .logo-img {
+    width: 75px;
+    margin: 0 auto;
+    opacity: 0.5;
+}
+
+.types .type:hover .logo .logo-img {
+    opacity: 1;
+}
+
+.types .type p {
+    margin-bottom: 0;
+    font-size: 10px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: .5px;
+    color: #8a959c;
+}
+
+.payment-info .column {
+    width: calc(50% - 25px);
+}
+
+.payment-info .title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.payment-info .title .num {
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+    border: 2px solid #40b3ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-right: 12px;
+    font-size: 12px;
+}
+
+.button {
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: .5px;
+    padding: 12px 25px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all .5s ease;
+    background: transparent;
+    border: 2px solid transparent;
+}
+
+.button.button-primary {
+    background: #40b3ff;
+    color: #fff;
+}
+
+.button.button-primary:hover {
+    background: #22a2f8;
+}
+
+.button.button-secondary {
+    background: transparent;
+    border-color: #e8ebed;
+    color: #8a959c;
+}
+
+.button.button-secondary:hover {
+    border-color: #28333b;
+    color: #28333b;
+}

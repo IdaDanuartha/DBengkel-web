@@ -35,13 +35,6 @@ productImages.forEach((item, i) => {
     })
 })
 
-// Alert display none
-function alertDisplay() {
-    const alertDiv = document.querySelector('.alert-div');
-
-    alertDiv.classList.toggle('hidden');
-}
-
 // Preview Image script
 function previewMainImage() {
     const mainImage = document.querySelector('#main_image');
@@ -55,39 +48,21 @@ function previewMainImage() {
     }
 }
 
-// function previewImage2() {
-//     const image2 = document.querySelector('#image2');
-//     const imgPreview2 = document.querySelector('.img-preview2');
 
-//     const oFReader = new FileReader;
-//     oFReader.readAsDataURL(image2.files[0]);
+// Number counter dashboard
+const numCounter = document.querySelectorAll('.number-counter');
+let interval = 2000;
 
-//     oFReader.onload = function(oFRevent) {
-//         imgPreview2.src = oFRevent.target.result;
-//     }
-// }
-
-// function previewImage3() {
-//     const image3 = document.querySelector('#image3');
-//     const imgPreview3 = document.querySelector('.img-preview3');
-
-//     const oFReader = new FileReader;
-//     oFReader.readAsDataURL(image3.files[0]);
-
-//     oFReader.onload = function(oFRevent) {
-//         imgPreview3.src = oFRevent.target.result;
-//     }
-// }
-
-// function previewImage4() {
-//     const image4 = document.querySelector('#image4');
-//     const imgPreview4 = document.querySelector('.img-preview4');
-
-//     const oFReader = new FileReader;
-//     oFReader.readAsDataURL(image4.files[0]);
-
-//     oFReader.onload = function(oFRevent) {
-//         imgPreview4.src = oFRevent.target.result;
-//     }
-// }
-
+numCounter.forEach(num => {
+    let startValue = 0;
+    let endValue = parseInt(num.getAttribute('data-value'));
+    console.log(endValue);
+    let duration = Math.floor(interval / endValue);
+    let counter = setInterval(function () {
+        startValue += 1;
+        num.textContent = startValue;
+        if(startValue == endValue) {
+            clearInterval(counter);
+        }
+    }, duration);
+})

@@ -16,7 +16,8 @@
            <tr class="tr-table product_data">
                <td>
                    <div class="cart-product">
-                        <img src="/assets/uploads/products/{{ $item->products->main_image }}" class="rounded me-3" width="70px" height="70px" alt="">
+                        {{-- <img src="/assets/uploads/products/{{ $item->products->main_image }}" class="rounded me-3" width="70px" height="70px" alt=""> --}}
+                        <img src="{{ $item->products->main_image }}" class="rounded me-3" width="70px" height="70px" alt="">
                         <div class="cart-details">
                             <h5 class="mb-1">{{ $item->products->name }}</h5>
                             @if($item->products->disc_price)
@@ -63,7 +64,7 @@
        </table>
        
         <div class="flex justify-between my-light-dark-card p-3">
-            <a href="/checkout" class="bg-blue-500 text-white duration-500 hover:bg-blue-400 rounded py-2 px-3">Procced to Checkout</a>
+            <a href="/checkout" class="bg-blue-500 text-white duration-500 hover:bg-blue-400 rounded py-2 px-3">Proceed to Checkout</a>
             <span class="items-center font-medium">Sub Total : Rp. {{ $total }}</span>
         </div>
 

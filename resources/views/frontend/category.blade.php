@@ -6,7 +6,7 @@
         <section class="category-products pt-40 pb-6 text-4xl uppercase font-medium" id="featured-product">
             <div class="container">
                 <h2 class="mb-5">All Category</h2>                   
-                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                    <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                         @foreach ($categories as $category)
                         @if($category->status == 1)
                         <div class="flex justify-center">
@@ -29,7 +29,7 @@
 
             <div class="container">
                 <h2 class="mb-5 mt-20">Popular Category</h2>
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                     @foreach ($popular_categories as $category)
                     @if($category->status == 1)
                     <div class="flex justify-center">

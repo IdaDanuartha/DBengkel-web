@@ -83,10 +83,9 @@
                             m-0
                             focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" name="status">
                               <option value="0" {{ $orders->status == 0 ? 'selected':'' }}>Waiting for Confirmation</option>
-                              <option value="1" {{ $orders->status == 1 ? 'selected':'' }}>Barang dikemas</option>
-                              <option value="2" {{ $orders->status == 2 ? 'selected':'' }}>Sedang diantar</option>
-                              <option value="3" {{ $orders->status == 3 ? 'selected':'' }}>Sudah sampai</option>
-                              <option value="4" {{ $orders->status == 4 ? 'selected':'' }}>Pesanan selesai</option>
+                              <option value="1" {{ $orders->status == 1 ? 'selected':'' }}>Order Proccessed</option>
+                              <option value="2" {{ $orders->status == 2 ? 'selected':'' }}>Order Delivered</option>
+                              <option value="3" {{ $orders->status == 3 ? 'selected':'' }}>Order Arrived</option>
                           </select>
                         </div>
                       </div>
@@ -127,7 +126,7 @@
          
             @php
               $tax = 0;
-              $tax += $orders->total_price * 10 / 100;
+              $tax += ($orders->total_price - 20000) * 10 / 100;
           @endphp
 
           <div class="flex justify-between">

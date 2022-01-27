@@ -1,11 +1,11 @@
 @extends('dashboard.layouts.main')
 
 @section('content') 
-    <a href="/dashboard/product/create" class="py-2 px-3 ml-5 rounded bg-blue-500 text-white relative top-5"><ion-icon name="add-outline" class="relative top-0.5"></ion-icon> Create</a>
+    <a href="/dashboard/product/create" class="py-2 px-3 ml-5 rounded bg-blue-500 text-white relative top-10"><ion-icon name="add-outline" class="relative top-0.5"></ion-icon> Create</a>
 
-    <div class="flex flex-col relative top-10">
-        <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
-          <div class="py-2 inline-block w-11/12 sm:px-6 lg:px-8">
+    <div class="flex flex-col my-20">
+        <div class="sm:-mx-6 lg:-mx-8">
+          <div class="py-5 inline-block w-11/12 sm:px-6 lg:px-8">
             <div class="overflow-x-auto ml-5">
               <table class="min-w-full my-light-dark-text">
                 <thead class="bg-gray-800 text-white">
@@ -84,6 +84,9 @@
                   @endforeach
                 </tbody>
               </table>
+            </div>
+            <div class="relative left-10 top-10">
+              {{ $products->links() }}
             </div>
           </div>
         </div>

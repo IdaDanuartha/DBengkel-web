@@ -27,9 +27,9 @@
 
     <!-- Start Featured Product section -->
 
-    <section class="featured-products mt-10" id="featured-product">
+    <section class="featured-products mt-10" id="featured-products">
         <div class="container">
-            <h2 class="mb-5">Featured Product</h2>                   
+            <h2 class="mb-5">Featured Products</h2>                   
             <div class="owl-carousel owl-theme">
                 @foreach ($featured_prod as $product)
                 @if($product->status == 1)
@@ -90,7 +90,7 @@
 
     <section class="latest-products mt-16" id="latest-products">
         <div class="container">
-            <h2 class="mb-5">Latest Product</h2>                   
+            <h2 class="mb-5">Latest Products</h2>                   
             <div class="owl-carousel owl-theme">
                 @foreach ($latest_prod as $product)
                 @if($product->status == 1)
@@ -160,7 +160,7 @@
             margin:5,
             nav:false,
             autoplay:true,
-            autoplayTimeout:8000,
+            autoplayTimeout:7500,
             autoplayHoverPause:false,
             responsive:{
                 0:{

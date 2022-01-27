@@ -5,7 +5,7 @@
     <div class="container pt-40">
       <div class="rounded my-light-dark-card p-4 flex items-center font-medium mb-10 border-1 border-gray-300">
             <h5 class="mr-5 flex text-xl my-light-dark-text"><i class="bi bi-funnel mr-1"></i> Filter</h5>
-                <form action="/all-products" method="POST" class="flex">
+                <form action="/all-products" class="flex">
                   @csrf
                   <div class="my-2 mx-1 xl:w-96">
                     <select class="form-select appearance-none
@@ -15,15 +15,15 @@
                       py-2
                       text-base
                       font-normal
-                      text-gray-700 bg-clip-padding bg-no-repeat
+                      bg-clip-padding bg-no-repeat
                       border border-solid border-gray-700
                       rounded
                       transition
                       ease-in-out
                       m-0
                       focus:text-white
-                      focus:outline-none" aria-label="Default select example">
-                        <option selected>All</option>
+                      focus:outline-none" style="color: #333" name="category">
+                        <option value="all" selected>All</option>
                         @foreach ($categories as $category)
                             <option value="{{ $category->slug }}">{{ $category->name }}</option>
                         @endforeach
@@ -38,22 +38,22 @@
                       py-2
                       text-base
                       font-normal
-                      text-gray-700 bg-clip-padding bg-no-repeat
+                      bg-clip-padding bg-no-repeat
                       border border-solid border-gray-700
                       rounded
                       transition
                       ease-in-out
                       m-0
                       focus:text-white
-                      focus:outline-none" aria-label="Default select example">
-                        <option selected>Latest</option>
-                        <option value="popular">Popular</option>
+                      focus:outline-none" style="color: #333" name="filter">
+                        <option value="latest" selected>Latest</option>
+                        <option value="popular">Popularity</option>
                         <option value="high-to-low">Price - High to Low</option>
                         <option value="low-to-high">Price - Low to High</option>
                     </select>
                   </div>
                   
-                <button type="submit" class="h-10 px-4 py-2 mt-2 bg-red-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-red-600 hover:shadow-lg focus:bg-red-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-700 active:shadow-lg transition duration-200 ease-in-out">Apply</button>
+                <button type="submit" class="h-10 px-4 py-2 mt-2 apply-btn">Apply</button>
               </form>
 
       </div>
@@ -62,7 +62,6 @@
     @if(request('search'))
       <p class="text-gray-400 text-2xl mt-3.5 mb-10"><i class="bi bi-lightbulb mr-1"></i>Search result for <span class="text-red-400">'{{ request('search') }}'</span></p>
     @endif
-    {{ $products->links() }}
     @if($products->count() > 0)
         <div class="mb-10 mt-10 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
           @foreach ($products as $product)
@@ -78,6 +77,17 @@
 
                 <div class="flex mb-4 text-sm justify-between">
                   <span class="flex items-center">
+                    {{-- @php $rate_num = number_format($rating_value) @endphp
+                  @for ($i = 1; $i <= $rate_num; $i++)
+                    <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-red-500" viewBox="0 0 24 24">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                    </svg>
+                  @endfor
+                  @for ($j = $rate_num+1; $j <= 5; $j++)
+                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-red-500" viewBox="0 0 24 24">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                    </svg>
+                  @endfor --}}
                     <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-red-500" viewBox="0 0 24 24">
                       <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
                     </svg>

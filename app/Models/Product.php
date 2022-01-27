@@ -36,11 +36,20 @@ class Product extends Model
                 $query->where('slug', $category)
             )
         );
+
+        // $query->when($filters['sortby'] ?? false, function ($query) {
+        //     return $query;
+        // });
     }
 
 
     public function category()
     {
         return $this->belongsTo(Category::class, 'category_id', 'id');
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
     }
 }

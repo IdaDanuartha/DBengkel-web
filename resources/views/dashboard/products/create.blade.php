@@ -60,11 +60,11 @@
                     </div>
 
                     <div class="col-span-6">
-                      <label for="about" class="block text-lg">
+                      <label for="description" class="block text-lg">
                         Description
                       </label>
                       <div class="mt-1">
-                      <textarea id="about" name="description" rows="10" class="mt-1 block w-full py-2 px-3 input-color rounded-md shadow-sm focus:outline-none focus:ring-red-400 focus:border-red-400 sm:text-sm" placeholder="Type description here...">{{ old('description') }}</textarea>
+                      <textarea id="description" name="description" rows="10" class="mt-1 block w-full py-2 px-3 input-color rounded-md shadow-sm focus:outline-none focus:ring-red-400 focus:border-red-400 sm:text-sm" placeholder="Type description here...">{{ old('description') }}</textarea>
                       {{-- <small class="text-xs text-gray-400">Note: You can type description with HTML tag</small> --}}
                       </div>
                       @error('description')

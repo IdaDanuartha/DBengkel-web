@@ -111,7 +111,7 @@
   </a>
       
   <div class="dropdown relative ml-5 mr-1.5">
-    <a class="flex items-center hidden-rrow" href="#" id="dropdownMenuButton2" role="button"
+    <a class="flex items-center" href="#" id="dropdownMenuButton2" role="button"
       data-bs-toggle="dropdown" aria-expanded="false">
       <img src="/assets/img/male_avatar.svg" class="rounded-full"
         style="height: 30px; width: 30px" alt="" loading="lazy" />
@@ -157,7 +157,7 @@
       bg-transparent"><i class="bi bi-envelope"></i> {{ auth()->user()->email }}</p>
     </li>
 
-    {{-- @if(auth()->user()->role_as == 0) --}}
+    @if(auth()->user()->role_as == 0)
       <hr class="m-2">
       <li>
         <a class="
@@ -185,7 +185,7 @@
         my-light-dark-text
       " href="/my-orders"><i class="bi bi-clipboard-check"></i> My Orders</a>
       </li>
-      {{-- @endif --}}
+      @endif
       <hr class="m-2">
       @if (auth()->user()->role_as == 1)
     <li>
@@ -199,7 +199,7 @@
       hover:opacity-75
       whitespace-nowrap
       my-light-dark-text
-    " href="/dashboard"><i class="bi bi-columns-gap"></i> Dashboard</a>
+    " href="/dashboard"><i class="bi bi-speedometer2"></i> Dashboard</a>
     </li>
   @endif
     <li>
@@ -226,7 +226,7 @@
         whitespace-nowrap
         my-light-dark-text" action="/logout" method="POST">
             @csrf
-            <button type="submit" class=""><i class="bi bi-box-arrow-right"></i> Logout</button>
+            <button type="submit"><i class="bi bi-box-arrow-right"></i> Logout</button>
         </form>
       </li>
     </ul>
@@ -238,7 +238,7 @@
     @if (request('category'))
         <input type="hidden" name="category" value="{{ request('category') }}">
     @endif
-    <input type="search" class="input-search" placeholder="Search Product Here..." name="search" id="searching" value="{{ request('search') }}">
+    <input type="text" class="input-search p-1 mr-1 rounded-full" placeholder="Search Product Here..." name="search" id="searching" value="{{ request('search') }}">
     <button type="submit"><i class="bi bi-search"></i></button>
   </form>
   <span class="text-gray-500 hover:text-gray-700 focus:text-gray-700 ml-3">

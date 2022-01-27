@@ -11,7 +11,7 @@ class OrderController extends Controller
     {
         return view('dashboard.customers-order.index', [
             "title" => "Customers Order",
-            "orders" => Order::where('status', '<', '4')->get()
+            "orders" => Order::latest()->where('status', '<', '4')->paginate(10)
         ]);
     }
 
@@ -19,7 +19,7 @@ class OrderController extends Controller
     {
         return view('dashboard.customers-order.history', [
             "title" => "Order History",
-            "orders" => Order::where('status', '4')->get()
+            "orders" => Order::latest()->where('status', '4')->paginate(10)
         ]);
     }
 

@@ -52,7 +52,6 @@ body {
 /* dark mode style */
 .body-color {
     background-color: var(--body-color) !important;
-    border: var(--border-color) !important;
 }
 
 .my-light-dark-card {
@@ -67,6 +66,11 @@ body {
     background-color: var(--input-color);
     color: var(--text-color);
     border: var(--border-color);
+}
+
+.bi-moon-fill,
+.bi-sun-fill {
+    cursor: pointer;
 }
 
 .bi-moon-fill {
@@ -240,7 +244,16 @@ body {
     }
 }
 
-/* Product management style */
+/* Dashboard style */
+#order-chart,
+#user-highchart {
+    height: 400px;
+    width: 800px;
+    margin: 50px auto;
+}
+
+
+/* Product style */
 
 .product-table {
     margin: 50px auto;

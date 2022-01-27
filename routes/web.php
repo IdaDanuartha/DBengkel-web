@@ -1,16 +1,17 @@
 <?php
 
-use App\Http\Controllers\CartController;
-use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CheckoutController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\OrderController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,7 +31,7 @@ Route::get('/all-products', [HomeController::class, 'allProducts']);
 Route::get('/category/{slug}', [HomeController::class, 'viewCategories']);
 Route::get('/category/{cate_slug}/{prod_slug}', [HomeController::class, 'viewProduct']);
 
-Route::get('/product-autocomplete', [HomeController::class, 'ajaxAutocomplete']);
+// Route::get('/product-autocomplete', [HomeController::class, 'ajaxAutocomplete']);
 
 // Login
 Route::get('/login', [LoginController::class, 'index'])->middleware('guest');
@@ -66,6 +67,13 @@ Route::middleware(['auth'])->group(function () {
     // My Order
     Route::get('/my-orders', [UserController::class, 'index']);
     Route::get('/order-details/{id}', [UserController::class, 'viewDetails']);
+
+    // Rating product
+    // Route::post('/add-rating', [RatingController::class, 'addRating']);
+
+    // Review product
+    Route::post('/add-review', [ReviewController::class, 'addReview']);
+    Route::put('/edit-review', [ReviewController::class, 'updateReview']);
 });
 
 

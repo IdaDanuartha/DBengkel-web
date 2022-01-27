@@ -26,10 +26,10 @@
                         <a class="mb-1" href="">
                             About Us
                         </a>
-                        <a class="mb-1" href="#latest-product">
+                        <a class="mb-1" href="/#latest-products">
                             Latest Product
                         </a>
-                        <a class="mb-1" href="#featured-product">
+                        <a class="mb-1" href="/#featured-products">
                             Featured Product
                         </a>
                         <a class="mb-1" href="/category">

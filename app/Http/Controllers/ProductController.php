@@ -13,7 +13,7 @@ class ProductController extends Controller
     {
         return view('dashboard.products.index', [
             "title" => "Products",
-            "products" => Product::all(),
+            "products" => Product::latest()->paginate(10),
             "product" => new Product()
         ]);
     }

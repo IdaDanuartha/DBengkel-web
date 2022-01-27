@@ -24,7 +24,8 @@ class CreateUsersTable extends Migration
             $table->string('province')->nullable();
             $table->string('city')->nullable();
             $table->string('pos_code')->nullable();
-            $table->string('message')->nullable();
+            $table->text('message')->nullable();
+            $table->tinyInteger('address_type')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->tinyInteger('role_as')->default('0');

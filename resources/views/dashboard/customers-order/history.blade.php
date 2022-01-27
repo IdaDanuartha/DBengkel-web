@@ -2,8 +2,8 @@
 
 @section('content') 
 
-<a href="/dashboard/customers-order/" class="rounded py-2 px-3 ml-5 bg-blue-500 text-white relative top-5"><i class="bi bi-arrow-left"></i> Back</a>
-    <div class="flex flex-col relative top-10">
+<a href="/dashboard/customers-order/" class="rounded py-2 px-3 ml-5 bg-blue-500 text-white relative top-10"><i class="bi bi-arrow-left"></i> Back</a>
+    <div class="flex flex-col my-20">
         <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div class="py-2 inline-block w-11/12 sm:px-6 lg:px-8">
             <div class="overflow-x-auto ml-5">
@@ -43,16 +43,16 @@
                         </td>
                         <td class="text-sm font-medium p-4 whitespace-nowrap" style="color: rgb(22 163 74);">
                           @if($order->status == 0)
-                            Waiting For Confirmation
-                          @elseif($order->status == 1)
-                            Barang dikemas
-                          @elseif($order->status == 2)
-                            Sedang diantar
-                          @elseif($order->status == 3)
-                            Sudah sampai
-                          @else
-                            Pesanan selesai
-                          @endif
+                          Waiting For Confirmation
+                        @elseif($order->status == 1)
+                          Order Proccessed
+                        @elseif($order->status == 2)
+                          Order Delivered
+                        @elseif($order->status == 3)
+                          Order Arrived
+                        @else
+                          Order Completed
+                        @endif
                         </td>
                         <td class="text-sm p-4">
                             <a href="/dashboard/customers-order/order-details/{{ $order->id }}" class="py-1 px-3 rounded text-white bg-blue-500"> Details</a>
@@ -61,6 +61,9 @@
                   @endforeach
                 </tbody>
               </table>
+            </div>
+            <div class="relative left-10 top-10">
+              {{ $orders->links() }}
             </div>
           </div>
         </div>

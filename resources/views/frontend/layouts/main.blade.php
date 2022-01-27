@@ -17,6 +17,8 @@
 
     {{-- Tailwind css --}}
     <link rel="stylesheet" href="/css/app.css">
+    {{-- Flowbite --}}
+    <link rel="stylesheet" href="https://unpkg.com/@themesberg/flowbite@1.3.0/dist/flowbite.min.css" />
    
     <!-- Icon -->
     <link rel="icon" type="image/x-icon" href="/assets/img/WebLogo.png" />
@@ -33,11 +35,8 @@
 
     <!-- My Style -->
     <link rel="stylesheet" href="/assets/css/main.css">
-    <link rel="stylesheet" href="/css/product.css">
-    <link rel="stylesheet" href="/css/all-products.css">
     @yield('order-css')
-
-    @livewireStyles
+    @yield('styles')
 
     <title>{{ $title }} | D' BENGKEL</title>
 </head>
@@ -58,9 +57,11 @@
     {{-- Boostrap script --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
+    {{-- flowbite --}}
+    <script src="https://unpkg.com/@themesberg/flowbite@1.3.0/dist/flowbite.bundle.js"></script>
+
     <!-- Jquery -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
 
     {{-- Sweetalert2 --}}
@@ -70,9 +71,9 @@
     <script src="/assets/js/jquery-3.6.0.min.js"></script>
     <script src="/assets/js/owl.carousel.min.js"></script>
 
+    {{-- My Script --}}
     <script src="/assets/js/main.js"></script>
-
-    @livewireScripts
+    <script src="/assets/js/cart.js"></script>
 
     @yield('scripts')
 
@@ -94,38 +95,6 @@
             });
         }
     </script> --}}
-
-    {{-- <script>
-        $( function() {
-          var availableTags = [
-            "ActionScript",
-            "AppleScript",
-            "Asp",
-            "BASIC",
-            "C",
-            "C++",
-            "Clojure",
-            "COBOL",
-            "ColdFusion",
-            "Erlang",
-            "Fortran",
-            "Groovy",
-            "Haskell",
-            "Java",
-            "JavaScript",
-            "Lisp",
-            "Perl",
-            "PHP",
-            "Python",
-            "Ruby",
-            "Scala",
-            "Scheme"
-          ];
-          $("#searching").autocomplete({
-            source: availableTags
-          });
-        } );
-        </script> --}}
 
     <script>
         // Loader

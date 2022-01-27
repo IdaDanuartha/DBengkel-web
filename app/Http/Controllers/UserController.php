@@ -11,8 +11,8 @@ class UserController extends Controller
     public function index()
     {
         return view('frontend.orders', [
-            "title" => "Orders Status",
-            "orders" => Order::where('user_id', Auth::id())->get()
+            "title" => "My Orders",
+            "orders" => Order::latest()->where('user_id', Auth::id())->get()
         ]);
     }
 
