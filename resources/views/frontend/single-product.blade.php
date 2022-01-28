@@ -65,10 +65,10 @@
               <div class="flex">
                 <span class="flex font-medium text-2xl text-gray-900">
                   @if($product->disc_price)
-                    <p class="my-light-dark-text text-lg sm:text-md">Rp. {{ $product->disc_price }}</p>
-                    <p class="relative left-2 text-xs text-gray-400"><s>Rp. {{ $product->ori_price }}</s></p>
+                    <p class="my-light-dark-text text-lg sm:text-md">Rp. {{ number_format($product->disc_price, 0, ',', '.') }}</p>
+                    <p class="relative left-2 text-xs text-gray-400"><s>Rp. {{ number_format($product->ori_price, 0, ',', '.') }}</s></p>
                   @else
-                    <div class="my-light-dark-text">Rp. {{ $product->ori_price }}</div>
+                    <div class="my-light-dark-text">Rp. {{ number_format($product->ori_price, 0, ',', '.') }}</div>
                   @endif  
                 </span>
 
@@ -132,10 +132,10 @@
   
                   <div class="flex">
                     @if($product->disc_price)
-                      <p class="text-lg my-light-dark-text">Rp. {{ $product->disc_price }}</p>
-                      <p class="relative left-2 text-xs text-gray-500"><s>Rp. {{ $product->ori_price }}</s></p>
+                      <p class="text-lg my-light-dark-text">Rp. {{ number_format($product->disc_price, 0, ',', '.') }}</p>
+                      <p class="relative left-2 text-xs text-gray-500"><s>Rp. {{ number_format($product->ori_price, 0, ',', '.') }}</s></p>
                     @else
-                      <div class="my-light-dark-text">Rp. {{ $product->ori_price }}</div>
+                      <div class="my-light-dark-text">Rp. {{ number_format($product->ori_price, 2, ',', '.') }}</div>
                     @endif                  
                 </div>
                 
@@ -148,32 +148,26 @@
           </div>
 
 
-          <div class="flex flex-col">
-            <div>
+  <div class="flex flex-col">
+    <div>
 
-  @if(auth()->user()->role_as == 0)
-  <button class="block mt-20 text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-3 py-1.5 text-center dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800" type="button" data-modal-toggle="small-modal">
-   <i class="bi bi-star-fill mr-1"></i> Leave a review
+    <button type="button" class="block mt-20 bg-gray-800 text-white hover:bg-gray-700 font-medium rounded-lg text-sm px-4 py-2 text-center" data-bs-toggle="modal" data-bs-target="#exampleModalSm">
+      <i class="bi bi-star-fill mr-1"></i> Leave a review
     </button>
-  @endif
   
-  <!-- Small Modal -->
-<div class="hidden overflow-y-auto overflow-x-hidden fixed right-0 left-0 top-4 justify-center items-center md:inset-0 h-modal sm:h-full" id="small-modal" style="z-index: 10000;">
-  <div class="relative px-4 w-full max-w-md h-full md:h-auto">
-      <!-- Modal content -->
-      <div class="relative my-light-dark-card rounded-lg shadow">
-          <!-- Modal header -->
-          <div class="flex justify-between items-center p-3 rounded-t border-b dark:border-gray-600">
-              <h3 class="text-xl font-medium my-light-dark-text">
-                  Review {{ $product->name }}
-              </h3>
-              <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="small-modal">
-                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>  
-              </button>
-          </div>
-          <!-- Modal body -->
-          <div class="p-6 flex flex-col">
-              <form action="/add-review" method="POST" class="text-center">
+  <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto" id="exampleModalSm" tabindex="-1" aria-labelledby="exampleModalSmLabel" aria-modal="true" role="dialog">
+    <div class="modal-dialog modal-dialog-centered relative w-auto pointer-events-none">
+      <div class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
+        <div class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
+          <h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalScrollableLabel">
+            Review {{ $product->name }}
+          </h5>
+          <button type="button"
+            class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
+            data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body relative p-4">
+          <form action="/add-review" method="POST" class="text-center">
             @csrf
             <input type="hidden" name="product_id" value="{{ $product->id }}">
 
@@ -220,17 +214,25 @@
               </label>
             @endif
           <textarea id="user_review" name="user_review" rows="7" class="mt-3 block w-full py-2 px-3 input-color rounded-md shadow-sm focus:outline-none focus:ring-red-400 focus:border-red-400 sm:text-sm" placeholder="Type your review here...">{{ $review->user_review ?? old('user_review') }}</textarea>
-          </div>
-          <!-- Modal footer -->
-          <div class="flex items-center p-6 space-x-2 rounded-b border-t border-gray-200 dark:border-gray-600">
-              <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="submit">Submit</button>
-              <button data-modal-toggle="small-modal" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:ring-gray-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600">Review later</button>
-          </div>
-        </form>
+        </div>
+        <div
+          class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md">
+          <button type="submit"
+            class="inline-block px-4 py-2 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ml-1">
+            Submit
+          </button>
+          <button type="button"
+            class="inline-block px-4 py-2 bg-gray-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-700 hover:shadow-lg focus:bg-gray-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-800 active:shadow-lg transition duration-150 ease-in-out"
+            data-bs-dismiss="modal">
+            Review Later
+          </button>
+          </form>
+        </div>
       </div>
+    </div>
   </div>
-</div>
-      </div>
+
+  </div>
 
         <div class="flex flex-col pt-24" id="all-reviews">
           <h1 class="my-5 text-xl text-gray-500">All Reviews ({{ $user_review->count() }})</h1>

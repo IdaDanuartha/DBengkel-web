@@ -66,10 +66,10 @@
       
                       <div class="flex">
                         @if($product->disc_price)
-                          <p class="text-lg">Rp. {{ $product->disc_price }}</p>
-                          <p class="relative left-2 text-xs text-gray-500"><s>Rp. {{ $product->ori_price }}</s></p>
+                          <p class="text-lg">Rp. {{ number_format($product->disc_price, 0, ',', '.') }}</p>
+                          <p class="relative left-2 text-xs text-gray-500"><s>Rp. {{ number_format($product->ori_price, 0, ',', '.') }}</s></p>
                         @else
-                          <div>Rp. {{ $product->ori_price }}</div>
+                          <div>Rp. {{ number_format($product->ori_price, 0, ',', '.') }}</div>
                         @endif                  
                     </div>
                     
@@ -127,10 +127,10 @@
       
                       <div class="flex">
                         @if($product->disc_price)
-                          <p class="text-lg">Rp. {{ $product->disc_price }}</p>
-                          <p class="relative left-2 text-xs text-gray-500"><s>Rp. {{ $product->ori_price }}</s></p>
+                          <p class="text-lg">Rp. {{ number_format($product->disc_price, 0, ',', '.') }}</p>
+                          <p class="relative left-2 text-xs text-gray-500"><s>Rp. {{ number_format($product->ori_price, 0, ',', '.') }}</s></p>
                         @else
-                          <div>Rp. {{ $product->ori_price }}</div>
+                          <div>Rp. {{ number_format($product->ori_price, 0, ',', '.') }}</div>
                         @endif                  
                     </div>
                     
@@ -160,7 +160,7 @@
             margin:5,
             nav:false,
             autoplay:true,
-            autoplayTimeout:7500,
+            autoplayTimeout:8500,
             autoplayHoverPause:false,
             responsive:{
                 0:{

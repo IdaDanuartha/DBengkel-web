@@ -38,7 +38,7 @@
 
                     <div class="mt-6 col-span-6">
                       {{-- <small class="text-xs text-gray-500">Note: Uploading images must be at least 1 image and maximum 4 images with the file formats (png, jpg, jpeg or svg).</small> --}}
-                      <label for="main_image" class="block text-2xl font-medium">Category Image</label>
+                      <label for="main_image" class="block text-lg font-medium">Category Image</label>
                       <small class="text-xs- text-gray-400">Note: Uploading image is required, Don't upload file other than image, Image size must be under 2 mb</small>
                       <div class="mt-3 flex flex-col">
                         <img src="/assets/uploads/categories/{{ $category->main_image }}" width="75%" height="350px" class="rounded img-preview" alt="">
@@ -77,7 +77,7 @@
                 </div>
                 <div class="px-4 py-3 text-right sm:px-6">
                   <div class="px-4 py-3 text-right sm:px-6">
-                    <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                    <button type="submit" class="btn-effect btn-details py-3 px-4 rounded text-sm">
                       Save Changes
                     </button>
                   </div>

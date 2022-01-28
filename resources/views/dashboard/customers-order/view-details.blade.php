@@ -114,9 +114,9 @@
                     <h1 class="text-sm font-medium text-gray-600">{{ $item->products->name }}</h1>
                     <div class="inline-block">
                         @if($item->products->disc_price)
-                            <p class="text-lg font-medium">{{ $item->products->disc_price }} <span class="text-lg font-medium text-gray-400"> x {{ $item->quantity }}</span></p>
+                            <p class="text-lg font-medium">Rp. {{ number_format($item->products->disc_price, 0, ',', '.') }}<span class="text-lg font-medium text-gray-400"> x {{ $item->quantity }}</span></p>
                         @else
-                            <p class="text-lg font-medium">{{ $item->products->ori_price }} <span class="text-md font-medium text-gray-400"> x {{ $item->quantity }}</span></p>
+                            <p class="text-lg font-medium">Rp. {{ number_format($item->products->ori_price, 0, ',', '.') }}<span class="text-md font-medium text-gray-400"> x {{ $item->quantity }}</span></p>
                         @endif
                     </div>
                 </div>
@@ -131,16 +131,16 @@
 
           <div class="flex justify-between">
              <p>Delivery</p>
-             <p>Rp. 20000</p>
+             <p>Rp. {{ number_format(20000, 0, ',', '.') }}</p>
           </div>
           <div class="flex justify-between">
              <p>PPN(10%)</p>
-             <p>Rp. {{ $tax }}</p>
+             <p>Rp. {{ number_format($tax, 0, ',', '.') }}</p>
           </div>
           <hr class="my-3">
           <div class="flex justify-between">
              <h1 class="text-2xl font-medium">Total</h1>
-             <p  class="text-lg font-medium">Rp. {{ $orders->total_price }}</p>
+             <p  class="text-lg font-medium">Rp. {{ number_format($orders->total_price, 0, ',', '.') }}</p>
           </div>
         </div>
     </div>

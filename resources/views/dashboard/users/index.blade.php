@@ -10,7 +10,7 @@
                 <thead class="bg-gray-800 text-white">
                   <tr>
                     <th scope="col" class="text-sm font-medium px-6 py-4 text-left">
-                      Id
+                      #
                     </th>
                     <th scope="col" class="text-sm font-medium px-6 py-4 text-left">
                       Name
@@ -30,7 +30,7 @@
                   @foreach ($users as $user)
                       <tr class="border-b">
                         <td class="text-sm font-light p-4 whitespace-nowrap">
-                            {{ $user->id }}
+                            {{ $loop->iteration }}
                         </td>
                         <td class="text-sm font-light p-4 whitespace-nowrap">
                             {{ $user->first_name . ' ' . $user->last_name }}
@@ -42,7 +42,7 @@
                             {{ $user->role_as == 0 ? 'User':'Admin' }}
                         </td>
                         <td class="text-sm p-4">
-                            <a href="/dashboard/users-registered/{{ $user->id }}" class="py-1 px-3 rounded text-white bg-blue-500"> Details</a>
+                            <a href="/dashboard/users-registered/{{ $user->id }}" class="btn-effect btn-details py-2 px-4 rounded text-xs"> Details</a>
                         </td>
                       </tr>
                   @endforeach

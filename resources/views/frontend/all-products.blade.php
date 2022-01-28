@@ -2,7 +2,18 @@
 
 @section('main-content')
     {{-- Start Sort by --}}
-    <div class="container pt-40">
+    <div class="container pt-36">
+      <nav class="nav-footer-color py-3 px-4 font-bold mb-5 rounded" aria-label="Breadcrumb">
+        <ol class="list-none p-0 inline-flex">
+          <li class="flex items-center">
+            <a href="/" class="my-light-dark-text">Home</a>
+            <span class="mx-2"> > </span>
+          </li>
+          <li class="flex items-center">
+            <p class="text-gray-500">All Products</p>
+          </li>
+        </ol>
+      </nav>
       <div class="rounded my-light-dark-card p-4 flex items-center font-medium mb-10 border-1 border-gray-300">
             <h5 class="mr-5 flex text-xl my-light-dark-text"><i class="bi bi-funnel mr-1"></i> Filter</h5>
                 <form action="/all-products" class="flex">
@@ -23,9 +34,9 @@
                       m-0
                       focus:text-white
                       focus:outline-none" style="color: #333" name="category">
-                        <option value="all" selected>All</option>
+                        <option value="all" {{ Request::is('all-products') ? 'selected':'' }}>All</option>
                         @foreach ($categories as $category)
-                            <option value="{{ $category->slug }}">{{ $category->name }}</option>
+                            <option {{ Request::is('all-products?category=' . $category->slug) ? 'selected':'' }} value="{{ $category->slug }}">{{ $category->name }}</option>
                         @endforeach
                     </select>
                   </div>
@@ -111,10 +122,10 @@
 
                 <div class="flex">
                   @if($product->disc_price)
-                    <p class="text-lg my-light-dark-text">Rp. {{ $product->disc_price }}</p>
-                    <p class="relative left-2 text-xs text-gray-500"><s>Rp. {{ $product->ori_price }}</s></p>
+                    <p class="text-lg my-light-dark-text">Rp. {{ number_format($product->disc_price, 0, ',', '.') }}</p>
+                    <p class="relative left-2 text-xs text-gray-500"><s>Rp {{ number_format($product->ori_price, 0, ',', '.') }}</s></p>
                   @else
-                    <div class="my-light-dark-text">Rp. {{ $product->ori_price }}</div>
+                    <div class="my-light-dark-text">Rp {{ number_format($product->ori_price, 0, ',', '.') }}</div>
                   @endif                  
               </div>
               

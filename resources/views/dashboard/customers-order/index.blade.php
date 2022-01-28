@@ -2,7 +2,7 @@
 
 @section('content') 
 
-<a href="/dashboard/customers-order/order-history" class="rounded py-2 px-3 ml-5 bg-blue-500 text-white relative top-10"><i class="bi bi-hourglass"></i> Order History</a>
+<a href="/dashboard/customers-order/order-history" class="btn-effect btn-create py-2 px-4 rounded text-md left-10 top-10"><i class="bi bi-hourglass"></i> Order History</a>
     <div class="flex flex-col my-20">
         <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div class="py-2 inline-block w-11/12 sm:px-6 lg:px-8">
@@ -34,14 +34,14 @@
                   @foreach ($orders as $order)
                     <tr class="border-b">
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">{{ $loop->iteration }}</td>
-                        <td class="p-4 whitespace-nowrap text-sm">{{ $order->created_at }}</td>
+                        <td class="p-4 whitespace-nowrap text-sm">{{ $order->created_at->format('d M Y') }}</td>
                         <td class="text-sm font-light p-4 whitespace-nowrap">
                         {{ $order->tracking_no }}
                         </td>
                         <td class="text-sm font-light p-4 whitespace-nowrap">
-                            Rp. {{ $order->total_price }}
+                            Rp. {{ number_format($order->total_price, 0, ',', '.') }}
                         </td>
-                        <td class="text-sm font-medium p-4 whitespace-nowrap" style="color: rgb(22 163 74);">
+                        <td class="text-sm font-medium p-4 whitespace-nowrap">
                           @if($order->status == 0)
                             Waiting For Confirmation
                           @elseif($order->status == 1)
@@ -50,12 +50,10 @@
                             Order Delivered
                           @elseif($order->status == 3)
                             Order Arrived
-                          @else
-                            Order Completed
                           @endif
                         </td>
                         <td class="text-sm p-4">
-                            <a href="/dashboard/customers-order/order-details/{{ $order->id }}" class="py-1 px-3 rounded text-white bg-blue-500"> Details</a>
+                            <a href="/dashboard/customers-order/order-details/{{ $order->id }}" class="btn-effect btn-details py-2 px-4 rounded text-xs"> Details</a>
                         </td>
                     </tr>
                   @endforeach

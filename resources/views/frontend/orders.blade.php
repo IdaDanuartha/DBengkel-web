@@ -33,7 +33,7 @@
                         {{ $order->tracking_no }}
                         </td>
                         <td class="text-sm font-light p-4 whitespace-nowrap">
-                            Rp. {{ $order->total_price }}
+                            Rp. {{ number_format($order->total_price, 0, ',', '.') }}
                         </td>
                         <td class="text-sm font-medium p-4 whitespace-nowrap">
                         @if($order->status == 0)

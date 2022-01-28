@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.main')
 
 @section('content') 
-    <a href="/dashboard/product/create" class="py-2 px-3 ml-5 rounded bg-blue-500 text-white relative top-10"><ion-icon name="add-outline" class="relative top-0.5"></ion-icon> Create</a>
+    <a href="/dashboard/product/create" class="btn-effect btn-create py-2 px-4 rounded text-md left-10 top-10"><ion-icon name="add-outline" class="relative top-0.5"></ion-icon> Create</a>
 
     <div class="flex flex-col my-20">
         <div class="sm:-mx-6 lg:-mx-8">
@@ -77,8 +77,8 @@
                           <img src="/assets/uploads/products/{{ $product->main_image }}" width="60px" class="rounded img-preview" alt="">
                         </td>
                         <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                            <a href="/dashboard/product/edit/{{ $product->id }}" class="py-1 px-3 rounded" style="background-color: rgb(253 186 116);"><ion-icon name="create-outline" class="relative top-0.5 right-1"></ion-icon>Edit</a>
-                            <a href="#" class="py-1 px-3 bg-red-400 text-white rounded" onclick="deleteConfirm(event, {{ $product->id }})"><ion-icon name="trash-outline" class="relative top-0.5 right-1"></ion-icon>Delete</a>
+                            <a href="/dashboard/product/edit/{{ $product->id }}" class="btn-effect btn-edit py-2 px-4 rounded text-xs"><ion-icon name="create-outline" class="relative top-0.5 right-1"></ion-icon>Edit</a>
+                            <a href="#" class="btn-effect btn-delete py-2 px-4 rounded text-xs" onclick="deleteConfirm(event, {{ $product->id }})"><ion-icon name="trash-outline" class="relative top-0.5 right-1"></ion-icon>Delete</a>
                         </td>
                     </tr>
                   @endforeach

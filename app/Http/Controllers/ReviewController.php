@@ -40,7 +40,7 @@ class ReviewController extends Controller
                 }
                 return redirect()->back()->with('status', "Thank you for Review this product 🤩");
             } else {
-                return redirect()->back()->with('status', "You cannot review a product without purchase");
+                return redirect()->back()->with('status', "You cannot review a product before your order arrived");
             }
         } else {
             return redirect()->back()->with('status', "The link you folowed was broken");

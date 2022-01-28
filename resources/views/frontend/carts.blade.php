@@ -21,10 +21,10 @@
                         <div class="cart-details">
                             <h5 class="mb-1">{{ $item->products->name }}</h5>
                             @if($item->products->disc_price)
-                                <span>Rp. {{ $item->products->disc_price }}</span>
-                                <span class="relative left-1 text-xs text-gray-500"><s>Rp. {{ $item->products->ori_price }}</s></span>
+                                <span>Rp. {{ number_format($item->products->disc_price, 0, ',', '.') }}</span>
+                                <span class="relative left-1 text-xs text-gray-500"><s>Rp. {{ number_format($item->products->ori_price, 0, ',', '.') }}</s></span>
                             @else
-                                <span>Rp. {{ $item->products->ori_price }}</span>
+                                <span>Rp. {{ number_format($item->products->ori_price, 0, ',', '.') }}</span>
                             @endif  
                             <button class="mt-2 block delete-cart-btn text-xs text-red-400"><i class="bi bi-trash"></i> Remove</button>
                         </div>
@@ -54,9 +54,9 @@
 
                <td class="text-center">Rp.
                 @if($item->products->disc_price)
-                    {{ $item->products->disc_price * $item->product_qty }}
+                    {{ number_format($item->products->disc_price * $item->product_qty, 0, ',', '.') }}
                 @else
-                    {{ $item->products->ori_price * $item->product_qty }}
+                    {{ number_format($item->products->ori_price * $item->product_qty, 0, ',', '.') }}
                 @endif
                </td>
            </tr>
@@ -65,7 +65,7 @@
        
         <div class="flex justify-between my-light-dark-card p-3">
             <a href="/checkout" class="bg-blue-500 text-white duration-500 hover:bg-blue-400 rounded py-2 px-3">Proceed to Checkout</a>
-            <span class="items-center font-medium">Sub Total : Rp. {{ $total }}</span>
+            <span class="items-center font-medium">Sub Total : Rp. {{ number_format($total, 0, ',', '.') }}</span>
         </div>
 
         @else

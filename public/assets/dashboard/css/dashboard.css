@@ -252,6 +252,45 @@ body {
     margin: 50px auto;
 }
 
+/* Button Style */
+.btn-effect {
+    position: relative;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-block;
+    transition: all .2s;
+    border: none;
+    font-family: inherit;
+    font-weight: 500;
+    color: white;
+}
+
+.btn-effect:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-effect:active {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-create {
+    background-color: rgb(14 165 233);
+}
+
+.btn-details {
+    background-color: rgb(99 102 241);
+}
+
+.btn-edit {
+    background-color: rgb(249 115 22);
+}
+
+.btn-delete {
+    background-color: rgb(239 68 68);
+}
+
 
 /* Product style */
 
