@@ -16,15 +16,15 @@
            <tr class="tr-table product_data">
                <td>
                    <div class="cart-product">
-                        {{-- <img src="/assets/uploads/products/{{ $item->products->main_image }}" class="rounded me-3" width="70px" height="70px" alt=""> --}}
-                        <img src="{{ $item->products->main_image }}" class="rounded me-3" width="70px" height="70px" alt="">
+                        <img src="/assets/uploads/products/{{ $item->products->main_image }}" class="rounded me-3" width="70px" height="70px" alt="">
+                        {{-- <img src="{{ $item->products->main_image }}" class="rounded me-3" width="70px" height="70px" alt=""> --}}
                         <div class="cart-details">
                             <h5 class="mb-1">{{ $item->products->name }}</h5>
                             @if($item->products->disc_price)
-                                <span>Rp. {{ number_format($item->products->disc_price, 0, ',', '.') }}</span>
+                                <span>Rp {{ number_format($item->products->disc_price, 0, ',', '.') }}</span>
                                 <span class="relative left-1 text-xs text-gray-500"><s>Rp. {{ number_format($item->products->ori_price, 0, ',', '.') }}</s></span>
                             @else
-                                <span>Rp. {{ number_format($item->products->ori_price, 0, ',', '.') }}</span>
+                                <span>Rp {{ number_format($item->products->ori_price, 0, ',', '.') }}</span>
                             @endif  
                             <button class="mt-2 block delete-cart-btn text-xs text-red-400"><i class="bi bi-trash"></i> Remove</button>
                         </div>
@@ -52,7 +52,7 @@
                 @endif
                 </td>
 
-               <td class="text-center">Rp.
+               <td class="text-center">Rp
                 @if($item->products->disc_price)
                     {{ number_format($item->products->disc_price * $item->product_qty, 0, ',', '.') }}
                 @else
@@ -65,7 +65,7 @@
        
         <div class="flex justify-between my-light-dark-card p-3">
             <a href="/checkout" class="bg-blue-500 text-white duration-500 hover:bg-blue-400 rounded py-2 px-3">Proceed to Checkout</a>
-            <span class="items-center font-medium">Sub Total : Rp. {{ number_format($total, 0, ',', '.') }}</span>
+            <span class="items-center font-medium">Sub Total : Rp {{ number_format($total, 0, ',', '.') }}</span>
         </div>
 
         @else

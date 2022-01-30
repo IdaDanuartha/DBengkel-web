@@ -16,17 +16,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Icon -->
-    <link rel="icon" type="image/x-icon" href="assets//img/WebLogo.png" />
+    <link rel="icon" type="image/x-icon" href="/assets/img/WebLogo.png" />
 
     <!-- Bootstrap icon -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
 
     <!-- My Style -->
-    <link rel="stylesheet" href="assets/css/auth.css">
+    <link rel="stylesheet" href="/assets/css/auth.css">
 
     <title>{{ $title }} | D' BENGKEL</title>
 </head>
-<body style="background: url('assets/img/vehicle.svg'); background-position: center;
+<body style="background: url('/assets/img/header-img-2.jpg'); background-position: center;
 background-size: cover; background-repeat: no-repeat; height: 100vh; font-family: 'Poppins', sans-serif;">
 
 <span class="hover:text-gray-700 absolute top-7 right-7">
@@ -58,26 +58,23 @@ background-size: cover; background-repeat: no-repeat; height: 100vh; font-family
     </div>
     </div>
 
+    
+    {{-- Jquery --}}
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     {{-- My script --}}
     <script src="/assets/js/main.js"></script>
 
     <script>
-        // toggle showHide password
-      const password = document.getElementById('password');
-      const toggleShow = document.querySelector('.toggle-show');
-      const toggleHide = document.querySelector('.toggle-hide');
-
-      function showHide() {
-        if(password.type == 'password') {
-          password.setAttribute('type', 'text');
-          toggleShow.classList.toggle('d-none');
-          toggleHide.classList.toggle('d-none');
-        } else {
-          password.setAttribute('type', 'password');
-          toggleShow.classList.toggle('d-none');
-          toggleHide.classList.toggle('d-none');
-        }
-      }
+        $(document).ready(function(){		
+		$('.form-checkbox').click(function(){
+			if($(this).is(':checked')){
+				$('.form-password').attr('type','text');
+			}else{
+				$('.form-password').attr('type','password');
+			}
+		});
+	});
     </script>
 
 </body>

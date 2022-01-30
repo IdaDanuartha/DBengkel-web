@@ -30,7 +30,7 @@
                   @foreach ($users as $user)
                       <tr class="border-b">
                         <td class="text-sm font-light p-4 whitespace-nowrap">
-                            {{ $loop->iteration }}
+                          {{ $loop->iteration + $users->firstItem() - 1 }}
                         </td>
                         <td class="text-sm font-light p-4 whitespace-nowrap">
                             {{ $user->first_name . ' ' . $user->last_name }}
@@ -39,11 +39,21 @@
                             {{ $user->email }}
                         </td>
                         <td class="text-sm font-light p-4 whitespace-nowrap">
-                            {{ $user->role_as == 0 ? 'User':'Admin' }}
+                          @if ($user->role_as == 0)
+                              User
+                          @elseif($user->role_as == 1)
+                              Admin
+                          @elseif($user->role_as == 2)
+                              Super Admin
+                          @else
+                              No Role                              
+                          @endif
                         </td>
+                        @if(auth()->user()->role_as == '2')
                         <td class="text-sm p-4">
                             <a href="/dashboard/users-registered/{{ $user->id }}" class="btn-effect btn-details py-2 px-4 rounded text-xs"> Details</a>
                         </td>
+                        @endif
                       </tr>
                   @endforeach
                 </tbody>

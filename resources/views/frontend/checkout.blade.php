@@ -22,15 +22,15 @@
              @endphp
               @foreach ($product_cart as $item)
                   <div class="flex">
-                      {{-- <img class="w-16 mr-2" src="/assets/uploads/products/{{ $item->products->main_image }}" alt=""> --}}
-                      <img class="w-16 mr-2" src="{{ $item->products->main_image }}" alt="">
+                      <img class="w-16 mr-2" src="/assets/uploads/products/{{ $item->products->main_image }}" alt="">
+                      {{-- <img class="w-16 mr-2" src="{{ $item->products->main_image }}" alt=""> --}}
                       <div>
                           <h1 class="text-sm font-medium text-gray-600">{{ $item->products->name }}</h1>
                           <div class="inline-block">
                               @if($item->products->disc_price)
-                                  <p class="text-lg font-medium">Rp. {{ number_format($item->products->disc_price, 0, ',', '.') }} <span class="text-lg font-medium text-gray-400"> x {{ $item->product_qty }}</span></p>
+                                  <p class="text-lg font-medium">Rp {{ number_format($item->products->disc_price, 0, ',', '.') }} <span class="text-lg font-medium text-gray-400"> x {{ $item->product_qty }}</span></p>
                               @else
-                                  <p class="text-lg font-medium">Rp. {{ number_format($item->products->ori_price, 0, ',', '.') }} <span class="text-md font-medium text-gray-400"> x {{ $item->product_qty }}</span></p>
+                                  <p class="text-lg font-medium">Rp {{ number_format($item->products->ori_price, 0, ',', '.') }} <span class="text-md font-medium text-gray-400"> x {{ $item->product_qty }}</span></p>
                               @endif
                           </div>
                       </div>
@@ -42,24 +42,30 @@
                       else :
                         $totalPrice += $item->products->ori_price * $item->product_qty;
                       endif;
-                      $tax += $totalPrice * 10 / 100;
+
+                      if($item->products->disc_price) :
+                        $tax += $item->products->disc_price;
+                      else :
+                        $tax += $item->products->ori_price;
+                      endif
                   @endphp
                   @endforeach
                   @php
+                      $tax *= 10 / 100;
                       $totalPrice += $tax + 20000;
                   @endphp                  
                 <div class="flex justify-between">
                    <p>Delivery</p>
-                   <p>Rp. {{ number_format(20000, 0, ',', '.') }}</p>
+                   <p>Rp {{ number_format(20000, 0, ',', '.') }}</p>
                 </div>
                 <div class="flex justify-between">
                    <p>PPN(10%)</p>
-                   <p>Rp. {{ number_format($tax, 0, ',', '.') }}</p>
+                   <p>Rp {{ number_format($tax, 0, ',', '.') }}</p>
                 </div>
                 <hr class="my-3 text-gray-400">
                 <div class="flex justify-between">
                    <h1 class="text-2xl font-medium">Total</h1>
-                   <p  class="text-lg font-medium">Rp. {{ number_format($totalPrice, 0, ',', '.') }}</p>
+                   <p  class="text-lg font-medium">Rp {{ number_format($totalPrice, 0, ',', '.') }}</p>
                 </div>
                 @else
                   <h1>No products in your cart</h1>

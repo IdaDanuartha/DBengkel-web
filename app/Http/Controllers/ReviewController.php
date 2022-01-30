@@ -23,7 +23,7 @@ class ReviewController extends Controller
                 ->join('order_items', 'orders.id', 'order_items.order_id')
                 ->where('order_items.product_id', $product_id)->get();
 
-            if ($verified_purchase->count() > 0) {
+            if ($verified_purchase) {
                 $existing_rating = Review::where('user_id', Auth::id())->where('product_id', $product_id)->first();
 
                 if ($existing_rating) {
@@ -40,7 +40,7 @@ class ReviewController extends Controller
                 }
                 return redirect()->back()->with('status', "Thank you for Review this product 🤩");
             } else {
-                return redirect()->back()->with('status', "You cannot review a product before your order arrived");
+                return redirect()->back()->with('status', "You cannot review a product without purchase");
             }
         } else {
             return redirect()->back()->with('status', "The link you folowed was broken");

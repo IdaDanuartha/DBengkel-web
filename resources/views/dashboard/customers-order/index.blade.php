@@ -33,7 +33,7 @@
                 <tbody>
                   @foreach ($orders as $order)
                     <tr class="border-b">
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">{{ $loop->iteration }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">{{ $loop->iteration + $orders->firstItem() - 1 }}</td>
                         <td class="p-4 whitespace-nowrap text-sm">{{ $order->created_at->format('d M Y') }}</td>
                         <td class="text-sm font-light p-4 whitespace-nowrap">
                         {{ $order->tracking_no }}

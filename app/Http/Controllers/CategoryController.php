@@ -13,7 +13,6 @@ class CategoryController extends Controller
         return view('dashboard.categories.index', [
             "title" => "Category",
             "categories" => Category::latest()->paginate(10),
-            "category" => new Category()
         ]);
     }
 

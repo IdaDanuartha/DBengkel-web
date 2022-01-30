@@ -21,24 +21,28 @@ class HomeController extends Controller
         ]);
     }
 
-    public function allProducts()
+    public function allProducts(Request $request)
     {
-        // $review = Review::all();
-        // $product = Product::all();
+        // Filter product
+        $filterProduct = $request->input('filter');
 
-        // $product_review = Product::where('review_id', $review->id)->where('product_id', $review->product_id)->first();
-        // $rating_sum = Review::where('product_id', $product->id)->sum('stars_rated')->first();
-
-        // if ($product_review->count() > 0) {
-        //     $rating_value = $rating_sum / $review->count();
-        // } else {
-        //     $rating_value = 0;
-        // }
+        if ($filterProduct == 'latest') {
+            $products = Product::with('category')->latest()->filter(request(['search', 'category']))->paginate(20);
+        } elseif ($filterProduct == 'popular') {
+            $products = Product::with('category')->filter(request(['search', 'category']))->paginate(20);
+        } elseif ($filterProduct == 'lowest-price') {
+            $products = Product::with('category')->orderBy('ori_price', 'DESC')->filter(request(['search', 'category']))->paginate(20);
+        } elseif ($filterProduct == 'highest-price') {
+            $products = Product::with('category')->orderBy('ori_price', 'ASC')->filter(request(['search', 'category']))->paginate(20);
+        } else {
+            $products = Product::with('category')->filter(request(['search', 'category']))->paginate(20);
+        }
 
         return view('frontend.all-products', [
             "title" => "All Products",
-            "products" => Product::with('category')->latest()->filter(request(['search', 'category']))->paginate(20),
-            "categories" => Category::all(),
+            "products" => $products,
+            "categories" => Category::where('status', '1')->get(),
+            "filter" => $filterProduct
         ]);
     }
 
@@ -46,7 +50,7 @@ class HomeController extends Controller
     {
         return view('frontend.category', [
             "title" => "Category Page",
-            "categories" => Category::all(),
+            "categories" => Category::where('status', '1')->get(),
             "popular_categories" => Category::where('popular', '1')->get()
         ]);
     }
@@ -72,12 +76,13 @@ class HomeController extends Controller
 
             if (Product::where('slug', $prod_slug)->exists()) {
                 $category = Category::where('slug', $cate_slug)->first();
-                $related_products = Product::where('category_id', $category->id)->where('status', '1')->take(4)->get();
+                $related_products = Product::inRandomOrder()->where('category_id', $category->id)->where('status', '1')->take(4)->get();
 
                 $product = Product::where('slug', $prod_slug)->first();
+                $productReview = Product::where('slug', $prod_slug)->first();
+
                 $ratings = Review::where('product_id', $product->id)->get();
                 $rating_sum = Review::where('product_id', $product->id)->sum('stars_rated');
-                // $user_rating = Review::where('product_id', $product->id)->where('user_id', Auth::id())->first();
                 $user_review = Review::latest()->where('product_id', $product->id)->get();
                 $review = Review::where('user_id', Auth::id())->where('product_id', $product->id)->first();
 
@@ -89,7 +94,7 @@ class HomeController extends Controller
 
                 $title = $product->name;
                 $countCart = Cart::all();
-                return view('frontend.single-product', compact('product', 'related_products', 'ratings', 'rating_value', 'user_review', 'review', 'title', 'countCart'));
+                return view('frontend.single-product', compact('product', 'productReview', 'related_products', 'ratings', 'rating_value', 'user_review', 'review', 'title', 'countCart'));
             } else {
                 return redirect('/')->with('status', 'The link was broken');
             }
@@ -97,4 +102,11 @@ class HomeController extends Controller
             return redirect('/')->with('status', 'No such category found');
         }
     }
+
+    // public function autocomplete(Request $request)
+    // {
+    //     $data = Product::select("name")->where("name", "LIKE", "%{$request->value}%")->get();
+
+    //     return response()->json($data);
+    // }
 }

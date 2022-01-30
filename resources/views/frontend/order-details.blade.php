@@ -100,6 +100,9 @@
             <div class="rounded w-1/4">
                 <h1 class="text-3xl">Order Details</h1>
                 <div class="my-light-dark-card shadow overflow-hidden sm:rounded-md p-3 mt-3">
+                  @php
+                      $tax = 0;
+                  @endphp
                 @foreach ($orders->orderItems as $item)
                     <div class="flex">
                         <img class="w-16 mr-2" src="/assets/uploads/products/{{ $item->products->main_image }}" alt="">
@@ -116,19 +119,18 @@
                     </div>
                     <hr class="my-3 text-gray-400">
                     @php
-                    $tax = 0;
-                    $totalPrice = 0;
                         if($item->products->disc_price) :
-                          $totalPrice += $item->products->disc_price * $item->quantity;
+                          $tax += $item->products->disc_price;
                         else :
-                          $totalPrice += $item->products->ori_price * $item->quantity;
+                          $tax += $item->products->ori_price;
                         endif;
-
-                        $tax += $totalPrice * 10 / 100;
-                        
-                    @endphp  
+                    @endphp
+                      
                     @endforeach
 
+                    @php
+                      $tax *= 10 / 100;
+                    @endphp
                   <div class="flex justify-between">
                      <p>Delivery</p>
                      <p>Rp {{ number_format(20000, 0, ',', '.') }}</p>

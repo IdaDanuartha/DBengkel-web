@@ -26,6 +26,7 @@
                     <div class="col-span-6 sm:col-span-3">
                       <label for="category_id" class="block text-lg">Category</label>
                       <select id="category_id" name="category_id" class="input-color mt-1 block w-full py-2 px-3 rounded-md shadow-sm focus:outline-none focus:ring-red-400 focus:border-red-400 sm:text-sm">
+                        <optgroup label="Select Category">
                         @foreach ($categories as $category)
                         @if (old('category_id') == $category->id)
                             <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
@@ -33,12 +34,13 @@
                            <option value="{{ $category->id }}">{{ $category->name }}</option>
                         @endif
                         @endforeach
+                        </optgroup>
                       </select>
                     </div>
 
                     <div class="col-span-6 sm:col-span-3">
                       <label for="ori_price" class="block text-lg font-medium">Original Price</label>
-                      <input type="number" name="ori_price" id="ori_price" autocomplete="off" class="mt-1 block w-full py-2 px-3 input-color rounded-md shadow-sm focus:outline-none focus:ring-red-400 focus:border-red-400 sm:text-sm" placeholder="Ex: 45000" value="{{ old('ori_price') }}">
+                      <input type="text" name="ori_price" id="ori_price" autocomplete="off" class="mt-1 block w-full py-2 px-3 input-color rounded-md shadow-sm focus:outline-none focus:ring-red-400 focus:border-red-400 sm:text-sm" placeholder="Rp 50.000" value="{{ old('ori_price') }}">
                       @error('ori_price')
                           <small class="text-red-500 opacity-75">{{ $message }}</small>   
                       @enderror
@@ -46,14 +48,14 @@
 
                     <div class="col-span-6 sm:col-span-3">
                       <label for="disc_price" class="block text-lg font-medium">Discount</label>
-                      <input type="number" name="disc_price" id="disc_price" autocomplete="off" class="mt-1 block w-full py-2 px-3 input-color rounded-md shadow-sm focus:outline-none focus:ring-red-400 focus:border-red-400 sm:text-sm" placeholder="Ex: 35000" value="{{ old('disc_price') }}">
+                      <input type="text" name="disc_price" id="disc_price" autocomplete="off" class="mt-1 block w-full py-2 px-3 input-color rounded-md shadow-sm focus:outline-none focus:ring-red-400 focus:border-red-400 sm:text-sm" placeholder="Rp 35.000" value="{{ old('disc_price') }}">
                       @error('disc_price')
                           <small class="text-red-500 opacity-75">{{ $message }}</small>   
                       @enderror
                     </div>
                     <div class="col-span-6 sm:col-span-3">
                       <label for="quantity" class="block text-lg font-medium">Quantity</label>
-                      <input type="number" name="quantity" id="quantity" autocomplete="off" class="mt-1 block w-full py-2 px-3 border input-color rounded-md shadow-sm focus:outline-none focus:ring-red-400 focus:border-red-400 sm:text-sm" placeholder="Ex: 67" value="{{ old('quantity') }}">
+                      <input type="text" name="quantity" id="quantity" autocomplete="off" class="mt-1 block w-full py-2 px-3 border input-color rounded-md shadow-sm focus:outline-none focus:ring-red-400 focus:border-red-400 sm:text-sm" placeholder="Ex: 67" value="{{ old('quantity') }}">
                       @error('quantity')
                           <small class="text-red-500 opacity-75">{{ $message }}</small>   
                       @enderror

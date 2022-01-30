@@ -9,8 +9,8 @@
                     </div>
                 </div>
             <div class="flex flex-col">
-                <h5 class="text-gray-700 text-sm mb-2">Products</h5>
-                <h1 class="text-gray-800 text-4xl font-medium number-counter" data-value="{{ $productsCount }}">0</h1>
+                <h5 class="text-gray-500 text-sm mb-2">Products</h5>
+                <h1 class="text-4xl font-medium number-counter my-light-dark-text" data-value="{{ $productsCount }}">0</h1>
             </div>
             </div>
 
@@ -21,8 +21,8 @@
                     </div>
                 </div>
             <div class="flex flex-col">
-                <h5 class="text-gray-700 text-sm mb-2">Categories</h5>
-                <h1 class="text-gray-800 text-4xl font-medium number-counter" data-value="{{ $categoriesCount }}">0</h1>
+                <h5 class="text-gray-500 text-sm mb-2">Categories</h5>
+                <h1 class="text-4xl font-medium number-counter my-light-dark-text" data-value="{{ $categoriesCount }}">0</h1>
             </div>
             </div>
 
@@ -33,8 +33,8 @@
                     </div>
                 </div>
             <div class="flex flex-col">
-                <h5 class="text-gray-700 text-sm mb-2">Orders</h5>
-                <h1 class="text-gray-800 text-4xl font-medium number-counter" data-value="{{ $ordersCount }}">0</h1>
+                <h5 class="text-gray-500 text-sm mb-2">Orders</h5>
+                <h1 class="text-4xl font-medium number-counter my-light-dark-text" data-value="{{ $ordersCount }}">0</h1>
             </div>
             </div>
 
@@ -45,8 +45,8 @@
                     </div>
                 </div>
             <div class="flex flex-col">
-                <h5 class="text-gray-700 text-sm mb-2">Users</h5>
-                <h1 class="text-gray-800 text-4xl font-medium number-counter" data-value="{{ $usersCount }}">0</h1>
+                <h5 class="text-gray-500 text-sm mb-2">Users</h5>
+                <h1 class="text-4xl font-medium number-counter my-light-dark-text" data-value="{{ $usersCount }}">0</h1>
             </div>
             </div>
     </div>
@@ -72,7 +72,7 @@
                     {
                         label: 'Customers Order Data Barchart',
                         data: ordersData,
-                        backgroundColor: ['red','orange','yellow','green','blue','indigo','violet','purple','pink','silver','gold','brown'],
+                        backgroundColor: ['red','orange','green','yellow','blue','indigo','violet','purple','pink','silver','gold','brown'],
                     }
                 ]
             },

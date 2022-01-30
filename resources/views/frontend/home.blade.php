@@ -8,8 +8,8 @@
                 <div class="info-area-container">
                     <div class="spacer-div"></div>
                     <div class="info-area" id="info-1">
-                        <h1 class="slide-title">Online Workshop</h1>
-                        <h3 class="slide-sub-text">Lorem Ipsum Dolor Sit Amet Lorem Ipsum Dolor Sit Amet Lorem Ipsum Dolor Sit Amet</h3>
+                        <h1 class="slide-title">DBENGKEL SHOP</h1>
+                        <h3 class="slide-sub-text">Anda ingin belanja keperluan untuk bengkel tapi malas keluar rumah? Tenang kami menjual alat-alat bengkel yang lengkap, berkualitas dan tentunya harganya terjangkau.</h3>
                         @auth
                             <a href="/all-products" class="btn rounded-pill px-3 explore-btn">Explore Now <i class="bi bi-arrow-right"></i></a>
                         @else
@@ -18,7 +18,7 @@
                         @endauth
                     </div>
                 </div>
-                <div class="slide my-light-dark-card" style="background-image: url('/assets/img/vehicle.svg');">
+                <div class="slide my-light-dark-card" style="background-image: url('/assets/img/header-img-2.jpg');">
                 </div>
             </div>
         </div>
@@ -36,10 +36,10 @@
                 <div class="flex justify-center">
                   <a href="/category/{{ $product->category->slug }}/{{ $product->slug }}" class="text-gray-700 duration-500 hover:text-gray-900">
                   <div class="rounded-lg shadow-sm max-w-sm my-light-dark-card-home my-light-dark-text">
-                      {{-- <img class="rounded-t-lg w-full h-60" src="/assets/uploads/products/{{ $product->main_image }}{{ $product->main_image }}" alt=""/> --}}
-                      <img class="rounded-t-lg w-full h-60" src="{{ $product->main_image }}" alt=""/>
+                      <img class="rounded-t-lg w-full h-60" src="/assets/uploads/products/{{ $product->main_image }}" alt=""/>
+                      {{-- <img class="rounded-t-lg w-full h-60" src="{{ $product->main_image }}" alt=""/> --}}
                     <div class="p-6">
-                      <h5 class="text-xl font-medium mb-2">{{ $product->name }}</h5>
+                      <h5 class="text-lg font-medium mb-2">{{ Str::limit($product->name, 40) }}</h5>
       
                       <div class="flex mb-4 text-sm justify-between">
                         <span class="flex items-center">
@@ -66,10 +66,10 @@
       
                       <div class="flex">
                         @if($product->disc_price)
-                          <p class="text-lg">Rp. {{ number_format($product->disc_price, 0, ',', '.') }}</p>
-                          <p class="relative left-2 text-xs text-gray-500"><s>Rp. {{ number_format($product->ori_price, 0, ',', '.') }}</s></p>
+                          <p class="text-lg">Rp {{ number_format($product->disc_price, 0, ',', '.') }}</p>
+                          <p class="relative left-2 text-xs text-gray-500"><s>Rp {{ number_format($product->ori_price, 0, ',', '.') }}</s></p>
                         @else
-                          <div>Rp. {{ number_format($product->ori_price, 0, ',', '.') }}</div>
+                          <div>Rp {{ number_format($product->ori_price, 0, ',', '.') }}</div>
                         @endif                  
                     </div>
                     
@@ -97,10 +97,10 @@
                 <div class="flex justify-center">
                   <a href="/category/{{ $product->category->slug }}/{{ $product->slug }}" class="text-gray-700 duration-500 hover:text-gray-900">
                   <div class="rounded-lg shadow-sm max-w-sm my-light-dark-card my-light-dark-text">
-                    {{-- <img class="rounded-t-lg w-full h-60" src="/assets/products/products/{{ $product->main_image }}" alt=""/> --}}
-                    <img class="rounded-t-lg w-full h-60" src="{{ $product->main_image }}" alt=""/>
+                    <img class="rounded-t-lg w-full h-60" src="/assets/uploads/products/{{ $product->main_image }}" alt=""/>
+                    {{-- <img class="rounded-t-lg w-full h-60" src="{{ $product->main_image }}" alt=""/> --}}
                     <div class="p-6">
-                      <h5 class="text-xl font-medium mb-2">{{ $product->name }}</h5>
+                      <h5 class="text-lg font-medium mb-2">{{ Str::limit($product->name, 40) }}</h5>
       
                       <div class="flex mb-4 text-sm justify-between">
                         <span class="flex items-center">
@@ -127,10 +127,10 @@
       
                       <div class="flex">
                         @if($product->disc_price)
-                          <p class="text-lg">Rp. {{ number_format($product->disc_price, 0, ',', '.') }}</p>
-                          <p class="relative left-2 text-xs text-gray-500"><s>Rp. {{ number_format($product->ori_price, 0, ',', '.') }}</s></p>
+                          <p class="text-lg">Rp {{ number_format($product->disc_price, 0, ',', '.') }}</p>
+                          <p class="relative left-2 text-xs text-gray-500"><s>Rp {{ number_format($product->ori_price, 0, ',', '.') }}</s></p>
                         @else
-                          <div>Rp. {{ number_format($product->ori_price, 0, ',', '.') }}</div>
+                          <div>Rp {{ number_format($product->ori_price, 0, ',', '.') }}</div>
                         @endif                  
                     </div>
                     

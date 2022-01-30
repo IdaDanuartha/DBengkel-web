@@ -14,7 +14,6 @@ class ProductController extends Controller
         return view('dashboard.products.index', [
             "title" => "Products",
             "products" => Product::latest()->paginate(10),
-            "product" => new Product()
         ]);
     }
 
@@ -52,10 +51,9 @@ class ProductController extends Controller
         $products->slug = $request->input('slug');
         $products->category_id = $request->input('category_id');
         $products->description = $request->input('description');
-        $products->ori_price = $request->input('ori_price');
-        $products->disc_price = $request->input('disc_price');
-        $products->quantity = $request->input('quantity');
-        // $products->tax = $request->input('tax');
+        $products->ori_price = str_replace('.', '', $request->input('ori_price'));
+        $products->disc_price = str_replace('.', '', $request->input('disc_price'));
+        $products->quantity = str_replace('.', '', $request->input('quantity'));
         $products->status = $request->input('status') == TRUE ? '1' : '0';
         $products->trending = $request->input('trending') == TRUE ? '1' : '0';
 
@@ -96,9 +94,9 @@ class ProductController extends Controller
         $products->slug = $request->input('slug');
         $products->category_id = $request->input('category_id');
         $products->description = $request->input('description');
-        $products->ori_price = $request->input('ori_price');
-        $products->disc_price = $request->input('disc_price');
-        $products->quantity = $request->input('quantity');
+        $products->ori_price = str_replace('.', '', $request->input('ori_price'));
+        $products->disc_price = str_replace('.', '', $request->input('disc_price'));
+        $products->quantity = str_replace('.', '', $request->input('quantity'));
         // $products->tax = $request->input('tax');
         $products->status = $request->input('status') == TRUE ? '1' : '0';
         $products->trending = $request->input('trending') == TRUE ? '1' : '0';
@@ -118,6 +116,6 @@ class ProductController extends Controller
         }
 
         $products->delete();
-        return redirect('/dashboard/products')->with('status', "Product has been deleted");
+        return redirect('/dashboard/products')->with('status', $products->name . " has been deleted");
     }
 }

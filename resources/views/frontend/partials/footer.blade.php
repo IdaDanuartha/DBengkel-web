@@ -35,9 +35,6 @@
                         <a class="mb-1" href="/category">
                             Category Product
                         </a>
-                        <a class="mb-1" href="">
-                            Contact Us
-                        </a>
                     </div>
                 </div>
 
@@ -52,9 +49,7 @@
             <div class="row text-center bottom-footer my-2">
                
                 <div class="flex justify-center copyright-footer">
-                    <p>Copyright © 2021.</p> 
-                    <img src="/assets/img/WebLogo.png" class="mx-2" alt="logo" width="20px" id="footer-logo">
-                    <p>All Right Reserved</p>
+                    <p>Copyright © 2021 - 2022 DBengkel. All Right Reserved</p>
                 </div>
             </div>
         </div>

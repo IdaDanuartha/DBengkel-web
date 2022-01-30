@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\App;
 
 class RegisterController extends Controller
 {
@@ -20,7 +21,8 @@ class RegisterController extends Controller
             'first_name' => 'required|max:50',
             'last_name' => 'required|max:50',
             'email' => 'required|email:dns|unique:users',
-            'password' => 'required|min:6|max:25'
+            'password' => 'required_with:confirm_password|min:6|same:confirm_password',
+            'confirm_password' => 'min:6',
         ]);
 
         $validatedData['password'] = bcrypt($validatedData['password']);

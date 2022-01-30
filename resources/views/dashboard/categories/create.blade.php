@@ -56,7 +56,7 @@
                     <div class="flex">
                       <div class="flex items-start mr-3">
                         <div class="flex items-center h-5">
-                          <input id="status" name="status" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" value="{{ old('status') }}">
+                          <input id="status" name="status" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" checked>
                         </div>
                         <div class="ml-3 text-sm">
                           <label for="status" class="font-medium">Status</label>
@@ -64,7 +64,7 @@
                       </div>
                       <div class="flex items-start">
                         <div class="flex items-center h-5">
-                          <input id="popular" name="popular" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" value="{{ old('popular') }}">
+                          <input id="popular" name="popular" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
                         </div>
                         <div class="ml-3 text-sm">
                           <label for="popular" class="font-medium">Popular</label>

@@ -7,7 +7,7 @@
     @if ($paginator->onFirstPage())
     {{-- previous disable --}}
     <span
-      class="relative inline-flex items-center px-4 py-2 text-sm font-medium leading-5 text-gray-400 bg-white border border-gray-300 rounded dark:text-gray-400 dark:bg-secondary-700 dark:border-secondary-600">
+      class="relative inline-flex items-center px-4 py-2 text-sm font-medium leading-5 text-gray-400 bg-white border border-gray-300 rounded dark:text-gray-600 dark:bg-secondary-700 dark:border-secondary-600">
       {!! __('pagination.previous') !!}
     </span>
     @else
@@ -26,7 +26,7 @@
     @else
     {{-- next disable --}}
     <span
-      class="relative inline-flex items-center px-4 py-2 ml-3 text-sm font-medium leading-5 text-gray-400 bg-white border border-gray-300 rounded dark:text-gray-400 dark:bg-secondary-700 dark:border-secondary-600">
+      class="relative inline-flex items-center px-4 py-2 ml-3 text-sm font-medium leading-5 text-gray-400 bg-white border border-gray-300 rounded dark:text-gray-600 dark:bg-secondary-700 dark:border-secondary-600">
       {!! __('pagination.next') !!}
     </span>
     @endif
@@ -52,7 +52,7 @@
         <span aria-disabled="true"
           aria-label="{{ __('pagination.previous') }}">
           <span
-            class="relative inline-flex items-center px-2 py-2 text-sm font-medium leading-5 text-gray-400 bg-white border border-gray-300 rounded-l dark:text-gray-400 dark:border-secondary-600 dark:bg-secondary-700"
+            class="relative inline-flex items-center px-2 py-2 text-sm font-medium leading-5 text-gray-400 bg-white border border-gray-300 rounded-l dark:text-gray-600 dark:border-secondary-600 dark:bg-secondary-700"
             aria-hidden="true">
             <svg class="w-5 h-5"
               fill="currentColor"
@@ -95,7 +95,7 @@
         @if ($page == $paginator->currentPage())
         <span aria-current="page">
           <span
-            class="relative inline-flex items-center px-4 py-2 -ml-px text-sm font-medium leading-5 text-gray-400 bg-white border border-gray-300 dark:text-gray-400 dark:border-secondary-600 dark:bg-secondary-700">{{ $page }}</span>
+            class="relative inline-flex items-center px-4 py-2 -ml-px text-sm font-medium leading-5 text-gray-400 bg-white border border-gray-300 dark:text-gray-600 dark:border-secondary-600 dark:bg-secondary-700">{{ $page }}</span>
         </span>
         @else
         {{-- Array Of Links Enable --}}
@@ -128,7 +128,7 @@
         <span aria-disabled="true"
           aria-label="{{ __('pagination.next') }}">
           <span
-            class="relative inline-flex items-center px-2 py-2 -ml-px text-sm font-medium leading-5 text-gray-400 bg-white border border-gray-300 rounded-r dark:text-gray-400 dark:border-secondary-600 dark:bg-secondary-700"
+            class="relative inline-flex items-center px-2 py-2 -ml-px text-sm font-medium leading-5 text-gray-400 bg-white border border-gray-300 rounded-r dark:text-gray-600 dark:border-secondary-600 dark:bg-secondary-700"
             aria-hidden="true">
             <svg class="w-5 h-5"
               fill="currentColor"

@@ -98,17 +98,17 @@
       </li>
   </ul>
   <!-- Left links -->
-  </div>
-  <!-- Collapsible wrapper -->
 
   <!-- Right elements -->
   <div class="flex items-center relative">
     @auth
   <!-- Icon -->
+  @if (Auth::user()->role_as == 0)
   <a class="text-gray-500 hover:text-gray-700 focus:text-gray-700" href="/carts">
     <i class="bi bi-cart text-2xl"></i>
     <span class="cart-counter text-white bg-red-500 absolute rounded-full text-xs -mt-1 -ml-2 py-0.5 px-1.5">0</span>
   </a>
+  @endif
       
   <div class="dropdown relative ml-5 mr-1.5">
     <a class="flex items-center" href="#" id="dropdownMenuButton2" role="button"
@@ -145,9 +145,9 @@
       font-normal
       block
       w-full
-      bg-transparent" >Hi, {{ auth()->user()->first_name }}</p>
+      bg-transparent" >Hi, {{ auth()->user()->first_name . ' ' . auth()->user()->last_name }}</p>
     </li>
-    <li>
+    {{-- <li>
       <p class="
       mx-3
       text-xs
@@ -155,7 +155,7 @@
       block
       w-full
       bg-transparent"><i class="bi bi-envelope"></i> {{ auth()->user()->email }}</p>
-    </li>
+    </li> --}}
 
     @if(auth()->user()->role_as == 0)
       <hr class="m-2">
@@ -187,7 +187,7 @@
       </li>
       @endif
       <hr class="m-2">
-      @if (auth()->user()->role_as == 1)
+    @if (!auth()->user()->role_as == 0)
     <li>
       <a class="
       dropdown-item
@@ -233,17 +233,6 @@
   </div>
   @endauth
 
-  
-  <form action="/all-products" class="ml-0 lg:ml-2 flex body-color my-light-dark-text search-box" id="search-box">
-    @if (request('category'))
-        <input type="hidden" name="category" value="{{ request('category') }}">
-    @endif
-    <input type="text" class="input-search p-1 mr-1 rounded-full" placeholder="Search Product Here..." name="search" id="searching" value="{{ request('search') }}">
-    <button type="submit"><i class="bi bi-search"></i></button>
-  </form>
-  <span class="text-gray-500 hover:text-gray-700 focus:text-gray-700 ml-3">
-    <i id="dark-mode-icon" class="bi bi-moon-fill text-2xl"></i>
-  </span>
   @guest
     @if (!Request::is('/'))
     <a href="/login" class="relative top-0.5 bg-red-400 duration-500 hover:bg-red-500 ml-3 rounded-full text-white py-2 px-3"><i class="bi bi-box-arrow-in-right mr-1"></i> Login</a>
@@ -251,5 +240,18 @@
   @endguest
   </div>
   <!-- Right elements -->
+</div>
+<!-- Collapsible wrapper -->
+
+<form action="/all-products" class="ml-0 lg:ml-2 flex body-color my-light-dark-text search-box" id="search-box">
+  @if (request('category'))
+      <input type="hidden" name="category" value="{{ request('category') }}">
+  @endif
+  <input type="text" class="input-search typeahead p-1 mr-1 rounded-full" placeholder="Search Product Here..." name="search" id="searching" value="{{ request('search') }}">
+  <button type="submit"><i class="bi bi-search"></i></button>
+</form>
+<span class="text-gray-500 hover:text-gray-700 focus:text-gray-700 ml-3">
+  <i id="dark-mode-icon" class="bi bi-moon-fill text-2xl"></i>
+</span>
   </div>
 </nav>

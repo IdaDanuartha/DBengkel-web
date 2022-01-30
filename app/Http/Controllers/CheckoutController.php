@@ -57,12 +57,14 @@ class CheckoutController extends Controller
         foreach ($product_cart_total as $item) {
             if ($item->products->disc_price) {
                 $totalPrice += $item->products->disc_price * $item->product_qty;
+                $product_tax += $item->products->disc_price;
             } else {
                 $totalPrice += $item->products->ori_price * $item->product_qty;
+                $product_tax += $item->products->ori_price;
             }
         }
 
-        $product_tax += $totalPrice * 10 / 100;
+        $product_tax *= 10 / 100;
 
         $totalPrice += $product_tax + 20000;
         $order->total_price = $totalPrice;

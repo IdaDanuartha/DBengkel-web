@@ -24,8 +24,8 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            if (Auth::user()->role_as == '1') {
-                return redirect('/dashboard')->with('login-success', 'Welcome to Dashboard, Admin');
+            if (Auth::user()->role_as == '1' || Auth::user()->role_as == '2') {
+                return redirect('/dashboard')->with('login-success', 'Welcome to Dashboard, ' . Auth::user()->first_name . ' ' . Auth::user()->last_name);
             } else if (Auth::user()->role_as == '0') {
                 return redirect('/')->with('login-success', 'Logged in Succesfully');
             }

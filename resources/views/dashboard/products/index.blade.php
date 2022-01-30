@@ -45,32 +45,32 @@
                 <tbody>
                   @foreach ($products as $product)
                     <tr class="border-b">
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">{{ $loop->iteration }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">{{ $loop->iteration + $products->firstItem() - 1 }}</td>
                         <td class="text-sm font-light px-6 py-4 whitespace-nowrap">
                         {{ $product->name }}
                         </td>
                         <td class="text-sm font-light px-6 py-4 whitespace-nowrap">
                           {{ $product->category->name }}
                         </td>
-                        <td class="text-sm font-light px-6 py-4 whitespace-nowrap">
-                        {{ $product->ori_price}}
+                        <td class="text-sm text-center font-light px-6 py-4 whitespace-nowrap">
+                          Rp {{ number_format($product->ori_price, 0, ',', '.') }}
                         </td>
                         @if($product->disc_price)
-                          <td class="text-sm font-light px-6 py-4 whitespace-nowrap">
-                            {{ $product->disc_price}}
+                          <td class="text-sm text-center font-light px-6 py-4 whitespace-nowrap">
+                            Rp {{ number_format($product->disc_price, 0, ',', '.') }}
                           </td>
                         @else
-                          <td class="text-lg font-light px-6 py-4 whitespace-nowrap">
+                          <td class="text-lg text-center font-light px-6 py-4 whitespace-nowrap">
                             -
                           </td>
                         @endif
-                        <td class="text-sm font-light px-6 py-4 whitespace-nowrap">
+                        <td class="text-sm text-center font-light px-6 py-4 whitespace-nowrap">
                           {{ $product->quantity }}
                         </td>
-                        <td class="text-sm font-light px-6 py-4 whitespace-nowrap font--medium {{ $product->status == 0 ? 'text-red-500':'' }}" style="{{ $product->status == 1 ? 'color: rgb(34 197 94);':'' }}">
+                        <td class="text-sm text-center font-light px-6 py-4 whitespace-nowrap font--medium {{ $product->status == 0 ? 'text-red-500':'' }}" style="{{ $product->status == 1 ? 'color: rgb(34 197 94);':'' }}">
                           {{ $product->status == 1 ? 'Active':'Not Active' }}
                         </td>
-                        <td class="text-sm font-light px-6 py-4 whitespace-nowrap font--medium {{ $product->trending == 0 ? 'text-red-500':'' }}" style="{{ $product->trending == 1 ? 'color: rgb(34 197 94);':'' }}">
+                        <td class="text-sm text-center font-light px-6 py-4 whitespace-nowrap font--medium {{ $product->trending == 0 ? 'text-red-500':'' }}" style="{{ $product->trending == 1 ? 'color: rgb(34 197 94);':'' }}">
                           {{ $product->trending == 1 ? 'Yes':'No' }}
                         </td>
                         <td class="text-sm font-light px-6 py-4 whitespace-nowrap">

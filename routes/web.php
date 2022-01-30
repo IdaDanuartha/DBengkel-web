@@ -25,16 +25,14 @@ use App\Http\Controllers\DashboardController;
 */
 
 // Home
-Route::get('/', [HomeController::class, 'index'])->name('/');
+Route::get('/', [HomeController::class, 'index']);
 Route::get('/category', [HomeController::class, 'category']);
 Route::get('/all-products', [HomeController::class, 'allProducts']);
 Route::get('/category/{slug}', [HomeController::class, 'viewCategories']);
 Route::get('/category/{cate_slug}/{prod_slug}', [HomeController::class, 'viewProduct']);
 
-// Route::get('/product-autocomplete', [HomeController::class, 'ajaxAutocomplete']);
-
 // Login
-Route::get('/login', [LoginController::class, 'index'])->middleware('guest');
+Route::get('/login', [LoginController::class, 'index'])->middleware('guest')->name('/login');
 Route::post('/login', [LoginController::class, 'auth']);
 
 // Logout

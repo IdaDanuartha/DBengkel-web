@@ -247,8 +247,8 @@ body {
 /* Dashboard style */
 #order-chart,
 #user-highchart {
-    height: 400px;
-    width: 800px;
+    height: auto;
+    width: 90%;
     margin: 50px auto;
 }
 

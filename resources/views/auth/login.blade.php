@@ -47,28 +47,30 @@
             @enderror
         </div>
         <div class="form-group mb-1">
-            <input type="password" class="btn-password" id="password" name="password" autocomplete="off" required>   
+            <input type="password" class="btn-password form-password" id="password" name="password" autocomplete="off" required>   
             <span></span>
             <label for="password" class="my-light-dark-text"><i class="fas fa-lock"></i> Password</label>
-
-            <div class="toggle toggle-show" onclick="showHide()">
-                <i class="bi bi-eye-fill my-light-dark-text"></i>
-            </div>
-            <div class="toggle toggle-hide d-none" onclick="showHide()">
-                <i class="bi bi-eye-slash-fill my-light-dark-text"></i>
-            </div>
             @error('password')
                 <div class="invalid-feedback">
                     {{ $message }}
                 </div>
             @enderror
         </div>
-        <div class="text-div d-flex justify-content-end">
-            <a class="small my-light-dark-text" href="#">Forgot Password?</a>
+
+        <div class="flex justify-between mt-3">
+            <div>
+                <input type="checkbox" class="form-checkbox mr-1" id="show-pass">
+                <label class="inline-block text-gray-800" for="show-pass">
+                Show Password
+                </label>
+            </div>
+            <div class="text-div d-flex justify-content-end">
+                <a class="small" href="#">Forgot Password?</a>
+            </div>
         </div>
 
         <button type="submit" class="rounded-pill" name="login">
-            Login
+            Sign In
         </button>
     </form>
     <hr>

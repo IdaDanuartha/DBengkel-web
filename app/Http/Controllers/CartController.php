@@ -31,26 +31,30 @@ class CartController extends Controller
         $product_quantity = $request->input('product_quantity');
 
         if (Auth::check()) {
-            $product_check = Product::where('id', $product_id)->first();
+            if (Auth::user()->role_as == 0) {
+                $product_check = Product::where('id', $product_id)->first();
 
-            if ($product_check) {
+                if ($product_check) {
 
-                if (Cart::where('product_id', $product_id)->where('user_id', Auth::id())->exists()) {
-                    return response()->json(['status' => $product_check->name . " Already Added to Cart"]);
-                } else {
-                    $cartItem = new Cart();
-                    if ($product_quantity <= $product_check->quantity) {
-
-                        $cartItem->product_id = $product_id;
-                        $cartItem->user_id = Auth::id();
-                        $cartItem->product_qty = $product_quantity;
-                        $cartItem->save();
-
-                        return response()->json(['status' => $product_check->name . " Added to Cart"]);
+                    if (Cart::where('product_id', $product_id)->where('user_id', Auth::id())->exists()) {
+                        return response()->json(['status' => $product_check->name . " Already Added to Cart"]);
                     } else {
-                        return response()->json(['status' => "The product has only " . $product_check->quantity . " items left"]);
+                        $cartItem = new Cart();
+                        if ($product_quantity <= $product_check->quantity) {
+
+                            $cartItem->product_id = $product_id;
+                            $cartItem->user_id = Auth::id();
+                            $cartItem->product_qty = $product_quantity;
+                            $cartItem->save();
+
+                            return response()->json(['status' => $product_check->name . " Added to Cart"]);
+                        } else {
+                            return response()->json(['status' => "The product has only " . $product_check->quantity . " items left"]);
+                        }
                     }
                 }
+            } else {
+                return response()->json(['status' => "Admin can't buy product"]);
             }
         } else {
             return response()->json(['status' => "Login to Continue"]);

@@ -36,7 +36,7 @@
                 <tbody>
                   @foreach ($categories as $category)
                     <tr class="border-b">
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">{{ $loop->iteration }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">{{ $loop->iteration + $categories->firstItem() - 1 }}</td>
                         <td class="text-sm font-light px-6 py-4 whitespace-nowrap">
                         {{ $category->name }}
                         </td>

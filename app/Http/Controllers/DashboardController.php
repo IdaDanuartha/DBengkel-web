@@ -61,7 +61,7 @@ class DashboardController extends Controller
     {
         return view('dashboard.users.index', [
             "title" => "Users Registered",
-            "users" => User::latest()->paginate(10)
+            "users" => User::paginate(10)
         ]);
     }
 }

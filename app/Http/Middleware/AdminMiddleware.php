@@ -19,13 +19,13 @@ class AdminMiddleware
     {
 
         if (Auth::check()) {
-            if (Auth::user()->role_as == '1') {
+            if (Auth::user()->role_as == '1' || Auth::user()->role_as == '2') {
                 return $next($request);
             } else {
                 return redirect('/')->with('status', 'Access Denied! As you are not Admin');
             }
         } else {
-            return redirect('/')->with('status', 'Please Login First');
+            return redirect('/login')->with('status', 'Please Login First');
         }
     }
 }
