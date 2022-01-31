@@ -108,14 +108,14 @@ class ProductController extends Controller
 
     public function destroy($id)
     {
-        $products = Product::find($id);
+        $product = Product::find($id);
 
-        $path = 'assets/uploads/products/' . $products->main_image;
+        $path = 'assets/uploads/products/' . $product->main_image;
         if (File::exists($path)) {
             File::delete($path);
         }
 
-        $products->delete();
-        return redirect('/dashboard/products')->with('status', $products->name . " has been deleted");
+        $product->delete();
+        return redirect('/dashboard/products')->with('status', $product->name . " has been deleted");
     }
 }

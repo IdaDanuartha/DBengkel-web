@@ -20,10 +20,10 @@ class CreateProductsTable extends Migration
             $table->string('name')->unique();
             $table->string('slug')->unique();
             $table->longText('description');
-            $table->string('ori_price');
-            $table->string('disc_price')->nullable();
+            $table->integer('ori_price');
+            $table->integer('disc_price')->nullable();
             $table->string('main_image');
-            $table->string('quantity');
+            $table->integer('quantity');
             // $table->string('tax');
             $table->tinyInteger('status');
             $table->tinyInteger('trending');

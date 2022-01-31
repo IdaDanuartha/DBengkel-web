@@ -14,6 +14,9 @@
                       #
                     </th>
                     <th scope="col" class="text-sm font-medium px-6 py-4 text-left">
+                      Image
+                    </th>
+                    <th scope="col" class="text-sm font-medium px-6 py-4 text-left">
                       Name
                     </th>
                     {{-- <th scope="col" class="text-sm font-medium px-6 py-4 text-left">
@@ -26,9 +29,6 @@
                       Popular
                     </th>
                     <th scope="col" class="text-sm font-medium px-6 py-4 text-left">
-                      Image
-                    </th>
-                    <th scope="col" class="text-sm font-medium px-6 py-4 text-left">
                         Action
                     </th>
                   </tr>
@@ -37,6 +37,9 @@
                   @foreach ($categories as $category)
                     <tr class="border-b">
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">{{ $loop->iteration + $categories->firstItem() - 1 }}</td>
+                        <td class="text-sm font-light px-6 py-4 whitespace-nowrap">
+                          <img src="/assets/uploads/categories/{{ $category->main_image }}" width="60px" class="rounded img-preview" alt="">
+                        </td>
                         <td class="text-sm font-light px-6 py-4 whitespace-nowrap">
                         {{ $category->name }}
                         </td>
@@ -48,10 +51,7 @@
                         </td>
                         <td class="text-sm font-light px-6 py-4 whitespace-nowrap font--medium {{ $category->popular == 0 ? 'text-red-500':'' }}" style="{{ $category->popular == 1 ? 'color: rgb(34 197 94);':'' }}">
                           {{ $category->popular == 1 ? 'Yes':'No' }}
-                        </td>
-                        <td class="text-sm font-light px-6 py-4 whitespace-nowrap">
-                          <img src="/assets/uploads/categories/{{ $category->main_image }}" width="60px" class="rounded img-preview" alt="">
-                        </td>
+                        </td>                        
                         <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                             <a href="/dashboard/category/edit/{{ $category->id }}" class="btn-effect btn-edit py-2 px-4 rounded text-xs"><ion-icon name="create-outline" class="relative top-0.5 right-1"></ion-icon>Edit</a>
                             <a href="#" class="btn-effect btn-delete py-2 px-4 rounded text-xs" onclick="deleteConfirm(event, {{ $category->id }})"><ion-icon name="trash-outline" class="relative top-0.5 right-1"></ion-icon>Delete</a>

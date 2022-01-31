@@ -4,7 +4,7 @@
         <ul class="absolute top-0 left-0 w-full">
             <li id="first-child">
                 <a href="/">
-                    <span class="icon"><img src="/assets/img/webLogo.png" width="15px" alt="Logo"></span>
+                    <span class="icon"><img src="/assets/img/webLogo2.png" alt="Logo"></span>
                     <span class="title">D'BENGKEL</span>
                 </a>
             </li>

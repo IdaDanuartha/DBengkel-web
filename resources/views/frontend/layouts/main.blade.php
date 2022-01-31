@@ -19,10 +19,17 @@
     <link rel="stylesheet" href="/css/app.css">
     
     <!-- Icon -->
-    <link rel="icon" type="image/x-icon" href="/assets/img/WebLogo.png" />
+    <link rel="icon" type="image/x-icon" href="/assets/img/WebLogo2.png" />
 
     <!-- Bootstrap icon -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+
+    <!-- Jquery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+
+    {{-- Boostrap script --}}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
     {{-- Jquery Ui --}}
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
@@ -42,7 +49,7 @@
 <body style="font-family: 'Poppins', sans-serif;">
     <!-- Loader -->
     <div class="spinner">
-        <img src="/assets/img/WebLogo.png" alt="Logo">
+        <img src="/assets/img/WebLogo2.png" alt="Logo">
     </div>
 
     @include('frontend.partials.navbar')
@@ -51,13 +58,6 @@
 
     @include('frontend.partials.footer')
 
-
-    <!-- Jquery -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
-
-    {{-- Boostrap script --}}
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
     {{-- Sweetalert2 --}}
     <script src="/assets/js/sweetalert2/sweetalert2.all.min.js"></script>
@@ -71,18 +71,6 @@
     <script src="/assets/js/cart.js"></script>
 
     @yield('scripts')
-
-    {{-- <script>
-        var path = "{{ route('autocomplete') }}";
-
-        $('#searching.typeahead').typeahead({
-            source: function(value, proccess) {
-                return $.get(path,{value:value}, function(data) {
-                    return proccess(data);
-                });
-            }
-        });
-    </script> --}}
 
     <script>
         // Loader

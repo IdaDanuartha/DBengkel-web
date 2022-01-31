@@ -3,7 +3,7 @@
 @section('main-content')
     {{-- Start Sort by --}}
     <div class="container pt-36">
-      {{-- Breadcrumbs --}}
+      {{-- Breadcrumbs
       <nav class="nav-footer-color py-3 px-4 font-bold mb-5 rounded" aria-label="Breadcrumb">
         <ol class="list-none p-0 inline-flex">
           <li class="flex items-center">
@@ -13,7 +13,11 @@
             <p class="text-gray-500">All Products</p>
           </li>
         </ol>
-      </nav>
+      </nav> --}}
+
+      @if(request('search'))
+        <p class="text-gray-400 text-xl mb-10"><i class="bi bi-lightbulb mr-1"></i>Search result for <span class="text-red-400">'{{ request('search') }}'</span></p>
+      @endif
 
       <div class="rounded my-light-dark-card p-4 flex items-center font-medium mb-10 border-1 border-gray-300">
             <h5 class="mr-5 flex text-xl my-light-dark-text"><i class="bi bi-filter mr-1"></i> Sort By</h5>
@@ -86,16 +90,13 @@
       </div>
     {{-- End sort by --}}
 
-    @if(request('search'))
-      <p class="text-gray-400 text-2xl mt-3.5 mb-10"><i class="bi bi-lightbulb mr-1"></i>Search result for <span class="text-red-400">'{{ request('search') }}'</span></p>
-    @endif
     @if($products->count() > 0)
         <div class="mb-10 mt-10 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
           @foreach ($products as $product)
           @if($product->status == 1)
           <div class="flex justify-center">
             <div class="rounded-lg shadow-md my-light-dark-card max-w-sm">
-              <a href="/category/{{ $product->category->slug }}/{{ $product->slug }}">
+              <a href="/category/{{ $product->category_slug }}/{{ $product->slug }}">
                 <img class="rounded-t-lg w-full h-60" src="/assets/uploads/products/{{ $product->main_image }}" alt=""/>
                 {{-- <img class="rounded-t-lg w-full h-60" src="{{ $product->main_image }}" alt=""/> --}}
       

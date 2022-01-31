@@ -63,7 +63,7 @@
     </div>
     <div class="mt-3">
         <input type="checkbox" class="form-checkbox mr-1" id="show-pass">
-        <label class="inline-block text-gray-800" for="show-pass">
+        <label class="inline-block my-light-dark-text" for="show-pass">
           Show Password
         </label>
     </div>

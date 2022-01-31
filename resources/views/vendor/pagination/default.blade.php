@@ -12,14 +12,14 @@
     </span>
     @else
     {{-- previous enable --}}
-    <a href="{{ $paginator->previousPageUrl() }}"
+    <a href="{{ $paginator->previousPageUrl() }}&search={{ request('search') }}&category={{ request('category') }}&filter={{ request('filter') }}"
       class="relative inline-flex items-center px-4 py-2 text-sm font-medium leading-5 transition bg-white border border-gray-300 rounded dark:text-gray-200 dark:border-secondary-600 hover:text-gray-400 dark:hover:text-gray-300 focus:outline-none focus:border-primary-300 focus:ring focus:ring-primary-300 focus:ring-opacity-30 dark:bg-secondary-700 dark:focus:ring-primary-500 dark:focus:ring-opacity-30">
       {!! __('pagination.previous') !!}
     </a>
     @endif
     {{-- next enable --}}
     @if ($paginator->hasMorePages())
-    <a href="{{ $paginator->nextPageUrl() }}"
+    <a href="{{ $paginator->nextPageUrl() }}&search={{ request('search') }}&category={{ request('category') }}&filter={{ request('filter') }}"
       class="relative inline-flex items-center px-4 py-2 text-sm font-medium leading-5 transition bg-white border border-gray-300 rounded dark:text-gray-200 dark:border-secondary-600 hover:text-gray-400 dark:hover:text-gray-300 focus:outline-none focus:border-primary-300 focus:ring focus:ring-primary-300 focus:ring-opacity-30 dark:bg-secondary-700 dark:focus:ring-primary-500 dark:focus:ring-opacity-30">
       {!! __('pagination.next') !!}
     </a>
@@ -65,7 +65,7 @@
         </span>
         @else
         {{-- Previous Page Link Enable --}}
-        <a href="{{ $paginator->previousPageUrl() }}"
+        <a href="{{ $paginator->previousPageUrl() }}&search={{ request('search') }}&category={{ request('category') }}&filter={{ request('filter') }}"
           rel="prev"
           class="relative inline-flex items-center px-2 py-2 text-sm font-medium leading-5 transition bg-white border border-gray-300 rounded-l hover:text-gray-400 focus:z-10 focus:outline-none focus:border-primary-300 focus:ring focus:ring-primary-300 focus:ring-opacity-30 dark:focus:ring-primary-500 dark:focus:ring-opacity-30 dark:text-gray-300 dark:border-secondary-600 dark:bg-secondary-700"
           aria-label="{{ __('pagination.previous') }}">
@@ -99,7 +99,7 @@
         </span>
         @else
         {{-- Array Of Links Enable --}}
-        <a href="{{ $url }}"
+        <a href="{{ $url }}&search={{ request('search') }}&category={{ request('category') }}&filter={{ request('filter') }}"
           class="relative inline-flex items-center px-4 py-2 -ml-px text-sm font-medium leading-5 transition bg-white border border-gray-300 hover:text-gray-400 dark:hover:text-gray-300 focus:z-10 focus:outline-none focus:border-primary-300 focus:ring focus:ring-primary-300 focus:ring-opacity-30 dark:focus:ring-primary-500 dark:focus:ring-opacity-30 dark:text-gray-200 dark:border-secondary-600 dark:bg-secondary-700"
           aria-label="{{ __('pagination.goto_page', ['page' => $page]) }}">
           {{ $page }}
@@ -111,7 +111,7 @@
 
         {{-- Next Page Link Enable --}}
         @if ($paginator->hasMorePages())
-        <a href="{{ $paginator->nextPageUrl() }}"
+        <a href="{{ $paginator->nextPageUrl() }}&search={{ request('search') }}&category={{ request('category') }}&filter={{ request('filter') }}"
           rel="next"
           class="relative inline-flex items-center px-2 py-2 -ml-px text-sm font-medium leading-5 transition bg-white border border-gray-300 rounded-r hover:text-gray-400 focus:z-10 focus:outline-none focus:border-primary-300 focus:ring focus:ring-primary-300 focus:ring-opacity-30 dark:focus:ring-primary-500 dark:focus:ring-opacity-30 dark:text-gray-200 dark:border-secondary-600 dark:bg-secondary-700"
           aria-label="{{ __('pagination.next') }}">

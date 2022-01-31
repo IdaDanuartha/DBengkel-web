@@ -124,8 +124,7 @@ body {
 }
 
 .sidebar ul #first-child img {
-    width: 35px;
-    background-color: #fff;
+    width: 42px;
     margin: 10px;
     padding: 5px;
     border-radius: 50%;
@@ -290,6 +289,118 @@ body {
 .btn-delete {
     background-color: rgb(239 68 68);
 }
+
+/* Modal Box Style */
+/* .button {
+    width: 200px;
+    background-color: #1de9b6;
+    border-radius: 0.5em;
+    border-bottom: 0.25em solid #00bfa5;
+    border-left: 0.15em solid #00bfa5;
+    box-shadow: -1px 2px 3px rgba(0, 0, 0, 0.3);
+    color: #009688;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 25px;
+    margin: 8em auto;
+    text-align: center;
+}
+
+.button:hover {
+    background-color: #64ffda;
+    border-bottom-width: 0;
+    border-left: 0;
+    cursor: pointer;
+    margin-top: 8.2em;
+}
+
+.modal-container {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+}
+
+.modal-box {
+    width: 50%;
+    height: auto;
+    background-color: #fff;
+    border-radius: 1em;
+    box-shadow: -1px 2px 4px rgba(0, 0, 0, 0.3);
+    position: absolute;
+    top: 10%;
+    left: -75%;
+}
+
+.modal-header {
+    width: 100%;
+    height: 100px;
+    background-color: tomato;
+    border-top-left-radius: 1em;
+    border-top-right-radius: 1em;
+    box-sizing: border-box;
+    padding: 15px 30px;
+}
+
+.modal-header h2 {
+    color: #fff;
+    text-shadow: -2px 2px #e53935;
+    float: left;
+    font-family: "Amatic SC", cursive;
+    font-size: 3em;
+    letter-spacing: 1px;
+    max-width: 70%;
+}
+
+.modal-content {
+    padding: 15px 30px;
+    padding-bottom: 25px;
+    text-align: justify;
+}
+
+.btn_close {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    background-color: black;
+    border-radius: 50%;
+    color: #fff;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bolder;
+    text-align: center;
+    float: right;
+}
+
+.btn_close:hover {
+    animation-name: btn_close;
+    animation-duration: 1s;
+    font-size: 23px;
+}
+
+@keyframes btn_close {
+    0% {
+        transform: rotate(-20deg);
+    }
+
+    50% {
+        transform: rotate(20deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+@media (max-width: 600px) {
+    .modal-box {
+        width: 90%;
+    }
+} */
 
 
 /* Product style */

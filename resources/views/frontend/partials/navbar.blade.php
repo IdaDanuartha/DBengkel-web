@@ -84,7 +84,7 @@
   </button>
   <div class="collapse navbar-collapse flex-grow items-center" id="navbarSupportedContent">
     <a class="font-semibold	flex text-lg items-center my-light-dark-text duration-500 hover:text-gray-100
-    mr-5 my-2" href="/"><img src="/assets/img/WebLogo.png" alt="Logo" class="w-8 mr-2"> D' BENGKEL</a>
+    mr-5 my-2" href="/"><img src="/assets/img/WebLogo2.png" alt="Logo" class="w-8 mr-2"> D' BENGKEL</a>
   <!-- Left links -->
   <ul class="navbar-nav flex flex-col pl-0 list-style-none mr-auto">
     <li class="nav-item p-2">

@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\User;
+use App\Models\Review;
 use App\Models\Product;
 use App\Models\Category;
-use App\Models\Review;
-use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -25,17 +26,51 @@ class HomeController extends Controller
     {
         // Filter product
         $filterProduct = $request->input('filter');
+        $category = $request->input('category');
+        $search = $request->input('search');
+
 
         if ($filterProduct == 'latest') {
-            $products = Product::with('category')->latest()->filter(request(['search', 'category']))->paginate(20);
+            $products = DB::table('products')
+                ->select('products.slug', 'products.status', 'products.main_image', 'products.name', 'products.disc_price', 'products.ori_price', 'categories.name AS category_name', 'categories.slug AS category_slug')
+                ->join('categories', 'products.category_id', '=', 'categories.id')
+                ->where('categories.name', 'LIKE', '%' . $category . '%')
+                ->where('products.name', 'LIKE', '%' . $search . '%')
+                ->orderBy('products.created_at', 'DESC')
+                ->paginate(20);
         } elseif ($filterProduct == 'popular') {
-            $products = Product::with('category')->filter(request(['search', 'category']))->paginate(20);
+            $products = DB::table('products')
+                ->select('products.slug', 'products.status', 'products.main_image', 'products.name', 'products.disc_price', 'products.ori_price', 'categories.name AS category_name', 'categories.slug AS category_slug')
+                ->join('categories', 'products.category_id', '=', 'categories.id')
+                ->where('categories.name', 'LIKE', '%' . $category . '%')
+                ->where('products.name', 'LIKE', '%' . $search . '%')
+                ->orderBy('products.trending', 'DESC')
+                ->paginate(20);
         } elseif ($filterProduct == 'lowest-price') {
-            $products = Product::with('category')->orderBy('ori_price', 'DESC')->filter(request(['search', 'category']))->paginate(20);
+            $products = DB::table('products')
+                ->select('products.slug', 'products.status', 'products.main_image', 'products.name', 'products.disc_price', 'products.ori_price', 'categories.name AS category_name', 'categories.slug AS category_slug')
+                ->addSelect(DB::raw('IF(disc_price IS NULL, ori_price, disc_price ) AS current_price'))
+                ->join('categories', 'products.category_id', '=', 'categories.id')
+                ->where('categories.name', 'LIKE', '%' . $category . '%')
+                ->where('products.name', 'LIKE', '%' . $search . '%')
+                ->orderBy('current_price', 'ASC')
+                ->paginate(20);
         } elseif ($filterProduct == 'highest-price') {
-            $products = Product::with('category')->orderBy('ori_price', 'ASC')->filter(request(['search', 'category']))->paginate(20);
+            $products = DB::table('products')
+                ->select('products.slug', 'products.status', 'products.main_image', 'products.name', 'products.disc_price', 'products.ori_price', 'categories.name AS category_name', 'categories.slug AS category_slug')
+                ->addSelect(DB::raw('IF(disc_price IS NULL, ori_price, disc_price ) AS current_price'))
+                ->join('categories', 'products.category_id', '=', 'categories.id')
+                ->where('categories.name', 'LIKE', '%' . $category . '%')
+                ->where('products.name', 'LIKE', '%' . $search . '%')
+                ->orderBy('current_price', 'DESC')
+                ->paginate(20);
         } else {
-            $products = Product::with('category')->filter(request(['search', 'category']))->paginate(20);
+            $products = DB::table('products')
+                ->select('products.slug', 'products.status', 'products.main_image', 'products.name', 'products.disc_price', 'products.ori_price', 'categories.name AS category_name', 'categories.slug AS category_slug')
+                ->join('categories', 'products.category_id', '=', 'categories.id')
+                ->where('categories.name', 'LIKE', '%' . $category . '%')
+                ->where('products.name', 'LIKE', '%' . $search . '%')
+                ->paginate(20);
         }
 
         return view('frontend.all-products', [

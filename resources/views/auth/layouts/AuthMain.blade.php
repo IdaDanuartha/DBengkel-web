@@ -15,8 +15,11 @@
     {{-- Font Awesome --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    {{-- Jquery --}}
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <!-- Icon -->
-    <link rel="icon" type="image/x-icon" href="/assets/img/WebLogo.png" />
+    <link rel="icon" type="image/x-icon" href="/assets/img/WebLogo2.png" />
 
     <!-- Bootstrap icon -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
@@ -39,7 +42,7 @@ background-size: cover; background-repeat: no-repeat; height: 100vh; font-family
 
         <div id="card-container" class="col-xl-10 col-lg-12 col-md-9">
 
-            <div class="my-light-dark-card card o-hidden border-0 shadow-lg my-5">
+            <div class="my-light-dark-card-auth card o-hidden border-0 shadow-lg my-5">
                 <div class="card-body p-0">
                     <div class="row">
                         <div class="col-lg-12">
@@ -59,9 +62,7 @@ background-size: cover; background-repeat: no-repeat; height: 100vh; font-family
     </div>
 
     
-    {{-- Jquery --}}
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
+    
     {{-- My script --}}
     <script src="/assets/js/main.js"></script>
 

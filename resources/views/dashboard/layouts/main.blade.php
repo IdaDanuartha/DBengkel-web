@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     
     <!-- Icon -->
-    <link rel="icon" type="image/x-icon" href="/assets/img/WebLogo.png" />
+    <link rel="icon" type="image/x-icon" href="/assets/img/WebLogo2.png" />
 
     {{-- Tailwind css --}}
     <link rel="stylesheet" href="/css/app.css">
@@ -16,6 +16,19 @@
 
     {{-- My Style --}}
     <link rel="stylesheet" href="/assets/dashboard/css/dashboard.css">
+
+    {{-- ionicons script --}}
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+
+    {{-- jquery --}}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    {{-- Chart.js --}}
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js" integrity="sha512-vBmx0N/uQOXznm/Nbkp7h0P1RfLSj0HQrFSzV8m7rOGyj30fYAOKHYvCNez+yM8IrfnW0TCodDEjRqf6fodf/Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     
     <title>{{ $title }} | D'BENGKEL</title>
 </head>
@@ -34,20 +47,9 @@
     </div>
 
 
-{{-- ionicons script --}}
-<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
 {{-- Sweet alert 2 --}}
 <script src="/assets/js/sweetalert2/sweetalert2.all.min.js"></script>
-
-{{-- jquery --}}
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
-{{-- Chart.js --}}
-<script src="https://code.highcharts.com/highcharts.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js" integrity="sha512-vBmx0N/uQOXznm/Nbkp7h0P1RfLSj0HQrFSzV8m7rOGyj30fYAOKHYvCNez+yM8IrfnW0TCodDEjRqf6fodf/Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
 
 {{-- My script --}}
 <script src="/assets/dashboard/js/dashboard.js"></script>

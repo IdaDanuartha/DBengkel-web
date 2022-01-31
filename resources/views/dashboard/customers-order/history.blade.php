@@ -39,7 +39,7 @@
                         {{ $order->tracking_no }}
                         </td>
                         <td class="text-sm font-light p-4 whitespace-nowrap">
-                            Rp. {{ $order->total_price }}
+                            Rp {{ $order->total_price }}
                         </td>
                         <td class="text-sm font-medium p-4 whitespace-nowrap" style="color: rgb(22 163 74);">
                           Order Completed

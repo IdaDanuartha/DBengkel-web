@@ -3,7 +3,7 @@
 @section('main-content')
         <!-- Start Category Product section -->
     
-        <section class="category-products pt-40 pb-6 uppercase font-medium" id="featured-product">
+        <section class="category-products pt-40 pb-6" id="featured-product">
             <div class="container">
                 {{-- Breadcrumbs --}}
                 <nav class="nav-footer-color py-3 px-4 font-bold mb-5 rounded" aria-label="Breadcrumb">
@@ -17,7 +17,7 @@
                     </ol>
                 </nav>
 
-                <h2 class="mb-5 text-4xl">All Category</h2>                   
+                <h2 class="mb-5 text-3xl uppercase">All Category</h2>                   
                     <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4">
                         @foreach ($categories as $category)
                         @if($category->status == 1)
@@ -41,7 +41,7 @@
             </div>
 
             <div class="container">
-                <h2 class="mb-5 text-4xl mt-20">Popular Category</h2>
+                <h2 class="mb-5 text-3xl mt-20 uppercase">Popular Category</h2>
                 <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4">
                     @foreach ($popular_categories as $category)
                     @if($category->status == 1)

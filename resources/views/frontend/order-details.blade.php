@@ -74,14 +74,17 @@
                           <div class="col-span-6 sm:col-span-3">
                               <label class="font-medium text-md mb-3">Address Type</label>
                               <div class="flex">
-                                <div class="mr-10 flex">
-                                  <input type="radio" class="mr-2" name="address_type" {{ ($orders->address_type == 1) ? 'checked':'' }} disabled id="home">
+                                @if($orders->address_type == 1)
+                                <div class="flex">
+                                  <input type="radio" class="mr-2" checked>
                                   <label class="relative -top-1" for="home">Home</label>
                                 </div>
+                                @else
                                 <div class="flex">
-                                  <input type="radio" class="mr-2" name="address_type" {{ ($orders->address_type == 2) ?'checked':'' }} disabled id="office">
+                                  <input type="radio" class="mr-2" checked>
                                   <label class="relative -top-1" for="office">Office</label>
                                 </div>
+                                @endif
                               </div>
                           </div>
 
