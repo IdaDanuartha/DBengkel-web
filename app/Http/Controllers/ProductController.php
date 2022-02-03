@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 
 class ProductController extends Controller
 {
@@ -14,16 +15,17 @@ class ProductController extends Controller
         return view('dashboard.products.index', [
             "title" => "Products",
             "products" => Product::latest()->paginate(10),
+            "categories" => Category::where('status', '1')->get()
         ]);
     }
 
-    public function create()
-    {
-        return view('dashboard.products.create', [
-            "title" => "Create new product",
-            "categories" => Category::all()
-        ]);
-    }
+    // public function create()
+    // {
+    //     return view('dashboard.products.create', [
+    //         "title" => "Create new product",
+    //         "categories" => Category::all()
+    //     ]);
+    // }
 
     public function insert(Request $request)
     {
@@ -52,7 +54,11 @@ class ProductController extends Controller
         $products->category_id = $request->input('category_id');
         $products->description = $request->input('description');
         $products->ori_price = str_replace('.', '', $request->input('ori_price'));
-        $products->disc_price = str_replace('.', '', $request->input('disc_price'));
+
+        if ($products->disc_price) {
+            $products->disc_price = str_replace('.', '', $request->input('disc_price'));
+        }
+
         $products->quantity = str_replace('.', '', $request->input('quantity'));
         $products->status = $request->input('status') == TRUE ? '1' : '0';
         $products->trending = $request->input('trending') == TRUE ? '1' : '0';
@@ -69,7 +75,7 @@ class ProductController extends Controller
         return view('dashboard.products.edit', [
             "title" => "Edit Product",
             "product" => $product,
-            "categories" => Category::all()
+            "categories" => Category::where('status', '1')->get()
         ]);
     }
 
@@ -117,5 +123,12 @@ class ProductController extends Controller
 
         $product->delete();
         return redirect('/dashboard/products')->with('status', $product->name . " has been deleted");
+    }
+
+    public function checkSlug(Request $request)
+    {
+        $slug = SlugService::createSlug(Product::class, 'slug', $request->productName);
+
+        return response()->json(['slug' => $slug]);
     }
 }

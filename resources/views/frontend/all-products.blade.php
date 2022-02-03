@@ -75,7 +75,7 @@
                       focus:text-white
                       focus:outline-none" style="color: #333" name="filter">
                       <optgroup label="Filter">
-                        <option value="">None</option>
+                        <option value="">No Filter</option>
                         <option value="latest" {{ $filter == 'latest' ? 'selected':'' }}>Latest</option>
                         <option value="popular" {{ $filter == 'popular' ? 'selected':'' }}>Popularity</option>
                         <option value="lowest-price" {{ $filter == 'lowest-price' ? 'selected':'' }}>Lowest Price</option>

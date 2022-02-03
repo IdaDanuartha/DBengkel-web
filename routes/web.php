@@ -65,9 +65,10 @@ Route::middleware(['auth'])->group(function () {
     // My Order
     Route::get('/my-orders', [UserController::class, 'index']);
     Route::get('/order-details/{id}', [UserController::class, 'viewDetails']);
+    Route::put('/complete-order/{id}', [UserController::class, 'completeOrder']);
 
-    // Rating product
-    // Route::post('/add-rating', [RatingController::class, 'addRating']);
+    // My Profile
+    Route::get('/my-profile', [UserController::class, 'profileView']);
 
     // Review product
     Route::post('/add-review', [ReviewController::class, 'addReview']);
@@ -80,15 +81,17 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
 
     // Category Dashboard
     Route::get('/dashboard/categories', [CategoryController::class, 'index']);
-    Route::get('/dashboard/category/create', [CategoryController::class, 'create']);
+    Route::get('/dashboard/categories/checkSlug', [CategoryController::class, 'checkSlug']);
     Route::post('/dashboard/category/insert', [CategoryController::class, 'insert']);
     Route::get('/dashboard/category/edit/{id}', [CategoryController::class, 'edit']);
     Route::put('/dashboard/category/update/{id}', [CategoryController::class, 'update']);
     Route::get('/dashboard/category/destroy/{id}', [CategoryController::class, 'destroy']);
 
     // Product Dashboard
+    Route::get('/live-search', [ProductController::class, 'liveSearch']);
     Route::get('/dashboard/products', [ProductController::class, 'index']);
-    Route::get('/dashboard/product/create', [ProductController::class, 'create']);
+    Route::get('/dashboard/products/checkSlug', [ProductController::class, 'checkSlug']);
+
     Route::post('/dashboard/product/insert', [ProductController::class, 'insert']);
     Route::get('/dashboard/product/edit/{id}', [ProductController::class, 'edit']);
     Route::put('/dashboard/product/update/{id}', [ProductController::class, 'update']);
@@ -99,7 +102,6 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('/dashboard/customers-order/order-history', [OrderController::class, 'orderHistory']);
     Route::get('/dashboard/customers-order/order-details/{id}', [OrderController::class, 'viewDetails']);
     Route::put('/update-status/{id}', [OrderController::class, 'updateStatus']);
-
 
     // User Management Dashboard
     Route::get('/dashboard/users-registered', [DashboardController::class, 'usersView']);

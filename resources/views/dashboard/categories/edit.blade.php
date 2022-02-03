@@ -16,13 +16,7 @@
                             <small class="text-red-500 opacity-75">{{ $message }}</small>   
                         @enderror
                     </div>
-                    <div class="col-span-6 sm:col-span-3">
-                      <label for="slug" class="block text-lg font-medium">Slug</label>
-                      <input type="text" name="slug" id="slug" autocomplete="off" class="mt-1 block w-full py-2 px-3 input-color rounded-md shadow-sm focus:outline-none focus:ring-red-400 focus:border-red-400 sm:text-sm" placeholder="category-slug" value="{{ $category->slug }}">
-                      @error('slug')
-                          <small class="text-red-500 opacity-75">{{ $message }}</small>   
-                      @enderror
-                    </div>
+                    <input type="hidden" name="slug" id="slug">
 
                     <div class="col-span-6">
                       <label for="about" class="block text-lg">
@@ -86,5 +80,19 @@
             </form>
           </div>
         </div>
+@endsection
+
+@section('script')
+<script>
+  const categoryName = document.querySelector('#name');
+  const categorySlug = document.querySelector('#slug');
+
+  categoryName.addEventListener('change', function() {
+    fetch('/dashboard/categories/checkSlug?categoryName=' + categoryName.value)
+      .then(response => response.json())
+      .then(data => categorySlug.value = data.slug)
+  });
+</script>
+    
 @endsection
 

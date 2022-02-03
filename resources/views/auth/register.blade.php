@@ -61,7 +61,7 @@
         @enderror
     </div>
     </div>
-    <div class="mt-3">
+    <div class="mt-2">
         <input type="checkbox" class="form-checkbox mr-1" id="show-pass">
         <label class="inline-block my-light-dark-text" for="show-pass">
           Show Password

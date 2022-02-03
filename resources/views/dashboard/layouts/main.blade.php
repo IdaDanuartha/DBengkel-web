@@ -8,6 +8,10 @@
     <!-- Icon -->
     <link rel="icon" type="image/x-icon" href="/assets/img/WebLogo2.png" />
 
+    {{-- Bootstrap --}}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
     {{-- Tailwind css --}}
     <link rel="stylesheet" href="/css/app.css">
 
@@ -20,10 +24,6 @@
     {{-- ionicons script --}}
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
-
-    {{-- jquery --}}
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
     {{-- Chart.js --}}
     <script src="https://code.highcharts.com/highcharts.js"></script>
@@ -47,6 +47,9 @@
     </div>
 
 
+    {{-- jquery --}}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
 
 {{-- Sweet alert 2 --}}
 <script src="/assets/js/sweetalert2/sweetalert2.all.min.js"></script>
@@ -56,10 +59,8 @@
 <script src="/assets/js/main.js"></script>
 
 @yield('chart-js')
-
+@yield('script')
 <script>
-    @yield('script')
-
     @if(session('login-success'))
         Swal.fire('{{ session("login-success") }}')
     @endif

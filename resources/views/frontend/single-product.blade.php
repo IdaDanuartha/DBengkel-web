@@ -9,7 +9,7 @@
             <img alt="Cover image" class="lg:w-1/2 w-full object-cover object-center rounded border border-gray-100" src="/assets/uploads/products/{{ $product->main_image }}">
             {{-- <img alt="Cover image" class="lg:w-1/2 w-full object-cover object-center rounded border border-gray-100" src="{{ $product->main_image }}"> --}}
             <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-              <a href="/all-products?category={{ $product->category->slug }}" class="text-sm duration-500 my-light-dark-text hover:text-gray-400 tracking-widest">{{ $product->category->name }}</a>
+              <a href="/all-products?category={{ $product->category->slug }}" class="text-md duration-500 my-light-dark-text hover:text-gray-400 tracking-widest">{{ $product->category->name }}</a>
               <h1 class="my-light-dark-text text-3xl title-font font-medium mb-1">{{ $product->name }}</h1>
               <div class="flex mb-4">
                 <span class="flex items-center">
@@ -95,7 +95,7 @@
                   {{-- <img class="rounded-t-lg w-full h-60" src="{{ $product->main_image }}" alt=""/> --}}
         
                 <div class="p-6">
-                  <h5 class="my-light-dark-text text-xl font-medium mb-2">{{ Str::limit($product->name, 40) }}</h5>
+                  <h5 class="my-light-dark-text text-lg font-medium mb-2">{{ Str::limit($product->name, 40) }}</h5>
   
                   <div class="flex mb-4 text-sm justify-between">
                     <span class="flex items-center">

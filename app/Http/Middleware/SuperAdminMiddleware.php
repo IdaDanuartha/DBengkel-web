@@ -22,7 +22,7 @@ class AdminMiddleware
             if (Auth::user()->role_as == '2') {
                 return $next($request);
             } else {
-                return redirect('/')->with('status', 'Access Denied! As you are not Admin');
+                return redirect('/dashboard')->with('status', 'Access Denied! As you are not Super Admin');
             }
         } else {
             return redirect('/')->with('status', 'Please Login First');

@@ -6,11 +6,22 @@
 
             <div class="w-3/5 mr-12">
               <div class="flex">
-                <h1 class="text-3xl">Basic Details</h1>
+                <h1 class="text-lg">Status : 
+                @if($orders->status == 0)
+                  Waiting For Confirmation
+                @elseif($orders->status == 1)
+                  Order Proccessed
+                @elseif($orders->status == 2)
+                  Order Delivered
+                @elseif($orders->status == 3)
+                  Order Arrived
+                @else
+                  Order Completed
+                @endif</h1>
                 @if($orders->status == 3)
-                <form action="#" method="POST">
+                <form action="/complete-order/{{ $orders->id }}" method="POST">
                   @csrf
-                  <input type="hidden" name="order_status" value="4">
+                  @method('PUT')
                   <button type="submit" class="btn-effect btn-complete rounded py-2 px-4 ml-5 text-white text-sm duration-500 hover:bg-green-500">Complete the order</button>
                 </form>
                 @endif
@@ -30,13 +41,8 @@
                             <label for="last_name" class="block text-sm font-medium">Last name</label>
                             <input type="text" name="last_name" id="last_name" autocomplete="off" class="input-color mt-1 block w-full py-2 px-3 rounded-md shadow-sm focus:outline-none focus:ring-red-400 focus:border-red-400 sm:text-sm" placeholder="Last name" disabled value="{{ $orders->last_name }}">
                           </div>
-            
-                          <div class="col-span-6 sm:col-span-3">
-                            <label for="email" class="block text-sm font-medium">Email address</label>
-                            <input type="email" name="email" id="email" autocomplete="off" class="input-color mt-1 block w-full py-2 px-3 rounded-md shadow-sm focus:outline-none focus:ring-red-400 focus:border-red-400 sm:text-sm" placeholder="Email address" disabled value="{{ $orders->email }}">
-                          </div>
 
-                          <div class="col-span-6 sm:col-span-3">
+                          <div class="col-span-6">
                             <label for="no_telp" class="block text-sm font-medium">No. Telephone</label>
                             <input type="number" name="no_telp" id="no_telp" autocomplete="off" class="input-color mt-1 block w-full py-2 px-3 rounded-md shadow-sm focus:outline-none focus:ring-red-400 focus:border-red-400 sm:text-sm" placeholder="Number Telephone" disabled value="{{ $orders->no_telp }}">
                           </div>
@@ -68,7 +74,7 @@
 
                           <div class="col-span-6">
                             <label for="message" class="block text-sm font-medium">Message</label>
-                            <textarea name="message" id="message" rows="7" autocomplete="off" class="input-color mt-1 block w-full py-2 px-3 rounded-md shadow-sm focus:outline-none focus:ring-red-400 focus:border-red-400 sm:text-sm" disabled>{{ $orders->message }}</textarea>
+                            <textarea placeholder="No Message" name="message" id="message" rows="7" autocomplete="off" class="input-color mt-1 block w-full py-2 px-3 rounded-md shadow-sm focus:outline-none focus:ring-red-400 focus:border-red-400 sm:text-sm" disabled>{{ $orders->message }}</textarea>
                           </div>
 
                           <div class="col-span-6 sm:col-span-3">
@@ -101,8 +107,8 @@
             </div>
 
             <div class="rounded w-1/4">
-                <h1 class="text-3xl">Order Details</h1>
-                <div class="my-light-dark-card shadow overflow-hidden sm:rounded-md p-3 mt-3">
+                <div class="my-light-dark-card shadow overflow-hidden sm:rounded-md p-3 mt-5">
+                  <h1 class="text-xl mb-3">Order Details</h1>
                   @php
                       $tax = 0;
                   @endphp
@@ -123,9 +129,9 @@
                     <hr class="my-3 text-gray-400">
                     @php
                         if($item->products->disc_price) :
-                          $tax += $item->products->disc_price;
+                          $tax += $item->products->disc_price * $item->quantity;
                         else :
-                          $tax += $item->products->ori_price;
+                          $tax += $item->products->ori_price * $item->quantity;
                         endif;
                     @endphp
                       

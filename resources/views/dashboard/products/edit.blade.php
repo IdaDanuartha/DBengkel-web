@@ -9,20 +9,15 @@
               <div>
                 <div class="px-4 py-5 my-light-dark-text space-y-12 sm:p-6">
                   <div class="grid grid-cols-6 gap-4">
-                    <div class="col-span-6 sm:col-span-3">
+                    <div class="col-span-6">
                         <label for="name" class="block text-lg font-medium">Product Name</label>
                         <input type="text" name="name" id="name" autocomplete="off" class="mt-1 block w-full py-2 px-3 rounded-md focus:outline-none focus:ring-red-400 focus:border-red-400 sm:text-sm input-color" placeholder="Product Name" value="{{ $product->name }}">
                         @error('name')
                             <small class="text-red-500 opacity-75">{{ $message }}</small>   
                         @enderror
                     </div>
-                    <div class="col-span-6 sm:col-span-3">
-                      <label for="slug" class="block text-lg font-medium">Slug</label>
-                      <input type="text" name="slug" id="slug" autocomplete="off" class="mt-1 block w-full py-2 px-3 rounded-md shadow-sm focus:outline-none focus:ring-red-400 focus:border-red-400 sm:text-sm input-color" placeholder="product-slug" value="{{ $product->slug }}">
-                      @error('slug')
-                          <small class="text-red-500 opacity-75">{{ $message }}</small>   
-                      @enderror
-                    </div>
+
+                    <input type="hidden" name="slug" id="slug">
 
                     <div class="col-span-6 sm:col-span-3">
                       <label for="category_id" class="block text-lg">Category</label>
@@ -41,15 +36,15 @@
 
                     <div class="col-span-6 sm:col-span-3">
                       <label for="ori_price" class="block text-lg font-medium">Original Price</label>
-                      <input type="text" name="ori_price" id="ori_price" autocomplete="off" class="mt-1 block w-full py-2 px-3 rounded-md shadow-sm focus:outline-none focus:ring-red-400 focus:border-red-400 sm:text-sm input-color" placeholder="Rp 50.000" value="{{ $product->ori_price }}">
+                      <input type="text" name="ori_price" id="ori_price" autocomplete="off" class="mt-1 block w-full py-2 px-3 rounded-md shadow-sm focus:outline-none focus:ring-red-400 focus:border-red-400 sm:text-sm input-color" placeholder="Rp 50.000" value="{{ number_format($product->ori_price, 0, ',','.') }}">
                       @error('ori_price')
                           <small class="text-red-500 opacity-75">{{ $message }}</small>   
                       @enderror
                     </div>
 
                     <div class="col-span-6 sm:col-span-3">
-                      <label for="disc_price" class="block text-lg font-medium">Discount</label>
-                      <input type="text" name="disc_price" id="disc_price" autocomplete="off" class="mt-1 block w-full py-2 px-3 rounded-md shadow-sm focus:outline-none focus:ring-red-400 focus:border-red-400 sm:text-sm input-color" placeholder="Rp 35.000" value="{{ $product->disc_price }}">
+                      <label for="disc_price" class="block text-lg font-medium">Special Price</label>
+                      <input type="text" name="disc_price" id="disc_price" autocomplete="off" class="mt-1 block w-full py-2 px-3 rounded-md shadow-sm focus:outline-none focus:ring-red-400 focus:border-red-400 sm:text-sm input-color" placeholder="Rp 35.000" value="{{ (!$product->disc_price == NULL) ? number_format($product->disc_price, 0, ',','.') : '' }}">
                       @error('disc_price')
                           <small class="text-red-500 opacity-75">{{ $message }}</small>   
                       @enderror
@@ -127,5 +122,19 @@
             </form>
           </div>
         </div>
+@endsection
+
+@section('script')
+<script>
+  const productName = document.querySelector('#name');
+  const productSlug = document.querySelector('#slug');
+
+  productName.addEventListener('change', function() {
+    fetch('/dashboard/products/checkSlug?productName=' + productName.value)
+      .then(response => response.json())
+      .then(data => productSlug.value = data.slug)
+  });
+</script>
+    
 @endsection
 

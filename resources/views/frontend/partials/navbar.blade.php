@@ -113,8 +113,8 @@
   <div class="dropdown relative ml-5 mr-1.5">
     <a class="flex items-center" href="#" id="dropdownMenuButton2" role="button"
       data-bs-toggle="dropdown" aria-expanded="false">
-      <img src="/assets/img/male_avatar.svg" class="rounded-full"
-        style="height: 30px; width: 30px" alt="" loading="lazy" />
+      <img src="/assets/img/user-profile.png" class="rounded-full"
+        style="height: 35px; width: 35px" alt=""/>
     </a>
     <ul class="
     my-light-dark-card
@@ -213,7 +213,7 @@
       hover:opacity-75
       whitespace-nowrap
       my-light-dark-text
-    " href="#"><i class="bi bi-person"></i> My Profile</a>
+    " href="/my-profile"><i class="bi bi-person"></i> My Profile</a>
     </li>
       <li>
         <form class="logout-form dropdown-item

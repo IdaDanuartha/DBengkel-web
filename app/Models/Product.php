@@ -5,10 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Category;
+use Cviebrock\EloquentSluggable\Sluggable;
+
 
 class Product extends Model
 {
-    use HasFactory;
+    use HasFactory, Sluggable;
 
     protected $product = 'products';
     protected $guarded = ['id'];
@@ -42,7 +44,6 @@ class Product extends Model
         // });
     }
 
-
     public function category()
     {
         return $this->belongsTo(Category::class, 'category_id', 'id');
@@ -51,5 +52,14 @@ class Product extends Model
     public function reviews()
     {
         return $this->hasMany(Review::class);
+    }
+
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'name'
+            ]
+        ];
     }
 }

@@ -35,6 +35,7 @@
                     <span class="title">Customers Order</span>
                 </a>
             </li>
+            @if(auth()->user()->role_as == '2')
             <li class="{{ Request::is('dashboard/users-registered*') ? 'actived' : '' }}">
                 <a href="/dashboard/users-registered">
                     <span class="icon">
@@ -43,6 +44,7 @@
                     <span class="title">Users Registered</span>
                 </a>
             </li>
+            @endif
             <li class="{{ Request::is('dashboard/contact-message*') ? 'actived' : '' }}">
                 <a href="#">
                     <span class="icon">

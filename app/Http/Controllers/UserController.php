@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 // use App\OrderItem;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Request;
 
 class UserController extends Controller
 {
@@ -12,7 +13,7 @@ class UserController extends Controller
     {
         return view('frontend.orders', [
             "title" => "My Orders",
-            "orders" => Order::latest()->where('user_id', Auth::id())->get()
+            "orders" => Order::latest()->where('user_id', Auth::id())->where('status', '<', '4')->get()
         ]);
     }
 
@@ -21,6 +22,23 @@ class UserController extends Controller
         return view('frontend.order-details', [
             "title" => "Order Details",
             "orders" => Order::where('id', $id)->where('user_id', Auth::id())->first()
+        ]);
+    }
+
+    public function completeOrder($id)
+    {
+        $orders = Order::find($id);
+        $orders->status = 4;
+
+        $orders->update();
+
+        return redirect('/my-orders')->with('status', 'Order Completed, we hope you like our products');
+    }
+
+    public function profileView()
+    {
+        return view('frontend.profile.index', [
+            "title" => "My Profile"
         ]);
     }
 }

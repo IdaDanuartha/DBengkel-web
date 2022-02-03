@@ -5,21 +5,15 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 
 class CategoryController extends Controller
 {
     public function index()
     {
         return view('dashboard.categories.index', [
-            "title" => "Category",
+            "title" => "Categories",
             "categories" => Category::latest()->paginate(10),
-        ]);
-    }
-
-    public function create()
-    {
-        return view('dashboard.categories.create', [
-            "title" => "Create Category",
         ]);
     }
 
@@ -28,7 +22,7 @@ class CategoryController extends Controller
         $category = new Category();
 
         $validatedData = $request->validate([
-            "name" => "required|max:191",
+            "name" => "required|max:191|unique:categories",
             "slug" => "required|unique:categories",
             "description" => "required",
             "main_image" => "required|image|file|max:2000",
@@ -102,5 +96,12 @@ class CategoryController extends Controller
 
         $category->delete();
         return redirect('/dashboard/categories')->with('delete', "Category " . $category->name . " has been deleted");
+    }
+
+    public function checkSlug(Request $request)
+    {
+        $slug = SlugService::createSlug(Category::class, 'slug', $request->categoryName);
+
+        return response()->json(['slug' => $slug]);
     }
 }

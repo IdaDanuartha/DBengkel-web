@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use App\Models\Order;
+use App\Models\OrderItem;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -16,6 +16,7 @@ class DashboardController extends Controller
         // User data
         $usersData = User::select(DB::raw("COUNT(*) as count"))
             ->whereYear("created_at", date('Y'))
+            ->where("role_as", "0")
             ->groupBy(DB::raw("Month(created_at)"))
             ->pluck("count");
 
@@ -45,13 +46,14 @@ class DashboardController extends Controller
             $orderDatas[$month] = $orderData[$index];
         }
 
-
         return view('dashboard.index', [
             "title" => "Dashboard Admin",
-            "productsCount" => Product::all()->count(),
-            "categoriesCount" => Category::all()->count(),
             "ordersCount" => Order::all()->count(),
-            "usersCount" => User::all()->count(),
+            "ordersItemCount" => OrderItem::all()->count(),
+            "messageCount" => Product::all()->count(),
+            "incomeCount" => Order::all(),
+            "adminCount" => User::where('role_as', '1')->count(),
+            "customersCount" => User::where('role_as', '0')->count(),
             "usersData" => $datas,
             "ordersData" => $orderDatas
         ]);

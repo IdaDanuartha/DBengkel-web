@@ -21,19 +21,19 @@ sidebarList.forEach((item) => item.addEventListener('click', activeLink));
 
 
 // Image slide script
-const productImages = document.querySelectorAll(".image-group img");
-const productImageSlide = document.querySelector(".image-slider");
+// const productImages = document.querySelectorAll(".image-group img");
+// const productImageSlide = document.querySelector(".image-slider");
 
-let activeImageSlide = 0;
+// let activeImageSlide = 0;
 
-productImages.forEach((item, i) => {
-    item.addEventListener('click', () => {
-        productImages[activeImageSlide].classList.remove('active');
-        item.classList.add('active');
-        productImageSlide.style.backgroundImage = `url('${item.src}')`;
-        activeImageSlide = i;
-    })
-})
+// productImages.forEach((item, i) => {
+//     item.addEventListener('click', () => {
+//         productImages[activeImageSlide].classList.remove('active');
+//         item.classList.add('active');
+//         productImageSlide.style.backgroundImage = `url('${item.src}')`;
+//         activeImageSlide = i;
+//     })
+// })
 
 // Preview Image script
 function previewMainImage() {
@@ -51,7 +51,7 @@ function previewMainImage() {
 
 // Number counter dashboard
 const numCounter = document.querySelectorAll('.number-counter');
-let interval = 2000;
+let interval = 1000;
 
 numCounter.forEach(num => {
     let startValue = 0;
@@ -73,6 +73,7 @@ const oriPrice = document.getElementById('ori_price');
 const discPrice = document.getElementById('disc_price');
 const quantity = document.getElementById('quantity');
 
+
 oriPrice.addEventListener('keyup', function(e) {
     oriPrice.value = formatRupiah(this.value, '');
 })
@@ -81,6 +82,21 @@ discPrice.addEventListener('keyup', function(e) {
 })
 quantity.addEventListener('keyup', function(e) {
     quantity.value = formatRupiah(this.value, '');
+})
+
+
+const OriPrice = document.getElementById('ori_price');
+const DiscPrice = document.getElementById('disc_price');
+const Quantity = document.getElementById('quantity');
+
+OriPrice.addEventListener('keyup', function(e) {
+    OriPrice.value = formatRupiah(this.value, '');
+})
+DiscPrice.addEventListener('keyup', function(e) {
+    DiscPrice.value = formatRupiah(this.value, '');
+})
+Quantity.addEventListener('keyup', function(e) {
+    Quantity.value = formatRupiah(this.value, '');
 })
 
 function formatRupiah(num, prefix) {
@@ -98,3 +114,6 @@ function formatRupiah(num, prefix) {
     rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
     return prefix == undefined ? rupiah : (rupiah ? '' + rupiah : '');
 }  
+
+
+

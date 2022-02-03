@@ -22,7 +22,7 @@
              @endphp
               @foreach ($product_cart as $item)
                   <div class="flex">
-                      <img class="w-16 mr-2" src="/assets/uploads/products/{{ $item->products->main_image }}" alt="">
+                      <img class="w-16 mr-2 rounded" src="/assets/uploads/products/{{ $item->products->main_image }}" alt="">
                       {{-- <img class="w-16 mr-2" src="{{ $item->products->main_image }}" alt=""> --}}
                       <div>
                           <h1 class="text-sm font-medium text-gray-600">{{ $item->products->name }}</h1>
@@ -39,15 +39,12 @@
                   @php
                       if($item->products->disc_price) :
                         $totalPrice += $item->products->disc_price * $item->product_qty;
+                        $tax += $item->products->disc_price * $item->product_qty;
                       else :
                         $totalPrice += $item->products->ori_price * $item->product_qty;
+                        $tax += $item->products->ori_price * $item->product_qty;
                       endif;
 
-                      if($item->products->disc_price) :
-                        $tax += $item->products->disc_price;
-                      else :
-                        $tax += $item->products->ori_price;
-                      endif
                   @endphp
                   @endforeach
                   @php
@@ -104,6 +101,7 @@
               </div>
               <form action="/placeorder" method="POST">
                 @csrf
+                <input type="hidden" name="email" value="{{ auth()->user()->email }}">
               <div class="payment-info flex justify-space-between">
                 <ul class="stepper" data-mdb-stepper="stepper">
                 <li class="stepper-step satu stepper-active">
@@ -122,16 +120,10 @@
                         <input class="input-checkout" id="last_name" name="last_name" type="text" placeholder="Enter your last name" value="{{ auth()->user()->last_name }}">
                       </div>
                     </div>
-                    <div class="flex justify-between">
-                      <div class="field required half mr-2">
-                        <label for="email" class="font-medium text-md">Email Address</label>
-                        <input class="input-checkout" id="email" name="email" type="text" placeholder="Your Email Address" value="{{ auth()->user()->email }}">
-                      </div>
-                      <div class="field required half">
+                      <div class="field required full">
                         <label for="no_telp" class="font-medium text-md">No. Telephone</label>
                         <input class="input-checkout" id="no_telp" name="no_telp" type="text" placeholder="No. Telephone / Whatsapp" value="{{ auth()->user()->no_telp }}">
                       </div>
-                    </div>
                     <div class="field full">
                       <label for="message" class="font-medium text-md">Message</label>
                       <textarea class="input-checkout" rows="6" id="message" name="message" type="text" placeholder="Message for your orders">{{ auth()->user()->message }}</textarea>

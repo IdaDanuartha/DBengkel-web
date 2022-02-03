@@ -6,9 +6,9 @@
                 <div class="col-md-4 mb-3">
                     <h3 class="text-2xl mb-3">Contact Us</h1>
                         <div class="text-md">
-                            <p class="small"><i class="bi bi-geo-alt me-2 text-danger"></i>Perum Dalung Permai, Blok MM No 10 B</p>
+                            <p class="small"><i class="bi bi-geo-alt me-2 text-danger"></i>Jl. Merdeka No 45, Renon</p>
                             <p class="small"><i class="bi bi-telephone me-2 text-danger"></i>(+62) 81087378913</p>
-                            <p class="small"><i class="bi bi-envelope me-2 text-danger"></i>danuart@gmail.com</p>
+                            <p class="small"><i class="bi bi-envelope me-2 text-danger"></i>dbengkelshop@gmail.com</p>
                             <div class="col-md-6 mt-2 social-footer small">
                                 <a href="#"><i class="bi bi-whatsapp me-2"></i></a>
                                 <a href="#"><i class="bi bi-youtube me-2"></i></a>
@@ -49,7 +49,7 @@
             <div class="row text-center bottom-footer my-2">
                
                 <div class="flex justify-center copyright-footer">
-                    <p>Copyright © 2021 - 2022 DBengkel. All Right Reserved</p>
+                    <p>Copyright © 2021 - 2022 <a href="/#" class="text-red-500 font-semibold transition duration-400 hover:text-red-400">D'Bengkel</a>. All Right Reserved</p>
                 </div>
             </div>
         </div>
