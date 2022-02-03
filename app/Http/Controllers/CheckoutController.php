@@ -26,9 +26,8 @@ class CheckoutController extends Controller
 
         $title = 'Checkout Page';
         $product_cart = Cart::where('user_id', Auth::id())->get();
-        $countCart = Cart::all();
 
-        return view('frontend.checkout', compact('title', 'product_cart', 'countCart'));
+        return view('frontend.checkout', compact('title', 'product_cart'));
     }
 
     public function placeorder(Request $request)

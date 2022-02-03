@@ -84,7 +84,7 @@
                           {{ $product->quantity }}
                         </td>
                         <td class="text-sm text-center px-4 py-2 whitespace-nowrap font-medium {{ $product->status == 0 ? 'text-red-500':'' }}" style="{{ $product->status == 1 ? 'color: rgb(34 197 94);':'' }}">
-                          {{ $product->status == 1 ? 'Active':'Not Active' }}
+                          {{ $product->status == 1 ? 'Active':'Inactive' }}
                         </td>
                         <td class="text-sm text-center px-4 py-2 whitespace-nowrap font-medium {{ $product->trending == 0 ? 'text-red-500':'' }}" style="{{ $product->trending == 1 ? 'color: rgb(34 197 94);':'' }}">
                           {{ $product->trending == 1 ? 'Yes':'No' }}
@@ -104,7 +104,7 @@
 
       <!-- Modal Create -->
 <div class="modal fade" id="modal-create" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header flex justify-center">
         <h5 class="modal-title text-lg font-medium" id="staticBackdropLabel">Create New Product</h5>

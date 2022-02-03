@@ -69,6 +69,7 @@ Route::middleware(['auth'])->group(function () {
 
     // My Profile
     Route::get('/my-profile', [UserController::class, 'profileView']);
+    Route::put('/edit-profile/{id}', [UserController::class, 'editProfile']);
 
     // Review product
     Route::post('/add-review', [ReviewController::class, 'addReview']);

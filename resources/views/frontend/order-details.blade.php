@@ -7,6 +7,7 @@
             <div class="w-3/5 mr-12">
               <div class="flex">
                 <h1 class="text-lg">Status : 
+                <span class="font-semibold">
                 @if($orders->status == 0)
                   Waiting For Confirmation
                 @elseif($orders->status == 1)
@@ -17,7 +18,9 @@
                   Order Arrived
                 @else
                   Order Completed
-                @endif</h1>
+                @endif
+              </span>
+              </h1>
                 @if($orders->status == 3)
                 <form action="/complete-order/{{ $orders->id }}" method="POST">
                   @csrf

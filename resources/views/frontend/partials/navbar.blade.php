@@ -113,8 +113,11 @@
   <div class="dropdown relative ml-5 mr-1.5">
     <a class="flex items-center" href="#" id="dropdownMenuButton2" role="button"
       data-bs-toggle="dropdown" aria-expanded="false">
-      <img src="/assets/img/user-profile.png" class="rounded-full"
-        style="height: 35px; width: 35px" alt=""/>
+      @if(auth()->user()->image)
+        <img src="/assets/uploads/users/{{ auth()->user()->image }}" class="rounded-full" style="height: 35px; width: 35px" alt=""/>
+      @else
+        <img src="/assets/img/user-profile.png" class="rounded-full" style="height: 35px; width: 35px" alt=""/>
+      @endif
     </a>
     <ul class="
     my-light-dark-card

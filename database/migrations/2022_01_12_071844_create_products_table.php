@@ -16,7 +16,6 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('category_id');
-            $table->bigInteger('review_id')->nullable();
             $table->string('name')->unique();
             $table->string('slug')->unique();
             $table->longText('description');
@@ -24,7 +23,6 @@ class CreateProductsTable extends Migration
             $table->integer('disc_price')->nullable();
             $table->string('main_image');
             $table->integer('quantity');
-            // $table->string('tax');
             $table->tinyInteger('status');
             $table->tinyInteger('trending');
             $table->timestamps();

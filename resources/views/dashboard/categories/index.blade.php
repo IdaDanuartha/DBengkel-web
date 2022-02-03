@@ -53,7 +53,7 @@
                         {{ $category->description}}
                         </td> --}}
                         <td class="text-sm px-4 py-2 whitespace-nowrap font-medium {{ $category->status == 0 ? 'text-red-500':'' }}" style="{{ $category->status == 1 ? 'color: rgb(34 197 94);':'' }}">
-                          {{ $category->status == 1 ? 'Active':'Not Active' }}
+                          {{ $category->status == 1 ? 'Active':'Inactive' }}
                         </td>
                         <td class="text-sm px-4 py-2 whitespace-nowrap font-medium {{ $category->popular == 0 ? 'text-red-500':'' }}" style="{{ $category->popular == 1 ? 'color: rgb(34 197 94);':'' }}">
                           {{ $category->popular == 1 ? 'Yes':'No' }}

@@ -200,6 +200,10 @@ body {
     background-color: rgb(99 102 241);
 }
 
+.btn-gray {
+    background-color: rgb(136, 136, 136);
+}
+
 /* Navbar */
 #mainNav {
     z-index: 1000;
@@ -685,6 +689,53 @@ footer .row .social-footer a:hover {
 
 #cart-button:focus:not(:focus-visible) {
     outline: none;
+}
+
+/* Profile Page Style */
+.user-upload-image .profile-pic {
+    width: 130px;
+    height: 100%;
+    display: block;
+}
+
+.user-upload-image .file-upload {
+    display: none;
+}
+
+.user-upload-image .circle {
+    border-radius: 50% !important;
+    overflow: hidden;
+    width: 128px;
+    height: 128px;
+    border: 5px solid rgba(207, 207, 207, 0.7);
+}
+
+/* .profile-pic {
+    max-width: 100%;
+    height: auto;
+} */
+
+.user-upload-image .p-image {
+    position: relative;
+    left: 90px;
+    top: -28px;
+    font-size: 1.5em;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
+}
+
+.user-upload-image .p-image:hover {
+    transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
+}
+
+.user-upload-image .upload-button {
+    font-size: 1.2em;
+}
+
+.user-upload-image .upload-button:hover {
+    transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
+    color: #777;
 }
 
 @media only screen and (max-width: 1200px) {
