@@ -20,7 +20,7 @@
                     <th scope="col" class="text-sm font-medium p-4 text-left">
                       Orders Status
                     </th>
-                    <th scope="col" class="text-sm font-medium p-4 text-left">
+                    <th scope="col" class="text-sm font-medium p-4 text-center">
                       Action
                     </th>
                   </tr>
@@ -48,8 +48,8 @@
                           Order Completed
                         @endif
                         </td>
-                        <td class="text-sm p-4">
-                            <a href="/order-details/{{ $order->id }}" class="py-1 px-3 rounded text-white bg-blue-500"> Details</a>
+                        <td class="text-sm p-4 text-center">
+                            <a href="/order-details/{{ $order->id }}" class="text-white rounded py-2 px-3 btn-effect btn-details"> Details</a>
                         </td>
                     </tr>
                   @endforeach

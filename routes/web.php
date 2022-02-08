@@ -12,6 +12,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\MessageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -65,7 +66,7 @@ Route::middleware(['auth'])->group(function () {
     // My Order
     Route::get('/my-orders', [UserController::class, 'index']);
     Route::get('/order-details/{id}', [UserController::class, 'viewDetails']);
-    Route::put('/complete-order/{id}', [UserController::class, 'completeOrder']);
+    Route::put('/update-order-status/{id}', [UserController::class, 'updateStatus']);
 
     // My Profile
     Route::get('/my-profile', [UserController::class, 'profileView']);
@@ -74,6 +75,9 @@ Route::middleware(['auth'])->group(function () {
     // Review product
     Route::post('/add-review', [ReviewController::class, 'addReview']);
     Route::put('/edit-review', [ReviewController::class, 'updateReview']);
+
+    // Message box
+    Route::post('/send-message', [MessageController::class, 'sendMessage']);
 });
 
 
@@ -99,11 +103,16 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('/dashboard/product/destroy/{id}', [ProductController::class, 'destroy']);
 
     // Customers Order dashboard
-    Route::get('/dashboard/customers-order', [OrderController::class, 'index']);
-    Route::get('/dashboard/customers-order/order-history', [OrderController::class, 'orderHistory']);
-    Route::get('/dashboard/customers-order/order-details/{id}', [OrderController::class, 'viewDetails']);
+    Route::get('/dashboard/customer-orders', [OrderController::class, 'index']);
+    Route::get('/dashboard/customer-orders/order-history', [OrderController::class, 'orderHistory']);
+    Route::get('/dashboard/customer-orders/order-details/{id}', [OrderController::class, 'viewDetails']);
     Route::put('/update-status/{id}', [OrderController::class, 'updateStatus']);
 
     // User Management Dashboard
     Route::get('/dashboard/users-registered', [DashboardController::class, 'usersView']);
+    Route::get('/dashboard/users-registered/details/{id}', [DashboardController::class, 'userDetails']);
+    Route::put('/dashboard/users-registered/update-role/{id}', [DashboardController::class, 'updateRole']);
+
+    // Messages
+    Route::get('/dashboard/messages', [MessageController::class, 'index']);
 });

@@ -37,7 +37,6 @@ class ProductController extends Controller
             "description" => "required",
             "ori_price" => "required",
             "quantity" => "required",
-            // "tax" => "required",
             "main_image" => "required|image|file|max:2000",
         ]);
 
@@ -116,13 +115,15 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
 
-        $path = 'assets/uploads/products/' . $product->main_image;
-        if (File::exists($path)) {
-            File::delete($path);
-        }
+        // $path = 'assets/uploads/products/' . $product->main_image;
+        // if (File::exists($path)) {
+        //     File::delete($path);
+        // }
 
-        $product->delete();
-        return redirect('/dashboard/products')->with('status', $product->name . " has been deleted");
+        $product->status = 0;
+
+        $product->update();
+        return redirect('/dashboard/products')->with('status', "Product has been deleted");
     }
 
     public function checkSlug(Request $request)

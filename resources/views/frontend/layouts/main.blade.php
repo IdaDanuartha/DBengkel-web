@@ -52,6 +52,40 @@
         <img src="/assets/img/WebLogo2.png" alt="Logo">
     </div>
 
+@if(!Request::is('checkout'))
+@auth
+@if(auth()->user()->role_as == 0)
+    {{-- Message box --}}
+    <div id="message-box" data-bs-toggle="modal" data-bs-target="#message-modal">
+        <img src="/assets/img/message.png" alt="">
+    </div>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="message-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title font-medium text-lg" id="staticBackdropLabel">Message Box</h5>
+          <i class="bi bi-x-lg text-gray-600 cursor-pointer" data-bs-dismiss="modal" aria-label="Close"></i>
+        </div>
+            <div class="modal-body p-0">
+            <form action="/send-message" method="POST">
+                @csrf
+                <textarea class="w-full h-full py-2 px-3 message-textarea" rows="6" id="message" name="message" type="text" required placeholder="Hi {{ auth()->user()->first_name }}, write your problem here..."></textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="text-md btn-effect btn-details font-medium py-2 px-4 rounded">
+                    <i class="bi bi-send mr-2"></i>Send
+                </button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+@endif
+@endauth
+@endif
+
     @include('frontend.partials.navbar')
 
         @yield('main-content')

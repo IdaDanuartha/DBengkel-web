@@ -9,11 +9,9 @@
               <table class="min-w-full my-light-dark-text">
                 <thead class="bg-gray-800 text-white">
                   <tr>
-                  @if(auth()->user()->role_as == '2')
                     <th scope="col" class="text-sm font-medium px-5 py-3 text-left">
-                        Action
+                        Message
                     </th>
-                  @endif
                     <th scope="col" class="text-sm font-medium px-5 py-3 text-left">
                       #
                     </th>
@@ -23,38 +21,22 @@
                     <th scope="col" class="text-sm font-medium px-5 py-3 text-left">
                       Email
                     </th>
-                    <th scope="col" class="text-sm font-medium px-5 py-3 text-left">
-                      Role
-                    </th>
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach ($users->skip(1) as $user)
+                  @foreach ($messages as $message)
                       <tr class="border-b">
-                        @if(auth()->user()->role_as == '2')
                         <td class="text-xs px-6">
-                            <a href="/dashboard/users-registered/details/{{ $user->id }}" class="btn-effect btn-details py-2 px-4 rounded text-xs"> Details</a>
+                            <button type="button" class="btn-effect btn-details py-2 px-4 rounded text-xs btn-show-message" data-bs-toggle="modal" data-bs-target="#show-modal" onclick="btnShow('{{ $message->message }}')"> Show</button>
                         </td>
-                        @endif
                         <td class="text-sm font-light px-5 whitespace-nowrap">
-                          {{ $loop->iteration + $users->firstItem() - 1 }}
+                          {{ $loop->iteration + $messages->firstItem() - 1 }}
                         </td>
                         <td class="text-sm font-light p-4 whitespace-nowrap">
-                            {{ $user->first_name . ' ' . $user->last_name }}
+                            {{ $message->first_name . ' ' . $message->last_name }}
                         </td>
                         <td class="text-sm font-light p-4 whitespace-nowrap">
-                            {{ $user->email }}
-                        </td>
-                        <td class="text-sm font-light p-4 whitespace-nowrap">
-                          @if ($user->role_as == 0)
-                             <span class="badge text-white bg-blue-500">Customer</span>
-                          @elseif($user->role_as == 1)
-                             <span class="badge text-white bg-red-500">Admin</span>
-                          @elseif($user->role_as == 2)
-                              <span class="badge text-white" style="background: linear-gradient(to right, #9108bf, #3700ff);"">Super Admin</span>
-                          @else
-                              No Role                              
-                          @endif
+                            {{ $message->email }}
                         </td>
               
                       </tr>
@@ -63,10 +45,41 @@
               </table>
             </div>
             <div class="relative left-10 top-10">
-              {{ $users->links() }}
+              {{ $messages->links() }}
             </div>
           </div>
         </div>
       </div>
+
+      {{-- Modal show message --}}
+      <div class="modal fade" id="show-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header flex justify-center">
+              <h5 class="modal-title font-medium text-xl">Message</h5>
+            </div>
+                <div class="modal-body modal-message-body p-0">
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="text-md btn-effect btn-gray font-medium py-2 px-4 rounded" data-bs-dismiss="modal">
+                        Close
+                    </button>
+                </div>
+          </div>
+        </div>
+      </div>
+
+@endsection
+
+@section('script')
+    <script>
+        function btnShow(msg) {
+            let message = `<textarea class="w-full h-full py-2 px-3 message-textarea" rows="6" disabled>${msg}</textarea>`;
+
+            $('.modal-message-body').html(message);
+        }
+        
+    </script>
 @endsection
 

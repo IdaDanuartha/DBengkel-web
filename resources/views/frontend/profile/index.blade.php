@@ -52,15 +52,27 @@
                       </h2>
                       @if($userOrder->count() > 0)
                           @foreach ($userOrder as $item)
-                            <div class="flex mb-4">
-                              <i class="bi bi-bag-check text-5xl mr-3" style="color: rgb(34 197 94);"></i>
-                              <div class="text-left">
-                                  <h1 class="text-sm font-medium text-gray-600">Order Code : {{ $item->tracking_no }}</h1>
-                                  <button type="button" class="btn-effect btn-details text-xs mt-2 py-1 px-2 rounded text-white" onclick="orderDetail({{ $item->id }})">
-                                      Order Details
-                                  </button>
-                              </div>
-                            </div>    
+                          @if($item->status == 4)
+                                <div class="flex mb-4">
+                                  <i class="bi bi-bag-check text-5xl mr-3" style="color: rgb(34 197 94);"></i>
+                                  <div class="text-left">
+                                      <h1 class="text-sm font-medium text-gray-600">Date : {{ $item->created_at->format('d M Y') }}</h1>
+                                      <button type="button" class="btn-effect btn-details text-xs mt-2 py-1 px-2 rounded text-white" onclick="orderDetail({{ $item->id }})">
+                                          Order Details
+                                      </button>
+                                  </div>
+                                </div> 
+                            @elseif($item->status == 5) 
+                                <div class="flex mb-4">
+                                  <i class="bi bi-bag-x text-5xl mr-3 text-red-500"></i>
+                                  <div class="text-left">
+                                      <h1 class="text-sm font-medium text-gray-600">Date : {{ $item->created_at->format('d M Y') }}</h1>
+                                      <button type="button" class="btn-effect btn-details text-xs mt-2 py-1 px-2 rounded text-white" onclick="orderDetail({{ $item->id }})">
+                                          Order Details
+                                      </button>
+                                  </div>
+                                </div>
+                            @endif  
                           @endforeach
                       @else
                           <p class="text-2xl text-gray-400 text-center">No Order</p>
@@ -187,6 +199,7 @@
 
           <div class="user-upload-image">
             <label class="font-medium text-xl">Upload Image</label>
+            <p class="text-muted text-sm mb-3 mt-0">Note: Recomended size 150x150</p>
             <div class="small-12 medium-2 large-2 columns">
               <div class="circle">
                 <!-- User Profile Image -->
@@ -225,7 +238,7 @@
             </div>
             <div class="field half">
               <label for="no_telp" class="font-medium text-md">No. Telephone</label>
-              <input class="input-checkout input-color" id="no_telp" name="no_telp" type="text" placeholder="No Telephone / Whatsapp" value="{{ auth()->user()->no_telp }}">
+              <input class="input-checkout input-color" id="no_telp" name="no_telp" type="text" placeholder="-" value="{{ auth()->user()->no_telp }}">
             </div>
           </div>
 
@@ -234,48 +247,59 @@
           </h6>
           <div class="field full">
             <label for="address" class="font-medium text-md">Street Address</label>
-            <input class="input-checkout input-color" name="address" id="address" type="text" placeholder="Enter your address" value="{{ auth()->user()->address }}">
+            <input class="input-checkout input-color" name="address" id="address" type="text" placeholder="-" value="{{ auth()->user()->address }}">
           </div>
 
         <div class="flex justify-between">
           <div class="field half mr-2">
             <label for="country" class="font-medium text-md">Country</label>
-            <input class="input-checkout input-color" name="country" id="country" type="text" placeholder="Country" value="{{ auth()->user()->country }}">
+            <input class="input-checkout input-color" name="country" id="country" type="text" placeholder="-" value="{{ auth()->user()->country }}">
           </div>
           <div class="field half">
             <label for="province" class="font-medium text-md">State / Province</label>
-            <input class="input-checkout input-color" id="province" name="province" type="text" placeholder="State / Province" value="{{ auth()->user()->province }}">
+            <input class="input-checkout input-color" id="province" name="province" type="text" placeholder="-" value="{{ auth()->user()->province }}">
           </div>
         </div>
 
         <div class="flex justify-between">
           <div class="field half mr-2">
             <label for="city" class="font-medium text-md">City</label>
-            <input class="input-checkout input-color" id="city" name="city" type="text" placeholder="City" value="{{ auth()->user()->city }}">
+            <input class="input-checkout input-color" id="city" name="city" type="text" placeholder="-" value="{{ auth()->user()->city }}">
           </div>
           <div class="field half">
             <label for="pos_code" class="font-medium text-md">ZIP / Postal Code</label>
-            <input class="input-checkout input-color" id="pos_code" name="pos_code" type="text" placeholder="ZIP / Postal Code" value="{{ auth()->user()->pos_code }}">
+            <input class="input-checkout input-color" id="pos_code" name="pos_code" type="text" placeholder="-" value="{{ auth()->user()->pos_code }}">
           </div>
         </div>
 
         <div class="field half">
           <label class="font-medium text-md mb-3">Address Type</label>
           <div class="flex">
-            <div class="mr-12 flex">
-              <input type="radio" class="mr-2" name="address_type" {{ (auth()->user()->address_type == 1) ? 'checked' : '' }} value="1" id="home">
-              <label for="home">Home</label>
-            </div>
-            <div class="flex">
-              <input type="radio" class="mr-2" name="address_type" {{ (auth()->user()->address_type == 2) ? 'checked' : '' }} value="2" id="office">
-              <label for="office">Office</label>
-            </div>
+            @if(auth()->user()->address_type)
+              <div class="mr-12 flex">
+                <input type="radio" class="mr-2" name="address_type" {{ (auth()->user()->address_type == 1) ? 'checked' : '' }} value="1" id="home">
+                <label for="home">Home</label>
+              </div>
+              <div class="flex">
+                <input type="radio" class="mr-2" name="address_type" {{ (auth()->user()->address_type == 2) ? 'checked' : '' }} value="2" id="office">
+                <label for="office">Office</label>
+              </div>
+            @else
+              <div class="mr-12 flex">
+                <input type="radio" class="mr-2" name="address_type" checked value="1" id="home">
+                <label for="home">Home</label>
+              </div>
+              <div class="flex">
+                <input type="radio" class="mr-2" name="address_type" value="2" id="office">
+                <label for="office">Office</label>
+              </div>
+            @endif
           </div>
         </div>
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn-effect btn-gray py-2 px-3 rounded text-sm" data-bs-dismiss="modal">Close</button>
+        <button type="reset" class="btn-effect btn-gray py-2 px-3 rounded text-sm" data-bs-dismiss="modal">Close</button>
         <button type="submit" class="btn-effect btn-details py-2 px-3 rounded text-sm">Save Changes</button>
       </div>
 

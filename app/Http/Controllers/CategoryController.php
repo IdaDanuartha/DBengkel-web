@@ -89,13 +89,14 @@ class CategoryController extends Controller
     {
         $category = Category::find($id);
 
-        $path = 'assets/uploads/categories/' . $category->main_image;
-        if (File::exists($path)) {
-            File::delete($path);
-        }
+        // $path = 'assets/uploads/categories/' . $category->main_image;
+        // if (File::exists($path)) {
+        //     File::delete($path);
+        // }
+        $category->status = 0;
 
-        $category->delete();
-        return redirect('/dashboard/categories')->with('delete', "Category " . $category->name . " has been deleted");
+        $category->update();
+        return redirect('/dashboard/categories')->with('status', "Category has been deleted");
     }
 
     public function checkSlug(Request $request)

@@ -62,33 +62,41 @@
                     <label for="status" class="block text-md mb-2 font-medium">Order Status</label>
                     <div class="flex justify-center">
                         <div class="mb-3 w-full">
-                          <select id="status" class="form-select appearance-none
-                            block
-                            w-full
-                            px-3
-                            py-1.5
-                            text-base
-                            font-normal
-                            my-light-dark-text
-                            body-color bg-clip-padding bg-no-repeat
-                            border border-solid border-gray-300
-                            rounded
-                            transition
-                            ease-in-out
-                            m-0
-                            focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" name="status">
-                              <option value="0" {{ $orders->status == 0 ? 'selected':'' }}>Waiting for Confirmation</option>
-                              <option value="1" {{ $orders->status == 1 ? 'selected':'' }}>Order Proccessed</option>
-                              <option value="2" {{ $orders->status == 2 ? 'selected':'' }}>Order Delivered</option>
-                              <option value="3" {{ $orders->status == 3 ? 'selected':'' }}>Order Arrived</option>
+                          @if($orders->status == 4)
+                            <p class="border-2 font-semibold py-2 px-3 rounded-md" style="color: rgb(22 163 74);">Order Completed</p>
+                          @elseif($orders->status == 5)
+                            <p class="border-2 font-semibold py-2 px-3 rounded-md text-red-500">Order Canceled</p>
+                          @else
+                            <select id="status" class="form-select appearance-none
+                              block
+                              w-full
+                              px-3
+                              py-1.5
+                              text-base
+                              font-normal
+                              my-light-dark-text
+                              body-color bg-clip-padding bg-no-repeat
+                              border border-solid border-gray-300
+                              rounded
+                              transition
+                              ease-in-out
+                              m-0
+                              focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" name="status">
+                                <option value="0" {{ $orders->status == 0 ? 'selected':'' }}>Waiting for Confirmation</option>
+                                <option value="1" {{ $orders->status == 1 ? 'selected':'' }}>Order Proccessed</option>
+                                <option value="2" {{ $orders->status == 2 ? 'selected':'' }}>Order Delivered</option>
+                                <option value="3" {{ $orders->status == 3 ? 'selected':'' }}>Order Arrived</option>
+                            @endif
                           </select>
                         </div>
                       </div>
                   </div>
 
                   <div class="col-span-6 flex flex-end">
-                    <a href="/dashboard/customers-order" class="inline-block mr-5 px-4 py-2 bg-gray-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-700 hover:shadow-lg focus:bg-gray-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-800 active:shadow-lg transition duration-150 ease-in-out">Back</a>
-                    <button type="submit" class="inline-block px-4 py-2 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Update Status</button>
+                    <a href="/dashboard/customers-order" class="px-3 py-2 mr-5 text-white text-sm btn-effect btn-gray rounded">Back</a>
+                  @if($orders->status < 4)
+                    <button type="submit" class="px-3 py-2 text-white text-sm btn-effect btn-details rounded">Update Status</button>
+                  @endif
                   </div>
                 </form>
 

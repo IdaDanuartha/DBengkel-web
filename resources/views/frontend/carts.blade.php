@@ -64,7 +64,7 @@
        </table>
        
         <div class="flex justify-between my-light-dark-card p-3">
-            <a href="/checkout" class="bg-blue-500 text-white duration-500 hover:bg-blue-400 rounded py-2 px-3">Proceed to Checkout</a>
+            <a href="/checkout" class="text-white btn-effect btn-details text-sm rounded py-2 px-3">Proceed to Checkout</a>
             <span class="items-center font-medium">Sub Total : Rp {{ number_format($total, 0, ',', '.') }}</span>
         </div>
 

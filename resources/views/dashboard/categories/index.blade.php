@@ -37,7 +37,7 @@
                 </thead>
                 <tbody>
                   @foreach ($categories as $category)
-                    <tr class="border-1">
+                    <tr class="border-b">
                       <td class="text-sm text-gray-900 font-light px-4 py-2 whitespace-nowrap">
                             <button type="button" class="btn-effect btn-edit p-2 rounded text-sm mr-1"><i class="bi bi-pencil-fill" onclick="editCategory({{ $category->id }})"></i></button>
                             <button type="button" class="btn-effect btn-delete p-2 rounded text-sm" onclick="deleteConfirm(event, {{ $category->id }})"><i class="bi bi-trash-fill"></i></a>
@@ -148,7 +148,7 @@
           </div>
           
       <div class="modal-footer">
-        <button type="button" class="btn-effect btn-gray py-2 px-4 rounded text-sm" data-bs-dismiss="modal">
+        <button type="reset" class="btn-effect btn-gray py-2 px-4 rounded text-sm" data-bs-dismiss="modal">
           Close
         </button>
         <button type="submit" class="btn-effect btn-details py-2 px-4 rounded text-sm">
@@ -197,7 +197,7 @@
 
       Swal.fire({
       title: 'Are you sure?',
-      text: "You won't be able to revert this!",
+      text: "The product will not be removed; rather, its status will be inactived",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',

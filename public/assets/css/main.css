@@ -15,6 +15,10 @@ html {
     color: #fff;
 }
 
+.message-textarea:focus {
+    outline: none;
+}
+
 :root {
     --nav-footer-color: #eee;
     --card-color: #fff;
@@ -91,6 +95,25 @@ body {
 
 /* end dark mode style */
 
+/* Message box style */
+#message-box {
+    position: fixed;
+    cursor: pointer;
+    z-index: 9999;
+    bottom: 18px;
+    right: 18px;
+}
+
+#message-box img {
+    width: 65px;
+    transition: .3s;
+}
+
+#message-box:hover img {
+    transform: scale(1.1);
+}
+
+/* Spinner */
 .spinner {
     position: fixed;
     background-color: var(--card-color);
@@ -166,6 +189,10 @@ body {
 
 .btn-complete {
     background-color: rgb(34 197 94);
+}
+
+.btn-delete {
+    background-color: rgb(239 68 68);
 }
 
 
@@ -810,6 +837,9 @@ footer .row .social-footer a:hover {
 
 
 @media only screen and (max-width: 600px) {
+    #message-box img {
+        width: 55px;
+    }
     .spacer-div {
         height: 25vw;
     }
@@ -836,4 +866,10 @@ footer .row .social-footer a:hover {
         width: 300px;
     }
 
+}
+
+@media only screen and (max-width: 500px) {
+    #message-box img {
+        width: 48px;
+    }
 }

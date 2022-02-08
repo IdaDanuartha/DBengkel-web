@@ -250,6 +250,9 @@
   @if (request('category'))
       <input type="hidden" name="category" value="{{ request('category') }}">
   @endif
+  @if (request('filter'))
+      <input type="hidden" name="filter" value="{{ request('filter') }}">
+  @endif
   <input type="text" class="input-search typeahead p-1 mr-1 rounded-full" placeholder="Search Product Here..." name="search" id="searching" value="{{ request('search') }}">
   <button type="submit"><i class="bi bi-search"></i></button>
 </form>

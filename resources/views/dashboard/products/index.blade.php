@@ -34,10 +34,7 @@
                       Price
                     </th>
                     <th scope="col" class="text-sm font-medium px-4 py-2 text-left">
-                      Special Price
-                    </th>
-                    <th scope="col" class="text-sm font-medium px-4 py-2 text-left">
-                      Quantity
+                      Stock
                     </th>
                     <th scope="col" class="text-sm font-medium px-4 py-2 text-left">
                       Status
@@ -49,7 +46,7 @@
                 </thead>
                 <tbody>
                   @foreach ($products as $product)
-                    <tr class="border-1">
+                    <tr class="border-b">
                       <td class="text-sm text-gray-900 font-light px-4 py-2 whitespace-nowrap">
                         <button type="button" class="btn-effect btn-edit p-2 rounded text-sm mr-1" 
                         onclick="editProduct({{ $product->id }})">
@@ -69,17 +66,12 @@
                           {{ $product->category->name }}
                         </td>
                         <td class="text-sm text-center font-light px-4 py-2 whitespace-nowrap">
-                          Rp {{ number_format($product->ori_price, 0, ',', '.') }}
-                        </td>
-                        @if($product->disc_price)
-                          <td class="text-sm text-center font-light px-4 py-2 whitespace-nowrap">
+                          @if($product->disc_price)
                             Rp {{ number_format($product->disc_price, 0, ',', '.') }}
-                          </td>
-                        @else
-                          <td class="text-lg text-center font-light px-4 py-2 whitespace-nowrap">
-                            -
-                          </td>
-                        @endif
+                          @else
+                            Rp {{ number_format($product->ori_price, 0, ',', '.') }}
+                          @endif
+                        </td>
                         <td class="text-sm text-center font-light px-4 py-2 whitespace-nowrap">
                           {{ $product->quantity }}
                         </td>
@@ -219,7 +211,7 @@
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn-effect btn-gray py-2 px-4 rounded text-sm" data-bs-dismiss="modal">
+        <button type="reset" class="btn-effect btn-gray py-2 px-4 rounded text-sm" data-bs-dismiss="modal">
           Close
         </button>
         <button type="submit" class="btn-effect btn-details py-2 px-4 rounded text-sm">
@@ -268,7 +260,7 @@
 
       Swal.fire({
       title: 'Are you sure?',
-      text: "You won't be able to revert this!",
+      text: "The product will not be removed; rather, its status will be inactived",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',

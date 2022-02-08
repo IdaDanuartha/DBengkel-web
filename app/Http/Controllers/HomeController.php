@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Review;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\OrderItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -15,10 +16,24 @@ class HomeController extends Controller
 {
     public function index()
     {
+        $featured_prod = DB::table('products')
+            ->select('products.slug', 'products.status', 'products.trending', 'products.main_image', 'products.name', 'products.disc_price', 'products.ori_price', 'categories.name AS category_name', 'categories.slug AS category_slug', DB::raw('(SELECT SUM(order_items.quantity) FROM order_items WHERE product_id = products.id) AS total_sold'), DB::raw('(SELECT ROUND(AVG(stars_rated)) FROM reviews WHERE reviews.product_id = products.id) AS rating'))
+            ->join('categories', 'products.category_id', '=', 'categories.id')
+            ->take(12)
+            ->get();
+
+        $featured_prod = DB::table('products')
+            ->select('products.slug', 'products.status', 'products.trending', 'products.main_image', 'products.name', 'products.disc_price', 'products.ori_price', 'categories.name AS category_name', 'categories.slug AS category_slug', DB::raw('(SELECT SUM(order_items.quantity) FROM order_items WHERE product_id = products.id) AS total_sold'), DB::raw('(SELECT ROUND(AVG(stars_rated)) FROM reviews WHERE reviews.product_id = products.id) AS rating'))
+            ->join('categories', 'products.category_id', '=', 'categories.id')
+            ->orderBy('products.created_at', 'DESC')
+            ->take(12)
+            ->get();
+
         return view('frontend.home', [
             "title" => "Home Page",
-            "featured_prod" => Product::with('category')->where('trending', '1')->take(12)->get(),
-            "latest_prod" => Product::with('category')->latest()->take(12)->get()
+            // "featured_prod" => Product::with('category')->where('status', '1')->where('trending', '1')->take(12)->get(),
+            "featured_prod" => $featured_prod,
+            "latest_prod" => Product::latest()->with('category')->where('status', '1')->take(12)->get()
         ]);
     }
 
@@ -29,10 +44,9 @@ class HomeController extends Controller
         $category = $request->input('category');
         $search = $request->input('search');
 
-
         if ($filterProduct == 'latest') {
             $products = DB::table('products')
-                ->select('products.slug', 'products.status', 'products.main_image', 'products.name', 'products.disc_price', 'products.ori_price', 'categories.name AS category_name', 'categories.slug AS category_slug')
+                ->select('products.slug', 'products.status', 'products.main_image', 'products.name', 'products.disc_price', 'products.ori_price', 'categories.name AS category_name', 'categories.slug AS category_slug', DB::raw('(SELECT SUM(order_items.quantity) FROM order_items WHERE product_id = products.id) AS total_sold'), DB::raw('(SELECT ROUND(AVG(stars_rated)) FROM reviews WHERE reviews.product_id = products.id) AS rating'))
                 ->join('categories', 'products.category_id', '=', 'categories.id')
                 ->where('categories.name', 'LIKE', '%' . $category . '%')
                 ->where('products.name', 'LIKE', '%' . $search . '%')
@@ -40,7 +54,7 @@ class HomeController extends Controller
                 ->paginate(20);
         } elseif ($filterProduct == 'popular') {
             $products = DB::table('products')
-                ->select('products.slug', 'products.status', 'products.main_image', 'products.name', 'products.disc_price', 'products.ori_price', 'categories.name AS category_name', 'categories.slug AS category_slug')
+                ->select('products.slug', 'products.status', 'products.main_image', 'products.name', 'products.disc_price', 'products.ori_price', 'categories.name AS category_name', 'categories.slug AS category_slug', DB::raw('(SELECT SUM(order_items.quantity) FROM order_items WHERE product_id = products.id) AS total_sold'), DB::raw('(SELECT ROUND(AVG(stars_rated)) FROM reviews WHERE reviews.product_id = products.id) AS rating'))
                 ->join('categories', 'products.category_id', '=', 'categories.id')
                 ->where('categories.name', 'LIKE', '%' . $category . '%')
                 ->where('products.name', 'LIKE', '%' . $search . '%')
@@ -48,7 +62,7 @@ class HomeController extends Controller
                 ->paginate(20);
         } elseif ($filterProduct == 'lowest-price') {
             $products = DB::table('products')
-                ->select('products.slug', 'products.status', 'products.main_image', 'products.name', 'products.disc_price', 'products.ori_price', 'categories.name AS category_name', 'categories.slug AS category_slug')
+                ->select('products.slug', 'products.status', 'products.main_image', 'products.name', 'products.disc_price', 'products.ori_price', 'categories.name AS category_name', 'categories.slug AS category_slug', DB::raw('(SELECT SUM(order_items.quantity) FROM order_items WHERE product_id = products.id) AS total_sold'), DB::raw('(SELECT ROUND(AVG(stars_rated)) FROM reviews WHERE reviews.product_id = products.id) AS rating'))
                 ->addSelect(DB::raw('IF(disc_price IS NULL, ori_price, disc_price ) AS current_price'))
                 ->join('categories', 'products.category_id', '=', 'categories.id')
                 ->where('categories.name', 'LIKE', '%' . $category . '%')
@@ -57,7 +71,7 @@ class HomeController extends Controller
                 ->paginate(20);
         } elseif ($filterProduct == 'highest-price') {
             $products = DB::table('products')
-                ->select('products.slug', 'products.status', 'products.main_image', 'products.name', 'products.disc_price', 'products.ori_price', 'categories.name AS category_name', 'categories.slug AS category_slug')
+                ->select('products.slug', 'products.status', 'products.main_image', 'products.name', 'products.disc_price', 'products.ori_price', 'categories.name AS category_name', 'categories.slug AS category_slug', DB::raw('(SELECT SUM(order_items.quantity) FROM order_items WHERE product_id = products.id) AS total_sold'), DB::raw('(SELECT ROUND(AVG(stars_rated)) FROM reviews WHERE reviews.product_id = products.id) AS rating'))
                 ->addSelect(DB::raw('IF(disc_price IS NULL, ori_price, disc_price ) AS current_price'))
                 ->join('categories', 'products.category_id', '=', 'categories.id')
                 ->where('categories.name', 'LIKE', '%' . $category . '%')
@@ -66,7 +80,7 @@ class HomeController extends Controller
                 ->paginate(20);
         } else {
             $products = DB::table('products')
-                ->select('products.slug', 'products.status', 'products.main_image', 'products.name', 'products.disc_price', 'products.ori_price', 'categories.name AS category_name', 'categories.slug AS category_slug')
+                ->select('products.slug', 'products.status', 'products.main_image', 'products.name', 'products.disc_price', 'products.ori_price', 'categories.name AS category_name', 'categories.slug AS category_slug', DB::raw('(SELECT SUM(order_items.quantity) FROM order_items WHERE product_id = products.id) AS total_sold'), DB::raw('(SELECT ROUND(AVG(stars_rated)) FROM reviews WHERE reviews.product_id = products.id) AS rating'))
                 ->join('categories', 'products.category_id', '=', 'categories.id')
                 ->where('categories.name', 'LIKE', '%' . $category . '%')
                 ->where('products.name', 'LIKE', '%' . $search . '%')
@@ -76,8 +90,8 @@ class HomeController extends Controller
         return view('frontend.all-products', [
             "title" => "All Products",
             "products" => $products,
-            "categories" => Category::where('status', '1')->get(),
-            "filter" => $filterProduct
+            "categories" => Category::where('status', '1')->filter('searc')->get(),
+            "filter" => $filterProduct,
         ]);
     }
 
@@ -111,7 +125,15 @@ class HomeController extends Controller
 
             if (Product::where('slug', $prod_slug)->exists()) {
                 $category = Category::where('slug', $cate_slug)->first();
-                $related_products = Product::inRandomOrder()->where('category_id', $category->id)->where('status', '1')->take(4)->get();
+
+                $related_products = DB::table('products')
+                    ->select('products.slug', 'products.status', 'products.main_image', 'products.name', 'products.disc_price', 'products.ori_price', 'categories.name AS category_name', 'categories.slug AS category_slug', DB::raw('(SELECT SUM(order_items.quantity) FROM order_items WHERE product_id = products.id) AS total_sold'), DB::raw('(SELECT ROUND(AVG(stars_rated)) FROM reviews WHERE reviews.product_id = products.id) AS rating'))
+                    ->join('categories', 'products.category_id', '=', 'categories.id')
+                    ->where('categories.id', $category->id)
+                    ->where('products.status', '1')
+                    ->take(4)
+                    ->get();
+                // $related_products = Product::inRandomOrder()->where('category_id', $category->id)->where('status', '1')->take(4)->get();
 
                 $product = Product::where('slug', $prod_slug)->first();
                 $productReview = Product::where('slug', $prod_slug)->first();
@@ -127,9 +149,17 @@ class HomeController extends Controller
                     $rating_value = 0;
                 }
 
+                $productSold = OrderItem::where('product_id', $product->id)->get();
+                $productSoldCount = 0;
+                if ($productSold) {
+                    foreach ($productSold as $item) {
+                        $productSoldCount += $item->quantity;
+                    }
+                }
+
                 $title = $product->name;
                 $countCart = Cart::all();
-                return view('frontend.single-product', compact('product', 'productReview', 'related_products', 'ratings', 'rating_value', 'user_review', 'review', 'title', 'countCart'));
+                return view('frontend.single-product', compact('product', 'productReview', 'related_products', 'ratings', 'rating_value', 'user_review', 'review', 'productSoldCount', 'title', 'countCart'));
             } else {
                 return redirect('/')->with('status', 'The link was broken');
             }

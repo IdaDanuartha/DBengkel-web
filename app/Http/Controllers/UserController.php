@@ -26,21 +26,26 @@ class UserController extends Controller
         ]);
     }
 
-    public function completeOrder($id)
+    public function updateStatus(Request $request, $id)
     {
         $orders = Order::find($id);
-        $orders->status = 4;
+        if ($orders->status == 3) {
+            $orders->status = $request->input('complete_order');
+            $orders->update();
 
-        $orders->update();
-
-        return redirect('/my-orders')->with('status', 'Order Completed, we hope you like our products');
+            return redirect('/my-orders')->with('status', 'Order Completed, we hope you like our products');
+        } elseif ($orders->status == 0) {
+            $orders->status = $request->input('cancel_order');
+            $orders->update();
+        }
+        return redirect('/my-orders')->with('status', 'Order Canceled');
     }
 
     public function profileView()
     {
         return view('frontend.profile.index', [
             "title" => "My Profile",
-            "userOrder" => Order::where('email', Auth::user()->email)->where('status', '4')->get()
+            "userOrder" => Order::where('user_id', Auth::user()->id)->get()
         ]);
     }
 
@@ -48,6 +53,13 @@ class UserController extends Controller
     {
 
         $user = User::find($id);
+
+        $validatedData = $request->validate([
+            "first_name" => "required",
+            "last_name" => "required",
+            "email" => "required|email:dns",
+            "image" => "image|file|max:2000"
+        ]);
 
         if ($request->hasFile('image')) {
             $path = 'assets/uploads/users/' . $user->image;
@@ -62,9 +74,6 @@ class UserController extends Controller
             $user->image = $fileName;
         }
 
-        $user->first_name = $request->input('first_name');
-        $user->last_name = $request->input('last_name');
-        $user->email = $request->input('email');
         $user->no_telp = $request->input('no_telp');
         $user->address = $request->input('address');
         $user->country = $request->input('country');
@@ -73,7 +82,7 @@ class UserController extends Controller
         $user->pos_code = $request->input('pos_code');
         $user->address_type = $request->input('address_type');
 
-        $user->update();
+        $user->update($validatedData);
 
         return back()->with('status', 'Profile Updated Successfully');
     }

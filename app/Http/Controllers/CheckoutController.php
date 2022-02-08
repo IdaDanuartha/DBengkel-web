@@ -114,6 +114,6 @@ class CheckoutController extends Controller
         $product_cart = Cart::where('user_id', Auth::id())->get();
         Cart::destroy($product_cart);
 
-        return redirect('/')->with('status', 'Order proceed successfully, check profile for your order status');
+        return redirect('/my-orders')->with('status', 'Thank you for placing your order, we will contact you as soon as possible to confirm');
     }
 }

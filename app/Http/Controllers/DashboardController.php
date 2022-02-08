@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Models\OrderItem;
-use App\Models\Product;
+use App\Models\Message;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -48,9 +48,9 @@ class DashboardController extends Controller
 
         return view('dashboard.index', [
             "title" => "Dashboard Admin",
-            "ordersCount" => Order::all()->count(),
+            "ordersCount" => Order::where('status', '0')->count(),
             "ordersItemCount" => OrderItem::all()->count(),
-            "messageCount" => Product::all()->count(),
+            "messageCount" => Message::all()->count(),
             "incomeCount" => Order::all(),
             "adminCount" => User::where('role_as', '1')->count(),
             "customersCount" => User::where('role_as', '0')->count(),
@@ -63,7 +63,25 @@ class DashboardController extends Controller
     {
         return view('dashboard.users.index', [
             "title" => "Users Registered",
-            "users" => User::paginate(10)
+            "users" => User::orderBy('role_as', 'DESC')->paginate(10)
         ]);
+    }
+
+    public function userDetails($id)
+    {
+        return view('dashboard.users.user-details', [
+            "title" => "User Details",
+            "user" => User::find($id)
+        ]);
+    }
+
+    public function updateRole(Request $request, $id)
+    {
+        $userId = User::find($id);
+
+        $userId->role_as = $request->input('role_as');
+        $userId->update();
+
+        return redirect('/dashboard/users-registered')->with('status', 'Role Updated Successfully');
     }
 }

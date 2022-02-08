@@ -27,12 +27,12 @@
                     <span class="title">Categories</span>
                 </a>
             </li>
-            <li class="{{ Request::is('dashboard/customers-order*') ? 'actived' : '' }}">
-                <a href="/dashboard/customers-order">
+            <li class="{{ Request::is('dashboard/customer-orders*') ? 'actived' : '' }}">
+                <a href="/dashboard/customer-orders">
                     <span class="icon">
                         <ion-icon name="people-outline"></ion-icon>
                     </span>
-                    <span class="title">Customers Order</span>
+                    <span class="title">Customer Orders</span>
                 </a>
             </li>
             @if(auth()->user()->role_as == '2')
@@ -45,12 +45,12 @@
                 </a>
             </li>
             @endif
-            <li class="{{ Request::is('dashboard/contact-message*') ? 'actived' : '' }}">
-                <a href="#">
+            <li class="{{ Request::is('dashboard/messages*') ? 'actived' : '' }}">
+                <a href="/dashboard/messages">
                     <span class="icon">
                         <ion-icon name="chatbubbles-outline"></ion-icon>
                     </span>
-                    <span class="title">Contact Message</span>
+                    <span class="title">Messages</span>
                 </a>
             </li>
         </ul>

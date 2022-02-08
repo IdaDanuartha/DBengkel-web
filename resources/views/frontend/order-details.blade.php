@@ -16,18 +16,24 @@
                   Order Delivered
                 @elseif($orders->status == 3)
                   Order Arrived
-                @else
-                  Order Completed
+                @elseif($orders->status == 4)
+                <span style="color: rgb(22 163 74);">Order Completed</span>
+                @elseif($orders->status == 5)
+                  <span class="text-red-500">Order Canceled</span>
                 @endif
               </span>
               </h1>
-                @if($orders->status == 3)
-                <form action="/complete-order/{{ $orders->id }}" method="POST">
+                <form action="/update-order-status/{{ $orders->id }}" method="POST">
                   @csrf
                   @method('PUT')
-                  <button type="submit" class="btn-effect btn-complete rounded py-2 px-4 ml-5 text-white text-sm duration-500 hover:bg-green-500">Complete the order</button>
+                  @if($orders->status == 0)
+                      <input type="hidden" name="cancel_order" value="5">
+                      <button type="submit" class="btn-effect btn-delete rounded py-2 px-4 ml-5 text-white text-sm">Cancel Order</button>
+                  @elseif($orders->status == 3)
+                      <input type="hidden" name="complete_order" value="4">
+                      <button type="submit" class="btn-effect btn-complete rounded py-2 px-4 ml-5 text-white text-sm">Complete the order</button>
+                  @endif
                 </form>
-                @endif
               </div>
                 <div class="mt-3 md:mt-0 md:col-span-2">
                   <form action="/placeorder" method="POST">

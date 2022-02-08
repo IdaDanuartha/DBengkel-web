@@ -21,7 +21,7 @@
                     </div>
                 </div>
             <div class="flex flex-col">
-                <h5 class="text-gray-500 text-sm mb-2">Message</h5>
+                <h5 class="text-gray-500 text-sm mb-2">Messages</h5>
                 <h1 class="text-3xl font-medium number-counter my-light-dark-text" data-value="{{ $messageCount }}">0</h1>
             </div>
             </div>
@@ -107,7 +107,7 @@
                 labels:['Jan','Feb','Mar','Apr','May','Jun','July','Aug','Sep','Oct','Nov','Des'],
                 datasets:[
                     {
-                        label: 'Orders Data Barchart',
+                        label: 'New Orders',
                         data: ordersData,
                         backgroundColor: ['red','orange','green','yellow','blue','indigo','violet','purple','pink','silver','gold','brown'],
                     }
@@ -131,7 +131,7 @@
 
     Highcharts.chart('customers-highchart', {
         title:{
-            text: 'Customers Data Highchart'
+            text: 'Customers Data'
         },
         xAxis:{
             categories:['Jan','Feb','Mar','Apr','May','Jun','July','Aug','Sep','Oct','Nov','Des']

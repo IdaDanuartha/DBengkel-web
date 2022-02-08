@@ -10,43 +10,49 @@
               <table class="min-w-full my-light-dark-text">
                 <thead class="bg-gray-800 text-white">
                   <tr>
-                    <th scope="col" class="text-sm font-medium px-6 py-4 text-left">
+                    <th scope="col" class="text-sm font-medium px-6 py-3 text-center">
+                      Action
+                    </th>
+                    <th scope="col" class="text-sm font-medium px-6 py-3 text-center">
                       #
                     </th>
-                    <th scope="col" class="text-sm font-medium px-6 py-4 text-left">
+                    <th scope="col" class="text-sm font-medium px-6 py-3 text-center">
                       Order date
                     </th>
-                    <th scope="col" class="text-sm font-medium px-6 py-4 text-left">
+                    <th scope="col" class="text-sm font-medium px-6 py-3 text-center">
                       Number Tracking
                     </th>
-                    <th scope="col" class="text-sm font-medium px-6 py-4 text-left">
+                    <th scope="col" class="text-sm font-medium px-6 py-3 text-center">
                       Total Price
                     </th>
-                    <th scope="col" class="text-sm font-medium px-6 py-4 text-left">
+                    <th scope="col" class="text-sm font-medium px-6 py-3 text-center">
                       Order Status
-                    </th>
-                    <th scope="col" class="text-sm font-medium px-6 py-4 text-left">
-                        Action
                     </th>
                   </tr>
                 </thead>
                 <tbody>
                   @foreach ($orders as $order)
-                    <tr class="border-b">
+                    <tr class="border-b text-center">
+                      <td class="text-sm p-4">
+                        <a href="/dashboard/customer-orders/order-details/{{ $order->id }}" class="btn-effect btn-details py-2 px-4 rounded text-xs"> Details</a>
+                      </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">{{ $loop->iteration }}</td>
                         <td class="p-4 whitespace-nowrap text-sm">{{ $order->created_at->format('d M Y') }}</td>
                         <td class="text-sm font-light p-4 whitespace-nowrap">
                         {{ $order->tracking_no }}
                         </td>
                         <td class="text-sm font-light p-4 whitespace-nowrap">
-                            Rp {{ $order->total_price }}
+                            Rp {{ number_format($order->total_price, 0, ',', '.') }}
                         </td>
-                        <td class="text-sm font-medium p-4 whitespace-nowrap" style="color: rgb(22 163 74);">
-                          Order Completed
-                        </td>
-                        <td class="text-sm p-4">
-                            <a href="/dashboard/customers-order/order-details/{{ $order->id }}" class="btn-effect btn-details py-2 px-4 rounded text-xs"> Details</a>
-                        </td>
+                        @if($order->status == 4)
+                          <td class="text-sm font-medium p-4 whitespace-nowrap" style="color: rgb(22 163 74);">
+                            Order Completed
+                          </td>
+                        @elseif($order->status == 5)
+                          <td class="text-sm font-medium text-red-500 p-4 whitespace-nowrap">
+                            Order Canceled
+                          </td>
+                        @endif
                     </tr>
                   @endforeach
                 </tbody>
