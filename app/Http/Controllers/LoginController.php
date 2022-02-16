@@ -25,9 +25,9 @@ class LoginController extends Controller
             $request->session()->regenerate();
 
             if (Auth::user()->role_as == '1' || Auth::user()->role_as == '2') {
-                return redirect('/dashboard')->with('login-success', 'Welcome to Dashboard, ' . Auth::user()->first_name . ' ' . Auth::user()->last_name);
+                return redirect('/dashboard')->with('status', 'Welcome to Dashboard, ' . Auth::user()->first_name . ' ' . Auth::user()->last_name);
             } else if (Auth::user()->role_as == '0') {
-                return redirect('/')->with('login-success', 'Logged in Succesfully');
+                return redirect('/');
             }
         }
 

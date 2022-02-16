@@ -31,7 +31,7 @@ class CreateOrdersTable extends Migration
             $table->string('payment_method')->nullable();
             $table->string('payment_id')->nullable();
             $table->tinyInteger('status')->default('0');
-            $table->string('tracking_no');
+            $table->string('order_code');
             $table->timestamps();
         });
     }

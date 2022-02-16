@@ -1,8 +1,10 @@
 @extends('frontend.layouts.main')
 
 @section('main-content')
-    <div class="cart-container">
+<div class="cart-container">
     @if($cartItems->count() > 0)
+    @auth
+    @if(auth()->user()->role_as == 0)
        <table class="table-cart overflow-x-auto">
            <tr class="my-light-dark-card my-light-dark-text">
                <th>Product Details</th>
@@ -12,7 +14,7 @@
            @php
                $total = 0;
            @endphp
-           @foreach ($cartItems as $item)               
+           @foreach ($cartItems as $i => $item)               
            <tr class="tr-table product_data">
                <td>
                    <div class="cart-product">
@@ -52,7 +54,8 @@
                 @endif
                 </td>
 
-               <td class="text-center">Rp
+               <td class="text-center subtotal-product" id="subtotal-{{ $item->product_id }}">Rp 
+                   <input type="hidden" class="oriprice_product" value="{{ $item->products->ori_price }}">
                 @if($item->products->disc_price)
                     {{ number_format($item->products->disc_price * $item->product_qty, 0, ',', '.') }}
                 @else
@@ -65,7 +68,7 @@
        
         <div class="flex justify-between my-light-dark-card p-3">
             <a href="/checkout" class="text-white btn-effect btn-details text-sm rounded py-2 px-3">Proceed to Checkout</a>
-            <span class="items-center font-medium">Sub Total : Rp {{ number_format($total, 0, ',', '.') }}</span>
+            <span class="items-center font-medium subtotal-allproducts">Sub Total : Rp {{ number_format($total, 0, ',', '.') }}</span>
         </div>
 
         @else
@@ -82,7 +85,8 @@
                 </a>
             </div>
         </div>
-            
-       @endif
+    @endif
+    @endauth
+    @endif
     </div>
 @endsection

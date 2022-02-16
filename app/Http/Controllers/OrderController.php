@@ -19,7 +19,7 @@ class OrderController extends Controller
     {
         return view('dashboard.customers-order.history', [
             "title" => "Order History",
-            "orders" => Order::latest()->where('status', '4')->orWhere('status', '5')->paginate(10)
+            "orders" => Order::latest()->where('status', '>', '3')->paginate(10)
         ]);
     }
 
@@ -38,6 +38,6 @@ class OrderController extends Controller
 
         $orders->update();
 
-        return redirect('/dashboard/customers-order')->with('status', 'Status Updated Successfully');
+        return redirect('/dashboard/customer-orders')->with('status', 'Status Updated Successfully');
     }
 }

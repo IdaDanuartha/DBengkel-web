@@ -141,14 +141,16 @@
     left-auto
     right-0
   " aria-labelledby="dropdownMenuButton2">
-    <li>
-      <p class="
-      mx-3
-      text-sm
-      font-normal
-      block
-      w-full
-      bg-transparent" >Hi, {{ auth()->user()->first_name . ' ' . auth()->user()->last_name }}</p>
+    <li class="flex">
+      @if(auth()->user()->image)
+        <img src="/assets/uploads/users/{{ auth()->user()->image }}" class="rounded-full ml-3 mr-2 my-1" style="height: 25px; width: 25px" alt=""/>
+      @else
+        <img src="/assets/img/user-profile.png" class="rounded-full ml-3 mr-2 my-1" style="height: 25px; width: 25px" alt=""/>
+      @endif
+      <div class="flex flex-col items-center">
+        <p class="text-sm font-medium block w-full bg-transparent" >{{ auth()->user()->first_name . ' ' . auth()->user()->last_name }}</p>
+        <p class="text-xs font-normal block w-full bg-transparent"><i class="bi bi-envelope mr-1"></i>{{ auth()->user()->email }}</p>
+      </div>
     </li>
     {{-- <li>
       <p class="

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Order;
-use App\Models\OrderItem;
-use App\Models\Message;
 use App\Models\User;
+use App\Models\Order;
+use App\Models\Message;
+use App\Models\OrderItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -46,12 +46,15 @@ class DashboardController extends Controller
             $orderDatas[$month] = $orderData[$index];
         }
 
+        $get_week = \Carbon\Carbon::today()->subDays(7);
+        $get_month = \Carbon\Carbon::today()->subDays(30);
+
         return view('dashboard.index', [
             "title" => "Dashboard Admin",
-            "ordersCount" => Order::where('status', '0')->count(),
-            "ordersItemCount" => OrderItem::all()->count(),
-            "messageCount" => Message::all()->count(),
-            "incomeCount" => Order::all(),
+            "ordersCount" => Order::where('status', '0')->where('created_at', '>=', $get_week)->count(),
+            "ordersItemCount" => OrderItem::where('created_at', '>=', $get_week)->count(),
+            "messageCount" => Message::where('created_at', '>=', $get_week)->count(),
+            "incomeCount" => Order::where('created_at', '>=', $get_month)->get(),
             "adminCount" => User::where('role_as', '1')->count(),
             "customersCount" => User::where('role_as', '0')->count(),
             "usersData" => $datas,

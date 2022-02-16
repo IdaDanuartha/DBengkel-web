@@ -1,36 +1,36 @@
 @extends('dashboard.layouts.main')
 
 @section('content') 
-
-    <div class="flex flex-col" style="margin: 50px 0;">
+<div class="container-table rounded-md mx-3 mt-5 mb-5 p-2" style="box-shadow: 10px 10px 35px rgba(0,0,0,0.2)">
+    <div class="flex flex-col" style="margin: 20px 0 50px;">
         <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div class="py-2 inline-block w-11/12 sm:px-6 lg:px-8">
             <div class="overflow-x-auto ml-5">
               <table class="min-w-full my-light-dark-text">
-                <thead class="bg-gray-800 text-white">
+                <thead class="my-light-dark-text border-b">
                   <tr>
                   @if(auth()->user()->role_as == '2')
-                    <th scope="col" class="text-sm font-medium px-5 py-3 text-left">
+                    <th scope="col" class="text-sm font-semibold px-5 py-3 text-left">
                         Action
                     </th>
                   @endif
-                    <th scope="col" class="text-sm font-medium px-5 py-3 text-left">
-                      #
+                    <th scope="col" class="text-sm font-semibold px-5 py-3 text-left">
+                    No
                     </th>
-                    <th scope="col" class="text-sm font-medium px-5 py-3 text-left">
+                    <th scope="col" class="text-sm font-semibold px-5 py-3 text-left">
                       Name
                     </th>
-                    <th scope="col" class="text-sm font-medium px-5 py-3 text-left">
+                    <th scope="col" class="text-sm font-semibold px-5 py-3 text-left">
                       Email
                     </th>
-                    <th scope="col" class="text-sm font-medium px-5 py-3 text-left">
+                    <th scope="col" class="text-sm font-semibold px-5 py-3 text-left">
                       Role
                     </th>
                   </tr>
                 </thead>
                 <tbody>
                   @foreach ($users->skip(1) as $user)
-                      <tr class="border-b">
+                      <tr class="border-b hovered-table">
                         @if(auth()->user()->role_as == '2')
                         <td class="text-xs px-6">
                             <a href="/dashboard/users-registered/details/{{ $user->id }}" class="btn-effect btn-details py-2 px-4 rounded text-xs"> Details</a>
@@ -68,5 +68,6 @@
           </div>
         </div>
       </div>
+</div>
 @endsection
 

@@ -3,18 +3,7 @@
 @section('main-content')
     {{-- Start Sort by --}}
     <div class="container pt-36">
-      {{-- Breadcrumbs
-      <nav class="nav-footer-color py-3 px-4 font-bold mb-5 rounded" aria-label="Breadcrumb">
-        <ol class="list-none p-0 inline-flex">
-          <li class="flex items-center">
-            <a href="/" class="my-light-dark-text">Home <span class="mx-2"> > </span></a>
-          </li>
-          <li class="flex items-center">
-            <p class="text-gray-500">All Products</p>
-          </li>
-        </ol>
-      </nav> --}}
-
+      
       @if(request('search'))
         <p class="text-gray-400 text-xl mb-10"><i class="bi bi-lightbulb mr-1"></i>Search result for <span class="text-red-400">'{{ request('search') }}'</span></p>
       @endif
@@ -92,7 +81,7 @@
         <div class="mb-10 mt-10 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
           @foreach ($products as $product)
           @if($product->status == 1)
-          <div class="flex justify-center">
+          <div class="flex justify-center hover:shadow-lg">
             <div class="rounded-lg shadow-md my-light-dark-card max-w-sm">
               <a href="/category/{{ $product->category_slug }}/{{ $product->slug }}">
                 <img class="rounded-t-lg w-full h-60" src="/assets/uploads/products/{{ $product->main_image }}" alt=""/>

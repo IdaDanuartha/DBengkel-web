@@ -14,7 +14,7 @@ class ProductController extends Controller
     {
         return view('dashboard.products.index', [
             "title" => "Products",
-            "products" => Product::latest()->paginate(10),
+            "products" => Product::latest()->with('category')->paginate(10),
             "categories" => Category::where('status', '1')->get()
         ]);
     }
@@ -71,11 +71,15 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
 
-        return view('dashboard.products.edit', [
-            "title" => "Edit Product",
-            "product" => $product,
-            "categories" => Category::where('status', '1')->get()
+        return response()->json([
+            'product' => $product,
+            'categories' => Category::where('status', '1')->get()
         ]);
+        // return view('dashboard.products.edit', [
+        //     "title" => "Edit Product",
+        //     "product" => $product,
+        //     "categories" => Category::where('status', '1')->get()
+        // ]);
     }
 
     public function update(Request $request, $id)
@@ -100,7 +104,11 @@ class ProductController extends Controller
         $products->category_id = $request->input('category_id');
         $products->description = $request->input('description');
         $products->ori_price = str_replace('.', '', $request->input('ori_price'));
-        $products->disc_price = str_replace('.', '', $request->input('disc_price'));
+
+        if ($request->input('disc_price')) {
+            $products->disc_price = str_replace('.', '', $request->input('disc_price'));
+        }
+
         $products->quantity = str_replace('.', '', $request->input('quantity'));
         // $products->tax = $request->input('tax');
         $products->status = $request->input('status') == TRUE ? '1' : '0';

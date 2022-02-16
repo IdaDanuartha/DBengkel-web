@@ -16,24 +16,33 @@ class HomeController extends Controller
 {
     public function index()
     {
+
         $featured_prod = DB::table('products')
             ->select('products.slug', 'products.status', 'products.trending', 'products.main_image', 'products.name', 'products.disc_price', 'products.ori_price', 'categories.name AS category_name', 'categories.slug AS category_slug', DB::raw('(SELECT SUM(order_items.quantity) FROM order_items WHERE product_id = products.id) AS total_sold'), DB::raw('(SELECT ROUND(AVG(stars_rated)) FROM reviews WHERE reviews.product_id = products.id) AS rating'))
             ->join('categories', 'products.category_id', '=', 'categories.id')
             ->take(12)
             ->get();
 
-        $featured_prod = DB::table('products')
+        $latest_prod = DB::table('products')
             ->select('products.slug', 'products.status', 'products.trending', 'products.main_image', 'products.name', 'products.disc_price', 'products.ori_price', 'categories.name AS category_name', 'categories.slug AS category_slug', DB::raw('(SELECT SUM(order_items.quantity) FROM order_items WHERE product_id = products.id) AS total_sold'), DB::raw('(SELECT ROUND(AVG(stars_rated)) FROM reviews WHERE reviews.product_id = products.id) AS rating'))
             ->join('categories', 'products.category_id', '=', 'categories.id')
             ->orderBy('products.created_at', 'DESC')
             ->take(12)
             ->get();
 
+        $flash_sale = DB::table('products')
+            ->select('products.slug', 'products.status', 'products.trending', 'products.main_image', 'products.name', 'products.disc_price', 'products.ori_price', 'categories.name AS category_name', 'categories.slug AS category_slug', DB::raw('(SELECT SUM(order_items.quantity) FROM order_items WHERE product_id = products.id) AS total_sold'), DB::raw('(SELECT ROUND(AVG(stars_rated)) FROM reviews WHERE reviews.product_id = products.id) AS rating'))
+            ->join('categories', 'products.category_id', '=', 'categories.id')
+            ->where('products.disc_price', '>', '0')
+            ->take(8)
+            ->get();
+
         return view('frontend.home', [
             "title" => "Home Page",
             // "featured_prod" => Product::with('category')->where('status', '1')->where('trending', '1')->take(12)->get(),
             "featured_prod" => $featured_prod,
-            "latest_prod" => Product::latest()->with('category')->where('status', '1')->take(12)->get()
+            "latest_prod" => $latest_prod,
+            "flash_sale" => $flash_sale
         ]);
     }
 
@@ -56,9 +65,10 @@ class HomeController extends Controller
             $products = DB::table('products')
                 ->select('products.slug', 'products.status', 'products.main_image', 'products.name', 'products.disc_price', 'products.ori_price', 'categories.name AS category_name', 'categories.slug AS category_slug', DB::raw('(SELECT SUM(order_items.quantity) FROM order_items WHERE product_id = products.id) AS total_sold'), DB::raw('(SELECT ROUND(AVG(stars_rated)) FROM reviews WHERE reviews.product_id = products.id) AS rating'))
                 ->join('categories', 'products.category_id', '=', 'categories.id')
+                ->join('reviews', 'products.id', '=', 'reviews.product_id')
                 ->where('categories.name', 'LIKE', '%' . $category . '%')
                 ->where('products.name', 'LIKE', '%' . $search . '%')
-                ->orderBy('products.trending', 'DESC')
+                ->orderBy('reviews.stars_rated', 'DESC')
                 ->paginate(20);
         } elseif ($filterProduct == 'lowest-price') {
             $products = DB::table('products')
@@ -90,7 +100,7 @@ class HomeController extends Controller
         return view('frontend.all-products', [
             "title" => "All Products",
             "products" => $products,
-            "categories" => Category::where('status', '1')->filter('searc')->get(),
+            "categories" => Category::where('status', '1')->get(),
             "filter" => $filterProduct,
         ]);
     }

@@ -30,7 +30,7 @@ html {
 }
 
 .dark-theme {
-    --nav-footer-color: #212121;
+    --nav-footer-color: #313131;
     --card-color: #212121;
     --body-color: #181818;
     --text-color: #ddd;
@@ -76,6 +76,10 @@ body {
     background-color: var(--input-color);
     color: var(--text-color);
     border: var(--border-color);
+}
+
+.checkout-card-color {
+    background-color: var(--card-color) !important;
 }
 
 .bi-moon-fill,
@@ -283,7 +287,6 @@ body {
     height: 45vw;
     min-height: 500px;
     width: 100%;
-    background: rgb(190, 189, 189);
 }
 
 .spotlight-container {
@@ -555,7 +558,7 @@ footer .row .social-footer a:hover {
 /* cart page style */
 
 .cart-container {
-    padding: 150px 50px 0 50px;
+    padding: 150px 50px 0;
 }
 
 .cart-container .table-cart {

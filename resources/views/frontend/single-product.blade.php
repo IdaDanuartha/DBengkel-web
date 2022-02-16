@@ -89,7 +89,7 @@
           <h1 class="text-3xl font-medium mt-16 mb-5 related-text my-light-dark-text">Related Products</h1>
           <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-3">
             @foreach ($related_products as $product)
-            <div class="flex">
+            <div class="flex hover:shadow-lg">
               <div class="rounded-lg shadow-md my-light-dark-card max-w-sm">
                 <a href="/category/{{ $product->category_slug }}/{{ $product->slug }}">
                   <img class="rounded-t-lg w-full h-60" src="/assets/uploads/products/{{ $product->main_image }}" alt=""/>

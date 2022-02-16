@@ -198,7 +198,7 @@
           @method('PUT')
 
           <div class="user-upload-image">
-            <label class="font-medium text-xl">Upload Image</label>
+            <label class="font-medium text-xl">Upload Avatar</label>
             <p class="text-muted text-sm mb-3 mt-0">Note: Recomended size 150x150</p>
             <div class="small-12 medium-2 large-2 columns">
               <div class="circle">

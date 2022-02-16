@@ -57,7 +57,7 @@ class CartController extends Controller
                 return response()->json(['status' => "Admin can't buy product"]);
             }
         } else {
-            return response()->json(['status' => "Login to Continue"]);
+            return redirect('/login');
         }
     }
 
@@ -66,6 +66,8 @@ class CartController extends Controller
         $product_id = $request->input('product_id');
         $product_quantity = $request->input('product_qty');
 
+        $product = Product::find($product_id);
+
         if (Auth::check()) {
 
             if (Cart::where('product_id', $product_id)->where('user_id', Auth::id())->exists()) {
@@ -73,7 +75,35 @@ class CartController extends Controller
                 $cart->product_qty = $product_quantity;
                 $cart->update();
 
-                return response()->json(['status' => "Quantity Updated"]);
+                $carts = Cart::where('user_id', Auth::id())->get();
+
+                $product_price = 0;
+                $total_price = 0;
+                foreach ($carts as $cart) {
+                    $product = $cart->products;
+                    // dd($product);
+                    // foreach ($cart->product as $product) {
+                    if ($product->disc_price) {
+                        if ($product->id == $product_id) {
+                            $product_price = $product->disc_price;
+                        }
+                        $total_price += $cart->product_qty * $product->disc_price;
+                    } else {
+                        if ($product->id == $product_id) {
+                            $product_price = $product->ori_price;
+                        }
+                        $total_price += $cart->product_qty * $product->ori_price;
+                    }
+                    // }
+                }
+
+
+                return response()->json([
+                    "status" => "Quantity Updated",
+                    "quantity" => $product_quantity,
+                    "product_price" => $product_price,
+                    "total_price" => $total_price
+                ]);
             }
         }
     }

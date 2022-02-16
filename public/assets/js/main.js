@@ -61,3 +61,12 @@ $('.star-input').click(function() {
     var prevStars = $(this).prevAll();
     prevStars.removeClass('hovered');
   })
+
+// Munculin loader pada button ketika form disubmit
+function submitForm(text) {
+  $('.btn-submit')
+    .addClass('opacity-75 text-white')
+    .removeClass('btn-effect')
+    .html(`<span class="spinner-border spinner-border-sm mr-1" role="status" aria-hidden="true"></span>${text}...`)
+
+}

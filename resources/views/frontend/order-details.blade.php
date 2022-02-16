@@ -23,15 +23,13 @@
                 @endif
               </span>
               </h1>
-                <form action="/update-order-status/{{ $orders->id }}" method="POST">
+                <form action="/update-order-status/{{ $orders->id }}" onsubmit="submitForm('Loading')" method="POST">
                   @csrf
                   @method('PUT')
                   @if($orders->status == 0)
-                      <input type="hidden" name="cancel_order" value="5">
-                      <button type="submit" class="btn-effect btn-delete rounded py-2 px-4 ml-5 text-white text-sm">Cancel Order</button>
+                      <button type="submit" class="btn-submit marker:btn-effect btn-delete rounded py-2 px-4 ml-5 text-white text-sm">Cancel Order</button>
                   @elseif($orders->status == 3)
-                      <input type="hidden" name="complete_order" value="4">
-                      <button type="submit" class="btn-effect btn-complete rounded py-2 px-4 ml-5 text-white text-sm">Complete the order</button>
+                      <button type="submit" class="btn-submit btn-effect btn-complete rounded py-2 px-4 ml-5 text-white text-sm">Complete the order</button>
                   @endif
                 </form>
               </div>

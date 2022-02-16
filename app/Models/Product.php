@@ -38,10 +38,6 @@ class Product extends Model
                 $query->where('slug', $category)
             )
         );
-
-        // $query->when($filters['sortby'] ?? false, function ($query) {
-        //     return $query;
-        // });
     }
 
     public function category()

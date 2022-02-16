@@ -54,9 +54,13 @@
                     <textarea name="message" id="message" rows="7" autocomplete="off" class="my-light-dark-text input-color mt-1 block w-full py-2 px-3 rounded-md shadow-sm sm:text-sm" placeholder="No Message" disabled>{{ $orders->message }}</textarea>
                   </div>
 
+                  <div class="col-span-6">
+                    <label for="payment_method" class="block text-sm font-medium mb-1">Payment Method</label>
+                    <input type="text" name="payment_method" id="payment_method" autocomplete="off" class="input-color mt-1 block w-full py-2 px-3 rounded-md shadow-sm focus:outline-none focus:ring-red-400 focus:border-red-400 sm:text-sm" disabled value="COD | Cash On Delivery">
+                  </div>
 
                   <div class="col-span-6 sm:col-span-4">
-                    <form action="/update-status/{{ $orders->id }}" method="POST">
+                    <form action="/update-status/{{ $orders->id }}" onsubmit="submitForm('Updating')" method="POST">
                         @csrf
                         @method('PUT')
                     <label for="status" class="block text-md mb-2 font-medium">Order Status</label>
@@ -81,11 +85,13 @@
                               transition
                               ease-in-out
                               m-0
-                              focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" name="status">
+                            {{ ($orders->status < 4) ? 'cursor-pointer' : '' }}
+                              focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" {{ ($orders->status > 3 && $orders->status < 7) ? 'disabled' : '' }} name="status">
                                 <option value="0" {{ $orders->status == 0 ? 'selected':'' }}>Waiting for Confirmation</option>
                                 <option value="1" {{ $orders->status == 1 ? 'selected':'' }}>Order Proccessed</option>
                                 <option value="2" {{ $orders->status == 2 ? 'selected':'' }}>Order Delivered</option>
                                 <option value="3" {{ $orders->status == 3 ? 'selected':'' }}>Order Arrived</option>
+                                <option value="6" class="text-red-500 font-medium" {{ $orders->status == 6 ? 'selected':'' }}>Order Invalid</option>
                             @endif
                           </select>
                         </div>
@@ -93,9 +99,9 @@
                   </div>
 
                   <div class="col-span-6 flex flex-end">
-                    <a href="/dashboard/customers-order" class="px-3 py-2 mr-5 text-white text-sm btn-effect btn-gray rounded">Back</a>
+                    <a href="/dashboard/customer-orders" class="px-3 py-2 mr-5 text-white text-sm btn-effect btn-gray rounded"><i class="bi bi-left mr-1"></i> Back</a>
                   @if($orders->status < 4)
-                    <button type="submit" class="px-3 py-2 text-white text-sm btn-effect btn-details rounded">Update Status</button>
+                    <button type="submit" class="btn-submit px-3 py-2 text-white text-sm btn-effect btn-details rounded">Update Status</button>
                   @endif
                   </div>
                 </form>

@@ -51,10 +51,14 @@ class CategoryController extends Controller
     {
         $category = Category::find($id);
 
-        return view('dashboard.categories.edit', [
-            "title" => "Edit Category",
-            "category" => $category
+        return response()->json([
+            'category' => $category
         ]);
+
+        // return view('dashboard.categories.edit', [
+        //     "title" => "Edit Category",
+        //     "category" => $category
+        // ]);
     }
 
     public function update(Request $request, $id)
@@ -96,7 +100,7 @@ class CategoryController extends Controller
         $category->status = 0;
 
         $category->update();
-        return redirect('/dashboard/categories')->with('status', "Category has been deleted");
+        return redirect('/dashboard/categories')->with('status', "Category status has been deactived");
     }
 
     public function checkSlug(Request $request)

@@ -30,12 +30,12 @@ class UserController extends Controller
     {
         $orders = Order::find($id);
         if ($orders->status == 3) {
-            $orders->status = $request->input('complete_order');
+            $orders->status = 4;
             $orders->update();
 
             return redirect('/my-orders')->with('status', 'Order Completed, we hope you like our products');
         } elseif ($orders->status == 0) {
-            $orders->status = $request->input('cancel_order');
+            $orders->status = 5;
             $orders->update();
         }
         return redirect('/my-orders')->with('status', 'Order Canceled');

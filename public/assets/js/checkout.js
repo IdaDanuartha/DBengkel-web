@@ -1,50 +1,69 @@
-const type1 = document.querySelector('.type.satu');
-const type2 = document.querySelector('.type.dua');
-const type3 = document.querySelector('.type.tiga');
+// const type1 = document.querySelector('.type.satu');
+// const type2 = document.querySelector('.type.dua');
+// const type3 = document.querySelector('.type.tiga');
 
 
-function typeSelected(type_1, type_2, type_3) {
-    type_1.addEventListener('click', function() {
-        if(type_2.classList.contains('selected')) {
-            type_2.classList.remove('selected')
-            type_1.classList.add('selected')
-        }
+// function typeSelected(type_1, type_2, type_3) {
+//     if(type_1.classList.contains('selected')) {
+//         $('.type.satu p').css('color', '#fff')
+//         if(type_2.classList.contains('selected')) {
+//             $('.type.dua p').css('color', '#333')
+//         }
+//         if(type_3.classList.contains('selected')) {
+//             $('.type.tiga p').css('color', '#333')
+//         }
+//     }
+
+//     type_1.addEventListener('click', function() {
+//         if(type_2.classList.contains('selected')) {
+//             $('.type.dua p').css('color', '#333')
+//             type_2.classList.remove('selected')
+//             type_1.classList.add('selected')
+//         }
         
-        if(type_3.classList.contains('selected')) {
-            type_3.classList.remove('selected')
-            type_1.classList.add('selected')
-        }
-    
-    })
+//         if(type_3.classList.contains('selected')) {
+//             $('.type.tiga p').css('color', '#333')
+//             type_3.classList.remove('selected')
+//             type_1.classList.add('selected')
+//         }
+//     })
 
-    type_2.addEventListener('click', function() {
-        if(type_1.classList.contains('selected')) {
-            type_1.classList.remove('selected')
-            type_2.classList.add('selected')
-        }
+//     type_2.addEventListener('click', function() {
+//         $('.type.dua p').css('color', '#fff')
+
+//         if(type_1.classList.contains('selected')) {
+//             $('.type.satu p').css('color', '#333')
+//             type_1.classList.remove('selected')
+//             type_2.classList.add('selected')
+//         }
         
-        if(type_3.classList.contains('selected')) {
-            type_3.classList.remove('selected')
-            type_2.classList.add('selected')
-        }
+//         if(type_3.classList.contains('selected')) {
+//             $('.type.tiga p').css('color', '#333')
+//             type_3.classList.remove('selected')
+//             type_2.classList.add('selected')
+//         }
     
-    })
+//     })
 
-    type_3.addEventListener('click', function() {
-        if(type_1.classList.contains('selected')) {
-            type_1.classList.remove('selected')
-            type_3.classList.add('selected')
-        }
+//     type_3.addEventListener('click', function() {
+//         $('.type.tiga p').css('color', '#fff')
         
-        if(type_2.classList.contains('selected')) {
-            type_2.classList.remove('selected')
-            type_3.classList.add('selected')
-        }
+//         if(type_1.classList.contains('selected')) {
+//             $('.type.satu p').css('color', '#333')
+//             type_1.classList.remove('selected')
+//             type_3.classList.add('selected')
+//         }
+        
+//         if(type_2.classList.contains('selected')) {
+//             $('.type.dua p').css('color', '#333')
+//             type_2.classList.remove('selected')
+//             type_3.classList.add('selected')
+//         }
     
-    })
-}
+//     })
+// }
 
-typeSelected(type1, type2, type3)
+// typeSelected(type1, type2, type3)
 
 
 // Stepper 

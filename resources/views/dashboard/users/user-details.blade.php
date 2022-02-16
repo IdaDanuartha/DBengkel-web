@@ -8,10 +8,10 @@
             <div class="flex justify-between mb-5 mt-2">
                 <a href="/dashboard/users-registered" class="px-4 py-2 btn-effect btn-gray rounded text-white text-sm"><i class="bi bi-arrow-left mr-2"></i> Back</a>
 
-            <form action="/dashboard/users-registered/update-role/{{ $user->id }}" method="POST">
+            <form action="/dashboard/users-registered/update-role/{{ $user->id }}" method="POST" onsubmit="submitForm('Updating')">
                 @csrf
                 @method('PUT')
-                <button type="submit" class="px-4 py-2 btn-effect btn-details rounded text-white text-sm">Save Changes</button>
+                <button type="submit" class="px-4 py-2 btn-effect btn-details rounded text-white text-sm btn-submit">Update Role</button>
               </div>
             <div class="grid grid-cols-6 gap-6">
 

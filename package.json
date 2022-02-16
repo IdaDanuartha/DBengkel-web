@@ -18,6 +18,7 @@
         "tailwindcss": "^3.0.15"
     },
     "dependencies": {
+        "@splidejs/splide": "^3.6.12",
         "sweetalert2": "^11.3.4"
     }
 }

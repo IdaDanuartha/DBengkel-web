@@ -9,17 +9,6 @@ toggle.addEventListener('click', function() {
     mainContent.classList.toggle('active');
 })
 
-
-// active clicked sidebar
-const sidebarList = document.querySelectorAll('#sidebar li');
-
-function activeLink() {
-    sidebarList.forEach((item) => item.classList.remove('actived'));
-    this.classList.add('actived');
-}
-sidebarList.forEach((item) => item.addEventListener('click', activeLink));
-
-
 // Image slide script
 // const productImages = document.querySelectorAll(".image-group img");
 // const productImageSlide = document.querySelector(".image-slider");
@@ -35,19 +24,6 @@ sidebarList.forEach((item) => item.addEventListener('click', activeLink));
 //     })
 // })
 
-// Preview Image script
-function previewMainImage() {
-    const mainImage = document.querySelector('#main_image');
-    const imgPreview = document.querySelector('.img-preview');
-
-    const oFReader = new FileReader;
-    oFReader.readAsDataURL(mainImage.files[0]);
-
-    oFReader.onload = function(oFRevent) {
-        imgPreview.src = oFRevent.target.result;
-    }
-}
-
 
 // Number counter dashboard
 const numCounter = document.querySelectorAll('.number-counter');
@@ -57,63 +33,37 @@ numCounter.forEach(num => {
     let startValue = 0;
     let endValue = parseInt(num.getAttribute('data-value'));
     console.log(endValue);
-    let duration = Math.floor(interval / endValue);
-    let counter = setInterval(function () {
-        startValue += 1;
-        num.textContent = startValue;
-        if(startValue == endValue) {
-            clearInterval(counter);
-        }
-    }, duration);
-})
 
+    let duration;
 
-// Number format rupiah
-const oriPrice = document.getElementById('ori_price');
-const discPrice = document.getElementById('disc_price');
-const quantity = document.getElementById('quantity');
-
-
-oriPrice.addEventListener('keyup', function(e) {
-    oriPrice.value = formatRupiah(this.value, '');
-})
-discPrice.addEventListener('keyup', function(e) {
-    discPrice.value = formatRupiah(this.value, '');
-})
-quantity.addEventListener('keyup', function(e) {
-    quantity.value = formatRupiah(this.value, '');
-})
-
-
-const OriPrice = document.getElementById('ori_price');
-const DiscPrice = document.getElementById('disc_price');
-const Quantity = document.getElementById('quantity');
-
-OriPrice.addEventListener('keyup', function(e) {
-    OriPrice.value = formatRupiah(this.value, '');
-})
-DiscPrice.addEventListener('keyup', function(e) {
-    DiscPrice.value = formatRupiah(this.value, '');
-})
-Quantity.addEventListener('keyup', function(e) {
-    Quantity.value = formatRupiah(this.value, '');
-})
-
-function formatRupiah(num, prefix) {
-    let num_string = num.replace(/[^,\d]/g, '').toString(),
-    split = num_string.split(','),
-    sisa = split[0].length % 3,
-    rupiah = split[0].substr(0, sisa),
-    ribuan = split[0].substr(sisa).match(/\d{3}/gi);
-
-    if(ribuan) {
-        separator = sisa ? '.' : '';
-        rupiah += separator + ribuan.join('.');
+    if(endValue == 0) {
+        duration = Math.floor(endValue / interval);
+    } else {
+        duration = Math.floor(interval / endValue);
     }
 
-    rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
-    return prefix == undefined ? rupiah : (rupiah ? '' + rupiah : '');
-}  
+    if(endValue > 0) {
+        let counter = setInterval(function () {
+            startValue++;
+            num.innerHTML = startValue;
+            if(startValue == endValue) {
+                clearInterval(counter);
+            }
+        }, duration);
+    } else {
+        num.innerHTML = 0;
+    }
+
+})
+
+// Munculin loader pada button ketika form disubmit
+function submitForm(text) {
+  $('.btn-submit')
+    .addClass('opacity-75 text-white')
+    .removeClass('btn-effect')
+    .html(`<span class="spinner-border spinner-border-sm mr-1" role="status" aria-hidden="true"></span>${text}...`)
+
+}
 
 
 

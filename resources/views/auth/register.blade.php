@@ -5,7 +5,7 @@
     <h1 class="h3 my-light-dark-text mb-4" style="font-weight: 700;">REGISTER FORM</h1>
     </div>
 
-    <form action="/register" method="post" class="login-form">
+    <form action="/register" method="post" class="login-form" onsubmit="submitForm('Creating')">
     @csrf
     <div class="row row-cols-lg-2 row-cols-md-2 row-cols-1 mx-1">
         <div class="form-group mb-3">
@@ -73,7 +73,7 @@
     <div class="toggle toggle-hide d-none" onclick="showHide()">
         <i class="bi bi-eye-slash-fill my-light-dark-text"></i>
     </div> --}}
-    <button type="submit" class="rounded-pill" name="register">
+    <button type="submit" class="rounded-pill btn-submit" name="register">
         Create New Account
     </button>
     </form>

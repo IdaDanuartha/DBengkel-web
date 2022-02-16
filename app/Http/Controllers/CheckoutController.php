@@ -34,6 +34,17 @@ class CheckoutController extends Controller
     {
         $order = new Order();
 
+        $validatedData = $request->validate([
+            "first_name" => "required",
+            "last_name" => "required",
+            "no_telp" => "required",
+            "address" => "required",
+            "country" => "required",
+            "province" => "required",
+            "city" => "required",
+            "pos_code" => "required",
+        ]);
+
         $order->user_id = Auth::id();
         $order->first_name = $request->input('first_name');
         $order->last_name = $request->input('last_name');
@@ -46,7 +57,8 @@ class CheckoutController extends Controller
         $order->pos_code = $request->input('pos_code');
         $order->message = $request->input('message');
         $order->address_type = $request->input('address_type');
-        $order->tracking_no = $request->input('first_name') . rand(11111, 99999);
+
+        $order->order_code = strtoupper($request->input('first_name')) . strtoupper(bin2hex(random_bytes(5)));
 
         // Calculate total price
         $product_tax = 0;
@@ -68,7 +80,7 @@ class CheckoutController extends Controller
         $totalPrice += $product_tax + 20000;
         $order->total_price = $totalPrice;
 
-        $order->save();
+        $order->save($validatedData);
 
         $product_cart = Cart::where('user_id', Auth::id())->get();
         foreach ($product_cart as $item) {
@@ -108,7 +120,7 @@ class CheckoutController extends Controller
             $user->message = $request->input('message');
             $user->address_type = $request->input('address_type');
 
-            $user->update();
+            $user->update($validatedData);
         }
 
         $product_cart = Cart::where('user_id', Auth::id())->get();

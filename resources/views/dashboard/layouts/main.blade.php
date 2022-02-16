@@ -46,9 +46,8 @@
 
     </div>
 
-
-    {{-- jquery --}}
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+{{-- jquery --}}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 
 {{-- Sweet alert 2 --}}
@@ -61,16 +60,30 @@
 @yield('chart-js')
 @yield('script')
 <script>
-    @if(session('login-success'))
-        Swal.fire('{{ session("login-success") }}')
-    @endif
-
-      @if (session('status'))
-      Swal.fire(
-          'Success',
-          '{{ session("status") }}',
-          'success'
-      )
+    @if (session('status'))
+    let timerInterval
+    Swal.fire({
+        title: '{{ session("status") }}',
+        timer: 2000,
+        timerProgressBar: true,
+        background: 'rgb(74 222 128)',
+        color: '#fff',
+        didOpen: () => {
+            Swal.showLoading()
+            const b = Swal.getHtmlContainer().querySelector('b')
+            timerInterval = setInterval(() => {
+                b.textContent = Swal.getTimerLeft()
+            }, 100)
+        },
+        willClose: () => {
+            clearInterval(timerInterval)
+        }
+        }).then((result) => {
+        /* Read more about handling dismissals below */
+        if (result.dismiss === Swal.DismissReason.timer) {
+            console.log('I was closed by the timer')
+        }
+    })
     @endif
 </script>
 

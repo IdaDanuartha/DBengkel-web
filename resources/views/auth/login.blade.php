@@ -34,7 +34,7 @@
         </div>    
     @endif
 
-    <form action="/login" method="post" class="login-form">
+    <form action="/login" method="post" class="login-form" onsubmit="submitForm('Signing')">
         @csrf
         <div class="form-group mb-3">
             <input type="text" class="@error('email')is-invalid @enderror" id="email" name="email" autocomplete="off" required autofocus value="{{ old('email') }}">
@@ -57,19 +57,16 @@
             @enderror
         </div>
 
-        <div class="flex justify-between mt-3">
+        <div class="flex justify-start mt-3">
             <div>
                 <input type="checkbox" class="form-checkbox mr-1" id="show-pass">
                 <label class="inline-block my-light-dark-text" for="show-pass">
                 Show Password
                 </label>
             </div>
-            <div class="text-div d-flex justify-content-end">
-                <a class="small" href="#">Forgot Password?</a>
-            </div>
         </div>
 
-        <button type="submit" class="rounded-pill" name="login">
+        <button type="submit" class="btn-submit rounded-pill" name="login">
             Sign In
         </button>
     </form>
