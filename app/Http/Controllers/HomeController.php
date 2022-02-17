@@ -65,7 +65,7 @@ class HomeController extends Controller
             $products = DB::table('products')
                 ->select('products.slug', 'products.status', 'products.main_image', 'products.name', 'products.disc_price', 'products.ori_price', 'categories.name AS category_name', 'categories.slug AS category_slug', DB::raw('(SELECT SUM(order_items.quantity) FROM order_items WHERE product_id = products.id) AS total_sold'), DB::raw('(SELECT ROUND(AVG(stars_rated)) FROM reviews WHERE reviews.product_id = products.id) AS rating'))
                 ->join('categories', 'products.category_id', '=', 'categories.id')
-                ->join('reviews', 'products.id', '=', 'reviews.product_id')
+                ->leftJoin('reviews', 'products.id', '=', 'reviews.product_id')
                 ->where('categories.name', 'LIKE', '%' . $category . '%')
                 ->where('products.name', 'LIKE', '%' . $search . '%')
                 ->orderBy('reviews.stars_rated', 'DESC')

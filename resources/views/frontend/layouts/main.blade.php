@@ -52,40 +52,6 @@
         <img src="/assets/img/WebLogo2.png" alt="Logo">
     </div>
 
-{{-- @if(!Request::is('checkout'))
-@auth
-@if(auth()->user()->role_as == 0)
-    {{-- Message box --}}
-    {{-- <div id="message-box" data-bs-toggle="modal" data-bs-target="#message-modal">
-        <img src="/assets/img/message.png" alt="">
-    </div>
-  
-  <!-- Modal -->
-  <div class="modal fade" id="message-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content my-light-dark-card">
-        <div class="modal-header">
-          <h5 class="modal-title font-medium text-lg" id="staticBackdropLabel">Message Box</h5>
-          <button type="reset" class="bi bi-x-lg text-gray-600 cursor-pointer" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-            <div class="modal-body p-0">
-            <form action="/send-message" onsubmit="submitForm('Sending')" method="POST">
-                @csrf
-                <textarea class="w-full h-full py-2 px-3 my-light-dark-card message-textarea" rows="6" id="message" name="message" type="text" required placeholder="Hi {{ auth()->user()->first_name }}, write your problem here..."></textarea>
-            </div>
-            <div class="modal-footer mt-0">
-                <button type="submit" class="text-md btn-submit btn-effect btn-details font-medium py-2 px-4 rounded">
-                    <i class="bi bi-send mr-2"></i>Send
-                </button>
-            </div>
-        </form>
-      </div>
-    </div>
-  </div>
-@endif
-@endauth
-@endif --}}
-
     @include('frontend.partials.navbar')
 
         @yield('main-content')
@@ -93,25 +59,31 @@
     @include('frontend.partials.footer')
 
 
-    <!--Start of Tawk.to Script-->
-    <script type="text/javascript">
-        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-        (function(){
-        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-        s1.async=true;
-        s1.src='https://embed.tawk.to/620ca246a34c245641268254/1fs0ljpug';
-        s1.charset='UTF-8';
-        s1.setAttribute('crossorigin','*');
-        s0.parentNode.insertBefore(s1,s0);
-        })();
-    </script>
+{{-- Live Chat with Tawk.to --}}
+@auth
+    @if(auth()->user()->role_as == 0)
+        <!--Start of Tawk.to Script-->
+        <script type="text/javascript">
+            var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+            (function(){
+            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+            s1.async=true;
+            s1.src='https://embed.tawk.to/620ca246a34c245641268254/1fs0ljpug';
+            s1.charset='UTF-8';
+            s1.setAttribute('crossorigin','*');
+            s0.parentNode.insertBefore(s1,s0);
+            })();
+        </script>
     <!--End of Tawk.to Script-->
+    @endif
+@endauth
     
     {{-- Sweetalert2 --}}
     <script src="/assets/js/sweetalert2/sweetalert2.all.min.js"></script>
 
     {{-- Jquery --}}
     <script src="/assets/js/jquery-3.6.0.min.js"></script>
+    
     <!-- owlcarousel2 -->
     <script src="/assets/js/owl.carousel.min.js"></script>
 

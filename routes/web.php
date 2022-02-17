@@ -112,7 +112,4 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('/dashboard/users-registered', [DashboardController::class, 'usersView']);
     Route::get('/dashboard/users-registered/details/{id}', [DashboardController::class, 'userDetails']);
     Route::put('/dashboard/users-registered/update-role/{id}', [DashboardController::class, 'updateRole']);
-
-    // Messages
-    Route::get('/dashboard/messages', [MessageController::class, 'index']);
 });

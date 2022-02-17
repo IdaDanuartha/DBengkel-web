@@ -13,7 +13,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        // User data
+        // Customers data
         $usersData = User::select(DB::raw("COUNT(*) as count"))
             ->whereYear("created_at", date('Y'))
             ->where("role_as", "0")
@@ -46,6 +46,22 @@ class DashboardController extends Controller
             $orderDatas[$month] = $orderData[$index];
         }
 
+        // Products Sold data
+        $productsSold = OrderItem::select(DB::raw("COUNT(*) as count"))
+            ->whereYear("created_at", date('Y'))
+            ->groupBy(DB::raw("Month(created_at)"))
+            ->pluck("count");
+
+        $productMonths = orderItem::select(DB::raw("Month(created_at) as month"))
+            ->whereYear('created_at', date('Y'))
+            ->groupBy(DB::raw("Month(created_at)"))
+            ->pluck("month");
+
+        $productDatas = array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,);
+        foreach ($productMonths as $index => $month) {
+            $productDatas[$month] = $productsSold[$index];
+        }
+
         $get_week = \Carbon\Carbon::today()->subDays(7);
         $get_month = \Carbon\Carbon::today()->subDays(30);
 
@@ -53,12 +69,13 @@ class DashboardController extends Controller
             "title" => "Dashboard Admin",
             "ordersCount" => Order::where('status', '0')->where('created_at', '>=', $get_week)->count(),
             "ordersItemCount" => OrderItem::where('created_at', '>=', $get_week)->count(),
-            "messageCount" => Message::where('created_at', '>=', $get_week)->count(),
             "incomeCount" => Order::where('created_at', '>=', $get_month)->get(),
             "adminCount" => User::where('role_as', '1')->count(),
             "customersCount" => User::where('role_as', '0')->count(),
             "usersData" => $datas,
-            "ordersData" => $orderDatas
+            "ordersData" => $orderDatas,
+            "productDatas" => $productDatas,
+
         ]);
     }
 

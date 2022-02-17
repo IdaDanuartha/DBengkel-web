@@ -13,14 +13,14 @@
                 <thead class="my-light-dark-text border-b">
                   <tr>
                     <th scope="col" class="text-sm font-semibold px-4 py-3 text-left">
-                      Action
-                    </th>
-                    <th scope="col" class="text-sm font-semibold px-4 py-3 text-left">
                       No
                     </th>
                     <th scope="col" class="text-sm font-semibold px-4 py-3 text-left">
-                      Image
+                      Action
                     </th>
+                    {{-- <th scope="col" class="text-sm font-semibold px-4 py-3 text-left">
+                      Image
+                    </th> --}}
                     <th scope="col" class="text-sm font-semibold px-4 py-3 text-left">
                       Name
                     </th>
@@ -35,21 +35,17 @@
                 <tbody>
                   @foreach ($categories as $category)
                     <tr class="border-b hovered-table">
-                      <td class="text-sm text-gray-900 font-light px-4 py-2 whitespace-nowrap">
-                            <button type="button" class="btn-effect btn-edit p-2 rounded text-sm mr-1" value="{{ $category->id }}" data-bs-toggle="modal" data-bs-target="#modal-edit"><i class="bi bi-pencil-fill"></i></button>
-
-                            <button type="button" class="btn-effect btn-delete p-2 rounded text-sm" onclick="deleteConfirm(event, {{ $category->id }})"><i class="bi bi-trash-fill"></i></button>
-                      </td>
                         <td class="px-4 py-2 whitespace-nowrap text-sm font-medium">{{ $loop->iteration + $categories->firstItem() - 1 }}</td>
-                        <td class="text-sm font-light px-4 py-2 whitespace-nowrap">
-                          <img src="/assets/uploads/categories/{{ $category->main_image }}" width="60px" class="rounded" alt="">
+                        <td class="text-sm text-gray-900 font-light px-4 py-2 whitespace-nowrap">
+                          <button type="button" class="btn-effect btn-edit p-2 rounded text-sm mr-1" value="{{ $category->id }}" data-bs-toggle="modal" data-bs-target="#modal-edit"><i class="bi bi-pencil-fill"></i></button>
+                          <button type="button" class="btn-effect btn-delete p-2 rounded text-sm" onclick="deleteConfirm(event, {{ $category->id }})"><i class="bi bi-trash-fill"></i></button>
                         </td>
+                        {{-- <td class="text-sm font-light px-4 py-2 whitespace-nowrap">
+                          <img src="/assets/uploads/categories/{{ $category->main_image }}" width="60px" class="rounded" alt="">
+                        </td> --}}
                         <td class="text-sm font-light px-4 py-2 whitespace-nowrap">
                         {{ $category->name }}
                         </td>
-                        {{-- <td class="text-sm font-light px-4 py-2 whitespace-nowrap">
-                        {{ $category->description}}
-                        </td> --}}
                         <td class="text-sm px-4 py-2 whitespace-nowrap font-medium {{ $category->status == 0 ? 'text-red-500':'' }}" style="{{ $category->status == 1 ? 'color: rgb(34 197 94);':'' }}">
                           {{ $category->status == 1 ? 'Active':'Inactive' }}
                         </td>

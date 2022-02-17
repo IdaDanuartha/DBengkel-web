@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.main')
 
 @section('content') 
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4" style="margin: 40px 25px 25px 25px;">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-3 xl:grid-cols-3 gap-4" style="margin: 40px 25px 25px 25px;">
             <div class="block px-4 pt-4 pb-1 rounded-lg shadow-md my-light-dark-card" style="border: 1px solid rgba(0,0,0,0.2);">
                 <div class="flex">
                 <div class="mr-5">
@@ -18,24 +18,6 @@
                     <hr>
                     <p class="text-gray-500 font-medium tracking-widest text-sm my-2"><i class="bi bi-calendar-week mr-1"></i> This week</p>
                 </div>          
-            </div>
-
-            <div class="block px-4 pt-4 pb-1 rounded-lg shadow-md my-light-dark-card" style="border: 1px solid rgba(0,0,0,0.2);">
-            <div class="flex">
-                <div class="mr-5">
-                    <div class="py-2 px-3" style="border-radius: 10px;">
-                        <img src="/assets/img/message.png" width="55px" alt="">
-                    </div>
-                </div>
-                <div class="flex flex-col">
-                    <h5 class="text-gray-500 text-sm mb-2">Messages</h5>
-                    <h1 class="text-3xl font-medium number-counter my-light-dark-text" data-value="{{ $messageCount }}">0</h1>
-                </div>
-            </div>
-            <div class="mt-3">
-                <hr>
-                <p class="text-gray-500 font-medium tracking-widest text-sm my-2"><i class="bi bi-calendar-week mr-1"></i> This week</p>
-            </div>
             </div>
 
             <div class="block px-4 pt-4 pb-1 rounded-lg shadow-md my-light-dark-card" style="border: 1px solid rgba(0,0,0,0.2);">
@@ -124,11 +106,14 @@
     </div>
 
 
+    
+    <div id="customers-highchart"></div>
+    
     <div id="order-chart">
         <canvas id="order-barchart"></canvas>
     </div>
 
-    <div id="customers-highchart"></div>
+    <div id="products-highchart"></div>
 @endsection
 
 @section('chart-js')
@@ -188,8 +173,55 @@
             }
         },
         series:[{
-            name: 'New User',
+            name: 'New Customers',
             data: usersData
+        }],
+        responsive:{
+            rules:[
+                {
+                    condition:{
+                        maxWidth:500
+                    },
+                    chartOptions:{
+                        legend:{
+                            layout: 'horizontal',
+                            align: 'center',
+                            verticalAlign: 'bottom'
+                        }
+                    }
+                }
+            ]
+        }
+    });
+
+    // Customers highchart
+    var productDatas = <?= json_encode($productDatas); ?>
+
+    Highcharts.chart('products-highchart', {
+        title:{
+            text: 'Products Sold'
+        },
+        xAxis:{
+            categories:['Jan','Feb','Mar','Apr','May','Jun','July','Aug','Sep','Oct','Nov','Des']
+        },
+        yAxis:{
+            title:{
+                text: 'Number of Products Sold'
+            }
+        },
+        legend:{
+            layout:'vertical',
+            align: 'right',
+            verticalAlign: 'middle'
+        },
+        plotOptions:{
+            series:{
+                allowPointSelect: true
+            }
+        },
+        series:[{
+            name: 'Product Sold',
+            data: productDatas
         }],
         responsive:{
             rules:[

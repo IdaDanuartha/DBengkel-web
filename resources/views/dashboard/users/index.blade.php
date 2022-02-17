@@ -9,14 +9,14 @@
               <table class="min-w-full my-light-dark-text">
                 <thead class="my-light-dark-text border-b">
                   <tr>
-                  @if(auth()->user()->role_as == '2')
                     <th scope="col" class="text-sm font-semibold px-5 py-3 text-left">
-                        Action
+                      No
                     </th>
-                  @endif
-                    <th scope="col" class="text-sm font-semibold px-5 py-3 text-left">
-                    No
-                    </th>
+                    @if(auth()->user()->role_as == '2')
+                      <th scope="col" class="text-sm font-semibold px-5 py-3 text-left">
+                          Action
+                      </th>
+                    @endif
                     <th scope="col" class="text-sm font-semibold px-5 py-3 text-left">
                       Name
                     </th>
@@ -31,14 +31,14 @@
                 <tbody>
                   @foreach ($users->skip(1) as $user)
                       <tr class="border-b hovered-table">
+                        <td class="text-sm font-light px-5 whitespace-nowrap">
+                          {{ $loop->iteration + $users->firstItem() - 1 }}
+                        </td>
                         @if(auth()->user()->role_as == '2')
                         <td class="text-xs px-6">
                             <a href="/dashboard/users-registered/details/{{ $user->id }}" class="btn-effect btn-details py-2 px-4 rounded text-xs"> Details</a>
                         </td>
                         @endif
-                        <td class="text-sm font-light px-5 whitespace-nowrap">
-                          {{ $loop->iteration + $users->firstItem() - 1 }}
-                        </td>
                         <td class="text-sm font-light p-4 whitespace-nowrap">
                             {{ $user->first_name . ' ' . $user->last_name }}
                         </td>

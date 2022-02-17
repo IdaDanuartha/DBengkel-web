@@ -8,7 +8,6 @@
                     <span class="title">D'BENGKEL</span>
                 </a>
             </li>
-            {{-- @can('admin') --}}
             <li class="{{ Request::is('dashboard') ? 'actived' : '' }}">
                 <a href="/dashboard">
                     <span class="icon"><i class="bi bi-speedometer2 relative" style="top: -5px"></i></span>
@@ -45,14 +44,6 @@
                 </a>
             </li>
             @endif
-            <li class="{{ Request::is('dashboard/messages*') ? 'actived' : '' }}">
-                <a href="/dashboard/messages">
-                    <span class="icon">
-                        <ion-icon name="chatbubbles-outline"></ion-icon>
-                    </span>
-                    <span class="title">Messages</span>
-                </a>
-            </li>
         </ul>
     </div>
 </div>

@@ -258,7 +258,8 @@ body {
 
 /* Dashboard style */
 #order-chart,
-#customers-highchart {
+#customers-highchart,
+#products-highchart {
     height: auto;
     width: 90%;
     margin: 50px auto;

@@ -12,14 +12,14 @@
                 <thead class="my-light-dark-text border-b">
                   <tr>
                     <th scope="col" class="text-sm font-semibold px-4 py-2 text-left">
-                      Action
-                    </th>
-                    <th scope="col" class="text-sm font-semibold px-4 py-2 text-left">
                       No
                     </th>
                     <th scope="col" class="text-sm font-semibold px-4 py-2 text-left">
-                      Image
+                      Action
                     </th>
+                    {{-- <th scope="col" class="text-sm font-semibold px-4 py-2 text-left">
+                      Image
+                    </th> --}}
                     <th scope="col" class="text-sm font-semibold px-4 py-2 text-left">
                       Name
                     </th>
@@ -43,17 +43,17 @@
                 <tbody>
                   @foreach ($products as $product)
                     <tr class="border-b hovered-table">
-                      <td class="text-sm px-4 py-2 whitespace-nowrap">
-                        <button type="button" class="btn-effect btn-edit p-2 rounded text-sm mr-1" value="{{ $product->id }}" data-bs-toggle="modal" data-bs-target="#modal-edit">
-                          <i class="bi bi-pencil-fill"></i>
-                        </button>
-
-                        <button type="button" class="btn-effect btn-delete p-2 rounded text-sm" onclick="deleteConfirm(event, {{ $product->id }})"><i class="bi bi-trash-fill"></i></button>
-                      </td>
                         <td class="px-4 py-2 whitespace-nowrap text-sm font-medium">{{ $loop->iteration + $products->firstItem() - 1 }}</td>
-                        <td class="text-sm font-light px-4 py-2 whitespace-nowrap">
-                          <img src="/assets/uploads/products/{{ $product->main_image }}" width="60px" class="rounded" alt="">
+                        <td class="text-sm px-4 py-2 whitespace-nowrap">
+                          <button type="button" class="btn-effect btn-edit p-2 rounded text-sm mr-1" value="{{ $product->id }}" data-bs-toggle="modal" data-bs-target="#modal-edit">
+                            <i class="bi bi-pencil-fill"></i>
+                          </button>
+  
+                          <button type="button" class="btn-effect btn-delete p-2 rounded text-sm" onclick="deleteConfirm(event, {{ $product->id }})"><i class="bi bi-trash-fill"></i></button>
                         </td>
+                        {{-- <td class="text-sm font-light px-4 py-2 whitespace-nowrap">
+                          <img src="/assets/uploads/products/{{ $product->main_image }}" width="60px" class="rounded" alt="">
+                        </td> --}}
                         <td class="text-sm font-light px-4 py-2 whitespace-nowrap">
                         {{ $product->name }}
                         </td>

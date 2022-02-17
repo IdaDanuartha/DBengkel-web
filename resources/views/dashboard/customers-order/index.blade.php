@@ -11,10 +11,10 @@
                 <thead class="my-light-dark-text border-b">
                   <tr>
                     <th scope="col" class="text-sm font-semibold px-4 py-3 text-center">
-                      Action
-                  </th>
-                    <th scope="col" class="text-sm font-semibold px-4 py-3 text-center">
                       No
+                    </th>
+                    <th scope="col" class="text-sm font-semibold px-4 py-3 text-center">
+                      Action
                     </th>
                     <th scope="col" class="text-sm font-semibold px-4 py-3 text-center">
                       Order date
@@ -33,10 +33,10 @@
                 <tbody>
                   @foreach ($orders as $order)
                     <tr class="border-b hovered-table">
+                      <td class="px-5 py-3 whitespace-nowrap text-sm font-medium">{{ $loop->iteration + $orders->firstItem() - 1 }}</td>
                       <td class="text-sm p-4">
                             <a href="/dashboard/customer-orders/order-details/{{ $order->id }}" class="btn-effect btn-details py-2 px-4 rounded text-xs"> Details</a>
                         </td>
-                        <td class="px-5 py-3 whitespace-nowrap text-sm font-medium">{{ $loop->iteration + $orders->firstItem() - 1 }}</td>
                         <td class="p-4 whitespace-nowrap text-sm">{{ $order->created_at->format('d M Y') }}</td>
                         <td class="text-sm font-light p-4 whitespace-nowrap">
                         {{ $order->order_code }}
