@@ -446,13 +446,13 @@ body {
 }
 
 /* footer */
-footer .other a {
+footer #other a {
     display: block;
     opacity: 0.8;
     transition: 0.3s;
 }
 
-footer .other a:hover {
+footer #other a:hover {
     color: var(--main-color);
     opacity: 1;
 }

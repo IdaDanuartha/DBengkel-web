@@ -61,6 +61,7 @@ function submitForm(text) {
   $('.btn-submit')
     .addClass('opacity-75 text-white')
     .removeClass('btn-effect')
+    .attr('disabled', 'true')
     .html(`<span class="spinner-border spinner-border-sm mr-1" role="status" aria-hidden="true"></span>${text}...`)
 
 }

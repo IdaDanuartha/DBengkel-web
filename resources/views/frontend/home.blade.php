@@ -137,10 +137,9 @@
     </section>
 
     {{-- End latest product section --}}
-    {{-- <div class="border-1 p-4 shadow-lg rounded-md ml-16"> --}}
 
     {{-- Start flash sale section --}}
-    <div class="flash-sale" style="margin-top: 160px;">
+    <div class="flash-sale" id="flash-sale" style="padding-top: 160px;">
       <div class="container">
             <div class="flex">
               <span class="my-light-dark-text mb-5 mr-2 uppercase font-semibold text-4xl">D'Bengkel</span>

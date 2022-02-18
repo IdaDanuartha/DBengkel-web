@@ -22,9 +22,9 @@
 
                 <div class="col-md-2 mb-3">
                     <h3 class="text-2xl mb-2">Other</h3>
-                    <div class="other small">
-                        <a class="mb-1" href="">
-                            About Us
+                    <div id="other" class="other small">
+                        <a class="mb-1" href="/category">
+                            Category
                         </a>
                         <a class="mb-1" href="/#latest-products">
                             Latest Product
@@ -32,8 +32,8 @@
                         <a class="mb-1" href="/#featured-products">
                             Featured Product
                         </a>
-                        <a class="mb-1" href="/category">
-                            Category Product
+                        <a class="mb-1" href="/#flash-sale">
+                            Flash Sale
                         </a>
                     </div>
                 </div>
